@@ -8,5 +8,5 @@ function conectarse() {
     return $conexion;
 }
 conectarse();
-echo "asd";
+
 ?>
