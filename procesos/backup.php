@@ -28,7 +28,7 @@ backup();
   function backup(){       
     $dbname = "mantenimiento_inventario"; //database name
     //$dbconn = pg_pconnect("host=localhost port=5432 dbname=$dbname user=postgres password=root"); //connectionstring
-    $dbconn = pg_pconnect("dbname=dcf3ce05b4dp26 host=ec2-54-225-101-4.compute-1.amazonaws.com port=5432 user=zxldypgcuhasxn password=cNiUIdbRg8zzlbfa2NupQbHZVy sslmode=require"); //cadena de conexion
+    $dbconn = pg_pconnect("dbname=df2jp28bdkuafd host=ec2-54-204-32-91.compute-1.amazonaws.com port=5432 user=larfyvwbaurpxo password=WV84lJxFXf7aqF6BXCXgwcI-tC sslmode=require"); //cadena de conexion
     if (!$dbconn) {
       echo "Can't connect.\n";
     exit;
