@@ -1,9 +1,9 @@
 <?php
 function conectarse() {
-	if (!($conexion = pg_connect("dbname=dcf3ce05b4dp26 host=ec2-54-225-101-4.compute-1.amazonaws.com port=5432 user=zxldypgcuhasxn password=cNiUIdbRg8zzlbfa2NupQbHZVy sslmode=require") or die('La consulta fallo: ' . pg_last_error()))) {			
-    //if (!($conexion = pg_connect("dbname=mantenimiento_inventario port=5432 user=postgres password=root host=localhost") or die('La consulta fallo: ' . pg_last_error()))) {			
+	if (!($conexion = pg_pconnect("dbname=df2jp28bdkuafd host=ec2-54-204-32-91.compute-1.amazonaws.com port=5432 user=larfyvwbaurpxo password=WV84lJxFXf7aqF6BXCXgwcI-tC sslmode=require"))) {			   
         exit();
-    } else {         
+    } else {   
+    echo "ok";      
     }
     return $conexion;
 }
