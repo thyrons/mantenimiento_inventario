@@ -303,7 +303,7 @@ $cont1++;
                 <div class="container">
                     <div class="row">
                         <div class="span12">
-                            &copy; 2014 <a href="">P&S System</a>.
+                            &copy; 2014 <a href=""> <?php echo $_SESSION['empresa']; ?></a>.
                         </div>
                     </div>
                 </div>

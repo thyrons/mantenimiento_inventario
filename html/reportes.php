@@ -142,7 +142,7 @@
  <br />
                          <hr style="color: #0056b2;" />
                   <div id="footer">
-                 <p>Copyright (c) 2014 P&S Systems. Todos los Derechos Reservados.</p>
+                 <p>&copy; 2014 <?php echo $_SESSION['empresa']; ?></p>
               </div>
 </body>
     <div id="modUser" title="Modificar Usuario">
