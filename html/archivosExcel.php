@@ -10,7 +10,7 @@ include '../menus/menu.php';
     <head>
         <meta charset="utf-8">
         <title>.:ARCHIVOS DE EXCEL:.</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes"> 
         <link rel="stylesheet" type="text/css" href="../css/buttons.css"/>
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui-1.10.4.custom.css"/>    
@@ -69,7 +69,6 @@ include '../menus/menu.php';
 
         <!-- /Inicio  Menu Principal -->
         <div class="subnavbar">
-            <div class="subnavbar-inner">
                 <?Php
                 // Cabecera Menu 
                 if ($_SESSION['cargo'] == '1') {
@@ -81,9 +80,8 @@ include '../menus/menu.php';
                 if ($_SESSION['cargo'] == '3') {
                     print menu_3();
                 }
-                ?> 
-            </div> 
-        </div> 
+                ?>  
+            </div>
         <!-- /Fin  Menu Principal -->
 
         <div class="main">

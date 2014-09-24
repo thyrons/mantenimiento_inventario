@@ -119,7 +119,7 @@ function guardar_datos_excel(vector){
             	"<td align=center>" + vector[0] + "</td>" +
             	"<td align=center>" + vector[1] + "</td>" +	            
             	"<td align=center>" + 'Guardado Correctamente' + "</td>" +            
-            	"<td align=center>" + " <a class='elimina'><img src='../imagenes/valid.png' onclick='return fn_dar_eliminar(event)'/>"  + "</td>" + "</tr>" );
+            	"<td align=center>" + " <a class='elimina'><img src='../imagenes/valid.png'/>"  + "</td>" + "</tr>" );
             }
             if (val == 2)
             {
