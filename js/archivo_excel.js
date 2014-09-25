@@ -2,6 +2,24 @@ $(document).on("ready", inicio);
 function evento(e) {
     e.preventDefault();
 }
+function scrollToBottom() {
+    $('html, body').animate({
+        scrollTop: $(document).height()
+    }, 'slow');
+}
+function scrollToTop() {
+    $('html, body').animate({
+        scrollTop: 0
+    }, 'slow');
+}
+
+$(function() {
+    $('#main-menu').smartmenus({
+        subMenusSubOffsetX: 1,
+        subMenusSubOffsetY: -8
+    });
+});
+
 function inicio(){
 	function getDoc(frame) {
         var doc = null;     
