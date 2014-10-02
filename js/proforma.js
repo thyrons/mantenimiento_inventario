@@ -419,6 +419,7 @@ function flecha_atras(){
            if(val != ""){
                 $("#comprobante").val(val);
                 var valor = $("#comprobante").val();
+                
                   ///////////////////llamar proforma flechas primera parte/////
                 $("#btnGuardar").attr("disabled", true);
                 $("#btnModificar").attr("disabled", true);
@@ -887,7 +888,7 @@ function inicio() {
             {name: 'iva', index: 'iva', align: 'center', width: 100, hidden: true}
         ],
         rowNum: 30,
-        width: 780,
+        width: 770,
         sortable: true,
         rowList: [10, 20, 30],
         pager: jQuery('#pager'),

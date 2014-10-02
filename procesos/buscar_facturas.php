@@ -5,7 +5,7 @@ include 'base.php';
 conectarse();
 $texto = $_GET['term'];
 
-$consulta = pg_query("select F.id_factura_compra, F.num_serie, F.num_autorizacion from factura_compra F, proveedores P where P.id_proveedor = F.id_proveedor and F.id_proveedor = '$_GET[id]' and F.num_serie like '%$texto%' and F.id_empresa = '$_SESSION[id_empresa]'");
+$consulta = pg_query("select F.id_factura_compra, F.num_serie, F.num_autorizacion from factura_compra F, proveedores P where P.id_proveedor = F.id_proveedor and F.id_proveedor = '$_GET[id]' and F.num_serie like '%$texto%'");
 while ($row = pg_fetch_row($consulta)) {
     $data[] = array(
         'value' => $row[1],

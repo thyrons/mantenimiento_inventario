@@ -114,23 +114,48 @@ $cont1++;
                                     <div class="tabbable">
                                         <div class="widget-content">
                                             <div class="widget big-stats-container">
-                                                <form id="formularios_fac" name="formularios_fac" method="post" class="form">
+                                                <form id="formularios_fac" name="formularios_fac" method="post" class="form-horizontal">
                                                     <fieldset>
-                                                        <table cellpadding="2" border="0" style="margin-left: 10px">
-                                                            <tr>
-                                                                <td><label for="comprobante" style="width: 100%">Comprobante Nro:</label></td>   
-                                                                <td><input type="text" name="comprobante" id="comprobante" class="campo" readonly style="width: 100px" value="<?php echo $cont1 ?>"/></td>
-                                                                <td><label style="width: 100%; margin-left: 10px">Fecha Actual:</label></td>
-                                                                <td><input type="text" name="fecha_actual" id="fecha_actual" class="campo" readonly style="margin-left: 5px; width: 100px" value="<?php echo date("Y-m-d"); ?>" /></td>
-                                                                <td><label style="width: 100%; margin-left: 10px">Hora Actual:</label></td>
-                                                                <td><input type="text" name="hora_actual" id="hora_actual" class="campo" readonly style="margin-left: 5px; width: 100px" /></td>
-                                                                <td><label style="width: 100%; margin-left: 10px">Digitador (a): </label></td>
-                                                                <td><input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="campo" style="width: 200px" readonly/></td>
-                                                                <td><input type="hidden" name="comprobante2" id="comprobante2" class="campo" style="width: 100px" value="<?php echo $cont1 ?>" /></td>
-                                                            </tr>  
-                                                        </table> 
+                                                        <section class="columna_1">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Comprobante:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="comprobante" id="comprobante" readonly class="campo" value="<?php echo $cont1 ?>" style="width: 80px"/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
 
-                                                        <hr style="color: #0056b2;" /> 
+                                                        <section class="columna_2">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Fecha Actual:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="fecha_actual" id="fecha_actual" readonly value="<?php echo date("Y-m-d"); ?>" class="campo" style="width: 100px" />
+                                                                </div>
+                                                            </div>
+                                                        </section>
+
+                                                        <section class="columna_3">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Hora Actual:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="hora_actual" id="hora_actual" readonly class="campo" style="width: 100px"/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+
+                                                        <section class="columna_4">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli"> Digitad@r:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="campo" style="width: 200px" readonly/>
+                                                                    <input type="hidden" name="comprobante2" id="comprobante2" class="campo" style="width: 100px" value="<?php echo $cont1 ?>" />
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </fieldset>
+                                                    <br/>
+                                                    <fieldset>
+                                                        <legend></legend>
                                                         <table cellpadding="2" border="0" style="margin-left: 10px">
                                                             <tr>
                                                                 <td><label style="width: 100%">Proveedor: <font color="red">*</font></label></td>
@@ -194,9 +219,12 @@ $cont1++;
                                                                 </td>
                                                             </tr>  
                                                         </table>
+                                                    </fieldset>
+                                                    <br/>
 
-                                                        <hr style="color: #0056b2;" /> 
-                                                        <p>Detalle de la factura</p>
+                                                    <fieldset>
+
+                                                        <legend>Detalle Factura</legend>
                                                         <table cellpadding="2" border="0" style="margin-left: 10px">
                                                             <tr>
                                                                 <td><label>Código:</label></td>   

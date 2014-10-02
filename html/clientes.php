@@ -143,7 +143,10 @@ include '../menus/menu.php';
                                                     <div class="control-group">											
                                                         <label class="control-label" for="cupo_credito">Cupo de Crédito: <font color="red">*</font></label>
                                                         <div class="controls">
-                                                            <input type="text" name="cupo_credito" id="cupo_credito" class="campo" />
+                                                            <div class="input-prepend input-append">
+                                                                <span class="add-on">$</span>
+                                                                <input type="text" name="cupo_credito" id="cupo_credito" class="campo" style="width: 165px" />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </section>

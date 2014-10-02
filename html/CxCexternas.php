@@ -112,49 +112,93 @@ $cont1++;
                                     <div class="tabbable">
                                         <div class="widget-content">
                                             <div class="widget big-stats-container">
-                                                <form id="formularios_cxc" name="formularios_cxc" method="post" class="form">
+                                                <form id="formularios_cxc" name="formularios_cxc" method="post" class="form-horizontal">
                                                     <fieldset>
-                                                        <table cellpadding="2" border="0" style="margin-left: 10px">
-                                                            <tr>
-                                                                <td><label for="comprobante" style="width: 100% ">Comprobante:</label></td>  
-                                                                <td><input type="text" name="comprobante" id="comprobante" readonly class="campo" style="width: 60px" value="<?php echo $cont1 ?>"/> </td>
-                                                                <td><label for="fecha_actual"  style="width: 100%; margin-left: 15px">Fecha: </label></td>
-                                                                <td><input type="text" name="fecha_actual" id="fecha_actual" readonly value="<?php echo date("Y-m-d"); ?>" class="campo" style="width: 120px"/> </td>
-                                                                <td><label for="hora_actual"  style="width: 100%; margin-left: 15px">Hora: </label></td>
-                                                                <td><input type="text" name="hora_actual" id="hora_actual" readonly class="campo" style="width: 120px"/> </td>
-                                                                <td><label style="width: 100%; margin-left: 15px">Digitador (a):</label></td>
-                                                                <td><input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="campo" style="width: 200px" readonly/></td>
-                                                                <td><input type="hidden" name="comprobante2" id="comprobante2" readonly class="campo" style="width: 60px" value="<?php echo $cont1 ?>"/> </td>
-                                                            </tr>
-                                                        </table>
+                                                        <section class="columna_1">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Comprobante:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="comprobante" id="comprobante" readonly class="campo" value="<?php echo $cont1 ?>" style="width: 80px"/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
 
-                                                        <hr style="color: #0056b2;" /> 
-                                                        <table cellpadding="2" border="0" style="margin-left: 10px" >
-                                                            <tr>
-                                                                <td><label for="ruc_ci" style="width: 100%">Cédula Identidad/RUC: <font color="red">*</font></label></td>  
-                                                                <td><input type="text" name="ruc_ci"  id="ruc_ci" required placeholder="Buscar....." class="campo" style="width: 200px; margin-left: 10px"/></td>
-                                                                <td><input type="text" name="nombres_completos" id="nombres_completos" class="campo" style="width: 280px" /></td>
-                                                                <td><input type="hidden" name="saldo" id="saldo" required readonly class="campo" style="width: 100px"/></td>
-                                                                <td><input type="hidden" name="id_cliente" id="id_cliente" required readonly class="campo" style="width: 100px"/></td>
-                                                            </tr>  
-                                                        </table>     
+                                                        <section class="columna_2">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Fecha Actual:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="fecha_actual" id="fecha_actual" readonly value="<?php echo date("Y-m-d"); ?>" class="campo" style="width: 100px" />
+                                                                </div>
+                                                            </div>
+                                                        </section>
 
-                                                        <table cellpadding="2" border="0" style="margin-left: 10px" > 
-                                                            <tr>
-                                                                <td><label for="num_factura" style="width: 100%">Nro Factura Preimpresa: <font color="red">*</font></label></td>   
-                                                                <td><input type="text" name="num_factura"  id="num_factura" required class="campo" style="width: 200px"/></td>
-                                                                <td><label for="tipo_documento" style="width: 100%">Tipo de Documento: <font color="red">*</font></label></td>  
-                                                                <td><select id="tipo_documento" name="tipo_documento" style="width: 210px">
+                                                        <section class="columna_3">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Hora Actual:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="hora_actual" id="hora_actual" readonly class="campo" style="width: 100px"/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+
+                                                        <section class="columna_4">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli"> Digitad@r:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="campo" style="width: 200px" readonly/>
+                                                                    <input type="hidden" name="comprobante2" id="comprobante2" class="campo" style="width: 100px" value="<?php echo $cont1 ?>" />
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </fieldset>
+
+                                                    <fieldset>
+                                                        <legend></legend>
+                                                        <section class="columna1">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="ruc_ci">CI de Identidad/RUC: <font color="red">*</font></label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="ruc_ci"  id="ruc_ci" required placeholder="Buscar....." class="campo" />
+                                                                </div>
+                                                            </div>    
+
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="num_factura">Factura Preimpresa: <font color="red">*</font></label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="num_factura"  id="num_factura" required class="campo" />
+                                                                </div>
+                                                            </div> 
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="num_factura">Total: <font color="red">*</font></label>
+                                                                <div class="controls">
+                                                                    <div class="input-prepend input-append">
+                                                                        <span class="add-on">$</span>
+                                                                        <input type="text" name="total" id="total" required maxlength="10" class="campo" style="width: 165px" />
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                        </section>
+
+                                                        <section class="columna2">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="ruc_ci">Nombres: <font color="red">*</font></label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="nombres_completos" id="nombres_completos" class="campo" style="width: 280px" />
+                                                                    <input type="hidden" name="id_cliente" id="id_cliente" required readonly class="campo"/>
+                                                                </div>
+                                                            </div> 
+
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="ruc_ci">Documento: <font color="red">*</font></label>
+                                                                <div class="controls">
+                                                                    <select id="tipo_documento" name="tipo_documento" style="width: 210px">
                                                                         <option value="">......Seleccione Documento......</option>  
                                                                         <option value="Factura"> Factura</option>
                                                                         <option value="Nota_venta">Nota o boleta de venta</option>
-                                                                    </select></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><label for="total" style="width: 100%">Total: <font color="red">*</font></label></td>
-                                                                <td><input type="text" name="total" id="total" required maxlength="10" class="campo" style="width: 100px"/></td>
-                                                            </tr>
-                                                        </table>
+                                                                    </select>
+                                                                </div>
+                                                            </div> 
+                                                        </section>  
                                                     </fieldset>
                                                 </form>
 
@@ -171,7 +215,6 @@ $cont1++;
                                                     <table id="list2"><tr><td></td></tr></table>
                                                     <div id="pager2"></div>
                                                 </div> 
-
                                             </div>
                                         </div>
                                     </div>

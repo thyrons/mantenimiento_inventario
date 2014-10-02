@@ -428,7 +428,7 @@ function guardar_serie() {
                 url: "../procesos/guardar_series.php",
                 data: "cod_producto=" + $("#cod_producto").val() + "&campo1=" + string_v1,
                 success: function(data) {
-                    val = data;
+                    var val = data;
                     if (val == 1)
                     {
                         $("#series").dialog("close");
@@ -549,7 +549,7 @@ function flecha_atras(){
                 $.getJSON('../procesos/retornar_notas.php?com=' + valor, function(data) {
                     var tama = data.length;
                     if (tama !== 0) {
-                        for (var i = 0; i < tama; i = i + 13)
+                        for (var i = 0; i < tama; i = i + 18)
                         {
                             $("#fecha_actual").val(data[i]);
                             $("#hora_actual").val(data[i + 1 ]);
@@ -563,6 +563,11 @@ function flecha_atras(){
                             $("#tipo_comprobante").val(data[i + 10]);
                             $("#serie").val(data[i + 11]);
                             $("#observaciones").val(data[i + 12]);
+                            $("#total_p").val(data[i + 13]);
+                            $("#total_p2").val(data[i + 14]);
+                            $("#iva").val(data[i + 15]);
+                            $("#desc").val(data[i + 16]);
+                            $("#tot").val(data[i + 17]);
                         }
                     }
                 });
@@ -572,11 +577,6 @@ function flecha_atras(){
                 $.getJSON('../procesos/retornar_notas2.php?com=' + valor, function(data) {
                     var tama = data.length;
                     if (tama !== 0) {
-                        var subtotal = 0;
-                        var iva = 0;
-                        var t_fc = 0;
-                        var sub;
-
                         for (var i = 0; i < tama; i = i + 8)
                         {
                             var datarow = {
@@ -590,25 +590,6 @@ function flecha_atras(){
                                 iva: data[i + 7]
                             };
                             var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
-
-                            if(data[i + 7] == "Si"){
-                                subtotal = (subtotal + parseFloat(data[i + 6])); 
-                                sub = parseFloat(subtotal).toFixed(2);
-                                iva = (parseFloat(sub * 0.12).toFixed(2));
-                                $("#total_p2").val(sub);
-                                $("#iva").val(iva);
-                                t_fc = ((parseFloat(sub) + parseFloat(iva)) + parseFloat($("#total_p").val())).toFixed(2);
-                                $("#tot").val(t_fc);
-                            }else{
-                                if(data[i + 7] == "No"){
-                                    subtotal = (subtotal + parseFloat(data[i + 6])); 
-                                    sub = parseFloat(subtotal).toFixed(2);
-                                    iva = parseFloat($("#iva").val());
-                                    t_fc = ((parseFloat(subtotal) + parseFloat(iva)) + parseFloat($("#total_p2").val())).toFixed(2);
-                                    $("#total_p").val(sub);
-                                    $("#tot").val(t_fc);
-                                }
-                            }
                         }
                     }
                 });
@@ -651,7 +632,7 @@ function flecha_siguiente(){
                 $.getJSON('../procesos/retornar_notas.php?com=' + valor, function(data) {
                 var tama = data.length;
                 if (tama !== 0) {
-                    for (var i = 0; i < tama; i = i + 13)
+                    for (var i = 0; i < tama; i = i + 18)
                     {
                         $("#fecha_actual").val(data[i]);
                         $("#hora_actual").val(data[i + 1 ]);
@@ -665,6 +646,11 @@ function flecha_siguiente(){
                         $("#tipo_comprobante").val(data[i + 10]);
                         $("#serie").val(data[i + 11]);
                         $("#observaciones").val(data[i + 12]);
+                        $("#total_p").val(data[i + 13]);
+                        $("#total_p2").val(data[i + 14]);
+                        $("#iva").val(data[i + 15]);
+                        $("#desc").val(data[i + 16]);
+                        $("#tot").val(data[i + 17]);
                     }
                 }
             });
@@ -674,11 +660,6 @@ function flecha_siguiente(){
             $.getJSON('../procesos/retornar_notas2.php?com=' + valor, function(data) {
                 var tama = data.length;
                 if (tama !== 0) {
-                    var subtotal = 0;
-                    var iva = 0;
-                    var t_fc = 0;
-                    var sub;
-
                     for (var i = 0; i < tama; i = i + 8)
                     {
                         var datarow = {
@@ -692,25 +673,6 @@ function flecha_siguiente(){
                             iva: data[i + 7]
                         };
                         var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
-
-                        if(data[i + 7] == "Si"){
-                            subtotal = (subtotal + parseFloat(data[i + 6])); 
-                            sub = parseFloat(subtotal).toFixed(2);
-                            iva = (parseFloat(sub * 0.12).toFixed(2));
-                            $("#total_p2").val(sub);
-                            $("#iva").val(iva);
-                            t_fc = ((parseFloat(sub) + parseFloat(iva)) + parseFloat($("#total_p").val())).toFixed(2);
-                            $("#tot").val(t_fc);
-                        }else{
-                            if(data[i + 7] == "No"){
-                                subtotal = (subtotal + parseFloat(data[i + 6])); 
-                                sub = parseFloat(subtotal).toFixed(2);
-                                iva = parseFloat($("#iva").val());
-                                t_fc = ((parseFloat(subtotal) + parseFloat(iva)) + parseFloat($("#total_p2").val())).toFixed(2);
-                                $("#total_p").val(sub);
-                                $("#tot").val(t_fc);
-                            }
-                        }
                     }
                 }
             });  
@@ -1301,7 +1263,7 @@ function inicio() {
             $.getJSON('../procesos/retornar_notas.php?com=' + valor, function(data) {
             var tama = data.length;
             if (tama !== 0) {
-                for (var i = 0; i < tama; i = i + 13)
+                for (var i = 0; i < tama; i = i + 18)
                 {
                     $("#fecha_actual").val(data[i]);
                     $("#hora_actual").val(data[i + 1 ]);
@@ -1315,6 +1277,11 @@ function inicio() {
                     $("#tipo_comprobante").val(data[i + 10]);
                     $("#serie").val(data[i + 11]);
                     $("#observaciones").val(data[i + 12]);
+                    $("#total_p").val(data[i + 13]);
+                    $("#total_p2").val(data[i + 14]);
+                    $("#iva").val(data[i + 15]);
+                    $("#desc").val(data[i + 16]);
+                    $("#tot").val(data[i + 17]);
                 }
             }
         });
@@ -1324,11 +1291,6 @@ function inicio() {
         $.getJSON('../procesos/retornar_notas2.php?com=' + valor, function(data) {
             var tama = data.length;
             if (tama !== 0) {
-                var subtotal = 0;
-                var iva = 0;
-                var t_fc = 0;
-                var sub;
-        
                 for (var i = 0; i < tama; i = i + 8)
                 {
                     var datarow = {
@@ -1342,25 +1304,6 @@ function inicio() {
                         iva: data[i + 7]
                     };
                     var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
-            
-                    if(data[i + 7] == "Si"){
-                        subtotal = (subtotal + parseFloat(data[i + 6])); 
-                        sub = parseFloat(subtotal).toFixed(2);
-                        iva = (parseFloat(sub * 0.12).toFixed(2));
-                        $("#total_p2").val(sub);
-                        $("#iva").val(iva);
-                        t_fc = ((parseFloat(sub) + parseFloat(iva)) + parseFloat($("#total_p").val())).toFixed(2);
-                        $("#tot").val(t_fc);
-                    }else{
-                        if(data[i + 7] == "No"){
-                            subtotal = (subtotal + parseFloat(data[i + 6])); 
-                            sub = parseFloat(subtotal).toFixed(2);
-                            iva = parseFloat($("#iva").val());
-                            t_fc = ((parseFloat(subtotal) + parseFloat(iva)) + parseFloat($("#total_p2").val())).toFixed(2);
-                            $("#total_p").val(sub);
-                            $("#tot").val(t_fc);
-                        }
-                    }
                 }
             }
         });
@@ -1430,7 +1373,7 @@ function inicio() {
             $.getJSON('../procesos/retornar_notas.php?com=' + valor, function(data) {
             var tama = data.length;
             if (tama !== 0) {
-                for (var i = 0; i < tama; i = i + 13)
+                for (var i = 0; i < tama; i = i + 18)
                 {
                     $("#fecha_actual").val(data[i]);
                     $("#hora_actual").val(data[i + 1 ]);
@@ -1444,6 +1387,11 @@ function inicio() {
                     $("#tipo_comprobante").val(data[i + 10]);
                     $("#serie").val(data[i + 11]);
                     $("#observaciones").val(data[i + 12]);
+                    $("#total_p").val(data[i + 13]);
+                    $("#total_p2").val(data[i + 14]);
+                    $("#iva").val(data[i + 15]);
+                    $("#desc").val(data[i + 16]);
+                    $("#tot").val(data[i + 17]);
                 }
             }
         });
@@ -1471,25 +1419,6 @@ function inicio() {
                         iva: data[i + 7]
                     };
                     var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
-            
-                    if(data[i + 7] == "Si"){
-                        subtotal = (subtotal + parseFloat(data[i + 6])); 
-                        sub = parseFloat(subtotal).toFixed(2);
-                        iva = (parseFloat(sub * 0.12).toFixed(2));
-                        $("#total_p2").val(sub);
-                        $("#iva").val(iva);
-                        t_fc = ((parseFloat(sub) + parseFloat(iva)) + parseFloat($("#total_p").val())).toFixed(2);
-                        $("#tot").val(t_fc);
-                    }else{
-                        if(data[i + 7] == "No"){
-                            subtotal = (subtotal + parseFloat(data[i + 6])); 
-                            sub = parseFloat(subtotal).toFixed(2);
-                            iva = parseFloat($("#iva").val());
-                            t_fc = ((parseFloat(subtotal) + parseFloat(iva)) + parseFloat($("#total_p2").val())).toFixed(2);
-                            $("#total_p").val(sub);
-                            $("#tot").val(t_fc);
-                        }
-                    }
                 }
             }
         });

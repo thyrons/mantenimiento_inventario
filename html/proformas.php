@@ -113,43 +113,90 @@ $cont1++;
                                     <div class="tabbable">
                                         <div class="widget-content">
                                             <div class="widget big-stats-container">
-                                                <form id="formularios_fac" name="formularios_fac" method="post" class="form">
+                                                <form id="formularios_fac" name="formularios_fac" method="post" class="form-horizontal">
                                                     <fieldset>
-                                                        <table cellpadding="2" border="0" style="margin-left: 10px">
-                                                            <tr>
-                                                                <td><label for="comprobante" style="width: 100% ">Comprobante:</label></td>  
-                                                                <td><input type="text" name="comprobante" id="comprobante" readonly class="campo" style="width: 60px" value="<?php echo $cont1 ?>"/> </td>
-                                                                <td><label for="fecha_actual"  style="width: 100%; margin-left: 15px">Fecha: </label></td>
-                                                                <td><input type="text" name="fecha_actual" id="fecha_actual" readonly value="<?php echo date("Y-m-d"); ?>" class="campo" style="width: 120px"/> </td>
-                                                                <td><label for="hora_actual"  style="width: 100%; margin-left: 15px">Hora: </label></td>
-                                                                <td><input type="text" name="hora_actual" id="hora_actual" readonly class="campo" style="width: 120px"/> </td>
-                                                                <td><label style="width: 100%; margin-left: 15px">Digitador (a): </label></td>
-                                                                <td><input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="campo" style="width: 200px" readonly/></td>
-                                                                <td><input type="hidden" name="comprobante2" id="comprobante2" class="campo" style="width: 100px" value="<?php echo $cont1 ?>" /></td>
-                                                            </tr>
-                                                        </table>
+                                                        <section class="columna_1">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Comprobante:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="comprobante" id="comprobante" readonly class="campo" value="<?php echo $cont1 ?>" style="width: 80px"/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
 
-                                                        <hr style="color: #0056b2;" /> 
-                                                        <table cellpadding="2" border="0" style="margin-left: 10px" >
-                                                            <tr>
-                                                                <td><label for="ruc_ci" style="width: 100%">Cédula Identidad/RUC: <font color="red">*</font></label></td>  
-                                                                <td><input type="text" name="ruc_ci"  id="ruc_ci" required placeholder="Buscar....." class="campo" style="width: 150px"/></td>
-                                                                <td><label style="width: 100%; margin-left: 10px">Nombres Completos del Cliente: <font color="red">*</font></label></td>
-                                                                <td><input type="text" name="nombres_completos" id="nombres_completos" placeholder="Buscar....." class="campo" style="width: 250px" /></td>
-                                                                <td><input type="hidden" name="id_cliente" id="id_cliente" required readonly class="campo" style="width: 100px"/></td>
-                                                            </tr>  
-                                                            <tr>
-                                                                <td><label for="saldo" style="width: 100%" >Saldo Disponible: </label></td>
-                                                                <td><input type="text" name="saldo" id="saldo" required readonly class="campo" style="width: 100px"/></td>
-                                                                <td><label for="ruc_ci" style="width: 100%; margin-left: 10px">Tipo de Precio: <font color="red">*</font></label></td>  
-                                                                <td><select id="tipo_precio" name="tipo_precio" style="width: 180px">
+                                                        <section class="columna_2">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Fecha Actual:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="fecha_actual" id="fecha_actual" readonly value="<?php echo date("Y-m-d"); ?>" class="campo" style="width: 100px" />
+                                                                </div>
+                                                            </div>
+                                                        </section>
+
+                                                        <section class="columna_3">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Hora Actual:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="hora_actual" id="hora_actual" readonly class="campo" style="width: 100px"/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+
+                                                        <section class="columna_4">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli"> Digitad@r:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="campo" style="width: 200px" readonly/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </fieldset>
+                                                    <br />
+                                                    <fieldset>
+                                                        <legend></legend>    
+                                                        <section class="columna1">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="ci_ruc">CI. Identidad/RUC: <font color="red">*</font></label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="ruc_ci"  id="ruc_ci" required placeholder="Buscar....." class="campo" />
+                                                                </div>
+                                                            </div> 
+
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="saldo">Saldo Disponible:</label>
+                                                                <div class="controls">
+                                                                    <div class="input-prepend input-append">
+                                                                        <span class="add-on">$</span>
+                                                                        <input type="text" name="saldo" id="saldo" required readonly class="campo" style="width: 165px" />
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                        </section>
+
+                                                        <section class="columna2">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_completos">Nombres del Cliente: <font color="red">*</font></label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="nombres_completos" id="nombres_completos" placeholder="Buscar....." class="campo" />
+                                                                </div>
+                                                            </div> 
+
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="tipo_precio">Tipo de Precio: <font color="red">*</font></label>
+                                                                <div class="controls">
+                                                                    <select id="tipo_precio" name="tipo_precio" style="width: 200px">
+                                                                        <option value="">........SELECCIONE........</option>
                                                                         <option value="MINORISTA">MINORISTA</option>
                                                                         <option value="MAYORISTA">MAYORISTA</option>
-                                                                    </select></td>
-                                                            </tr>
-                                                        </table>
-                                                        <hr style="color: #0056b2;" /> 
-                                                        <p>Productos</p>
+                                                                    </select>
+                                                                    <input type="hidden" name="id_cliente" id="id_cliente" required readonly class="campo" style="width: 100px"/>
+                                                                </div> 
+                                                            </div>
+                                                        </section>
+                                                    </fieldset>
+
+                                                    <fieldset>
+                                                        <legend>Productos</legend>    
                                                         <table cellpadding="2" border="0" style="margin-left: 10px">
                                                             <tr>
                                                                 <td><label>Código:</label></td>   
@@ -174,41 +221,66 @@ $cont1++;
                                                             <table id="list"></table>
                                                         </div>
 
-                                                        <div style="margin-left: 10px">
-                                                            <table border="0" cellpadding="2">
-                                                                <tr>
-                                                                    <td><label>Observaciones:</label></td>
-                                                                    <td><textarea name="observaciones" id="observaciones" class="campo" style="width: 300px; margin-top: 20px" ></textarea></td>
-                                                                </tr> 
-                                                            </table>
-                                                        </div>
+                                                        <section class="columa_observacion">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_completos">Observaciones: <font color="red">*</font></label>
+                                                                <div class="controls">
+                                                                    <textarea name="observaciones" id="observaciones" class="campo" ></textarea>
+                                                                </div>
+                                                            </div> 
+                                                        </section>
 
-                                                        <div style="margin-left: 625px; margin-top: -75px">
-                                                            <table border="0" cellspacing="2">
-                                                                <tr>
-                                                                    <td><label for="total_p" style="width: 100%">Tarifa 0:</label></td>
-                                                                    <td><input type="text" style="width:80px" name="total_p" id="total_p" readonly value="0.00" class="campo"/></td>
-                                                                </tr>    
-                                                                <tr>
-                                                                    <td><label for="total_p2" style="width: 100%" >Tarifa  12:</label></td>
-                                                                    <td><input type="text" style="width: 80px" name="total_p2" id="total_p2" readonly value="0.00" class="campo"/></td>
-                                                                </tr>
+                                                        <section class="columa_factura">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="total_p">Tarifa 0:</label>
+                                                                <div class="controls">
+                                                                    <div class="input-prepend input-append">
+                                                                        <span class="add-on">$</span>
+                                                                        <input type="text" style="width:80px" name="total_p" id="total_p" readonly value="0.00" class="campo"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                                                <tr>
-                                                                    <td><label for="iva" style="width:100%" >12 %Iva:</label></td>
-                                                                    <td><input type="text" style="width:80px" name="iva" id="iva" readonly value="0.00" class="campo"/></td>
-                                                                </tr>
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="total_p2">Tarifa 12:</label>
+                                                                <div class="controls">
+                                                                    <div class="input-prepend input-append">
+                                                                        <span class="add-on">$</span>
+                                                                        <input type="text" style="width: 80px" name="total_p2" id="total_p2" readonly value="0.00" class="campo"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                                                <tr>
-                                                                    <td><label for="desc" style="width: 100%" >Descuento:</label></td>
-                                                                    <td><input type="text" style="width: 80px" name="desc" id="desc" readonly value="0.00" class="campo"/></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><label for="tot" style="width:100%" >Total:</label></td>
-                                                                    <td><input type="text" style="width:80px" name="tot" id="tot" readonly value="0.00" class="campo" /></td>
-                                                                </tr>
-                                                            </table> 
-                                                        </div> 
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="total_p2">12 %Iva:</label>
+                                                                <div class="controls">
+                                                                    <div class="input-prepend input-append">
+                                                                        <span class="add-on">$</span>
+                                                                        <input type="text" style="width:80px" name="iva" id="iva" readonly value="0.00" class="campo"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="desc">Descuento:</label>
+                                                                <div class="controls">
+                                                                    <div class="input-prepend input-append">
+                                                                        <span class="add-on">$</span>
+                                                                        <input type="text" style="width: 80px" name="desc" id="desc" readonly value="0.00" class="campo"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="tot">Total:</label>
+                                                                <div class="controls">
+                                                                    <div class="input-prepend input-append">
+                                                                        <span class="add-on">$</span>
+                                                                        <input type="text" style="width:80px" name="tot" id="tot" readonly value="0.00" class="campo" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
                                                     </fieldset>
                                                 </form>
                                                 <div class="form-actions">

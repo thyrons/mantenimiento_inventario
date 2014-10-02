@@ -330,7 +330,7 @@ textarea {
 }
 
 .columna1{
-    width: 45%;
+    width: 40%;
     padding: 5px;
     float: left;
     box-sizing: border-box; 
@@ -338,7 +338,7 @@ textarea {
 }
 
 .columna2{
-    width: 45%;
+    width: 40%;
     padding: 5px;
     float: left;
     box-sizing: border-box; 
@@ -347,14 +347,16 @@ textarea {
 
 .columna1_empresa{
     width: 35%;
-    padding: 5px;
+    padding: 2px;
     float: left;
     box-sizing: border-box; 
     text-align: justify;
+    margin-left: 10px;
+    background: red;
 }
 
 .columna2_empresa{
-    width: 35%;
+    width: 25%;
     padding: 5px;
     float: left;
     box-sizing: border-box; 
@@ -378,10 +380,125 @@ textarea {
     text-align: justify;
 }
 
+.columna_1{
+    width: 20%;
+    padding: 2px;
+    float: left;
+    box-sizing: border-box; 
+    text-align: justify;    
+}
+
+.columna_2{
+    width: 20%;
+    padding: 2px;
+    float: left;
+    box-sizing: border-box; 
+    text-align: justify;   
+}
+
+.columna_3{
+    width: 20%;
+    padding: 2px;
+    float: left;
+    box-sizing: border-box; 
+    text-align: justify;      
+}
+
+.columna_4{
+    width: 20%;
+    padding: 2px;
+    float: left;
+    box-sizing: border-box; 
+    text-align: justify;    
+}
+
+.columa_observacion{
+    width: 45%;
+    padding: 5px;
+    float: left;
+    box-sizing: border-box; 
+    text-align: justify;  
+}
+
+.columa_factura{
+    width: 50%;
+    padding: 2px;
+    float: left;
+    box-sizing: border-box; 
+    text-align: justify;  
+}
+
 @media screen and (max-width: 1199px){
     .columna3_empresa{
         width: 100%;
         padding: 5px;
+        float: left;
+        box-sizing: border-box;
+        text-align: justify;
+    }
+
+    .columna_1{
+        width: 40%;
+        padding: 2px;
+        float: left;
+        box-sizing: border-box;
+        text-align: justify;
+    }
+
+    .columna_2{
+        width: 40%;
+        padding: 2px;
+        float: left;
+        box-sizing: border-box;
+        text-align: justify;
+    }
+
+    .columna_3{
+        width: 40%;
+        padding: 2px;
+        float: left;
+        box-sizing: border-box;
+        text-align: justify;
+    }
+
+    .columna_4{
+        width: 40%;
+        padding: 2px;
+        float: left;
+        box-sizing: border-box;
+        text-align: justify;
+    }
+}
+
+@media screen and (max-width: 789px){
+
+    .columna_1{
+        width: 100%;
+        padding: 2px;
+        float: left;
+        box-sizing: border-box;
+        text-align: justify;
+    }
+
+    .columna_2{
+        width: 100%;
+        padding: 2px;
+        float: left;
+        box-sizing: border-box;
+        text-align: justify;
+    }
+
+    .columna_3{
+        width: 100%;
+        padding: 2px;
+        float: left;
+        box-sizing: border-box;
+        text-align: justify;
+    }
+
+    .columna_4{
+        width: 100%;
+        padding: 2px;
         float: left;
         box-sizing: border-box;
         text-align: justify;

@@ -684,7 +684,7 @@ function flecha_atras(){
                 $.getJSON('../procesos/retornar_devolucion_compra.php?com=' + valor, function(data) {
                     var tama = data.length;
                     if (tama !== 0) {
-                        for (var i = 0; i < tama; i = i + 12)
+                        for (var i = 0; i < tama; i = i + 17)
                         {
                             $("#fecha_actual").val(data[i]);
                             $("#hora_actual").val(data[i + 1 ]);
@@ -697,6 +697,12 @@ function flecha_atras(){
                             $("#serie").val(data[i + 9]);
                             $("#autorizacion").val(data[i + 10]);
                             $("#observaciones").val(data[i + 11]);
+                            $("#total_p").val(data[i + 12]);
+                            $("#total_p2").val(data[i + 13]);
+                            $("#iva").val(data[i + 14]);
+                            $("#desc").val(data[i + 15]);
+                            $("#tot").val(data[i + 16]);
+                            
                         }
                     }
                 });
@@ -706,34 +712,17 @@ function flecha_atras(){
                 $.getJSON('../procesos/retornar_devolucion_compra2.php?com=' + valor, function(data) {
                     var tama = data.length;
                     if (tama !== 0) {
-                        var subtotal = 0;
-                        var iva = 0;
-                        var t_fc = 0;
-                        var sub;
-
                         for (var i = 0; i < tama; i = i + 8)
                         {
-                            var datarow = {cod_producto: data[i], codigo: data[i + 1], detalle: data[i + 2], cantidad: data[i + 3], precio_u: data[i + 4], descuento: data[i + 5], precio_t: data[i + 6], iva: data[i + 7]};
+                            var datarow = {cod_producto: data[i],
+                                codigo: data[i + 1],
+                                detalle: data[i + 2],
+                                cantidad: data[i + 3],
+                                precio_u: data[i + 4],
+                                descuento: data[i + 5],
+                                precio_t: data[i + 6],
+                                iva: data[i + 7]};
                             var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
-
-                            if(data[i + 7] == "Si"){
-                                subtotal = (subtotal + parseFloat(data[i + 6])); 
-                                sub = parseFloat(subtotal).toFixed(2);
-                                iva = (parseFloat(sub * 0.12).toFixed(2));
-                                $("#total_p2").val(sub);
-                                $("#iva").val(iva);
-                                t_fc = ((parseFloat(sub) + parseFloat(iva)) + parseFloat($("#total_p").val())).toFixed(2);
-                                $("#tot").val(t_fc);
-                            }else{
-                                if(data[i + 7] == "No"){
-                                    subtotal = (subtotal + parseFloat(data[i + 6])); 
-                                    sub = parseFloat(subtotal).toFixed(2);
-                                    iva = parseFloat($("#iva").val());
-                                    t_fc = ((parseFloat(subtotal) + parseFloat(iva)) + parseFloat($("#total_p2").val())).toFixed(2);
-                                    $("#total_p").val(sub);
-                                    $("#tot").val(t_fc);
-                                }
-                            }
                         }
                     }
                 });
@@ -781,7 +770,7 @@ function flecha_siguiente(){
             $.getJSON('../procesos/retornar_devolucion_compra.php?com=' + valor, function(data) {
             var tama = data.length;
             if (tama !== 0) {
-                for (var i = 0; i < tama; i = i + 12)
+                for (var i = 0; i < tama; i = i + 17)
                 {
                     $("#fecha_actual").val(data[i]);
                     $("#hora_actual").val(data[i + 1 ]);
@@ -794,6 +783,11 @@ function flecha_siguiente(){
                     $("#serie").val(data[i + 9]);
                     $("#autorizacion").val(data[i + 10]);
                     $("#observaciones").val(data[i + 11]);
+                    $("#total_p").val(data[i + 12]);
+                    $("#total_p2").val(data[i + 13]);
+                    $("#iva").val(data[i + 14]);
+                    $("#desc").val(data[i + 15]);
+                    $("#tot").val(data[i + 16]);
                 }
             }
         });
@@ -803,34 +797,17 @@ function flecha_siguiente(){
         $.getJSON('../procesos/retornar_devolucion_compra2.php?com=' + valor, function(data) {
             var tama = data.length;
             if (tama !== 0) {
-                var subtotal = 0;
-                var iva = 0;
-                var t_fc = 0;
-                var sub;
-        
                 for (var i = 0; i < tama; i = i + 8)
                 {
-                    var datarow = {cod_producto: data[i], codigo: data[i + 1], detalle: data[i + 2], cantidad: data[i + 3], precio_u: data[i + 4], descuento: data[i + 5], precio_t: data[i + 6], iva: data[i + 7]};
+                    var datarow = {cod_producto: data[i],
+                        codigo: data[i + 1],
+                        detalle: data[i + 2],
+                        cantidad: data[i + 3],
+                        precio_u: data[i + 4],
+                        descuento: data[i + 5],
+                        precio_t: data[i + 6],
+                        iva: data[i + 7]};
                     var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
-            
-                    if(data[i + 7] == "Si"){
-                        subtotal = (subtotal + parseFloat(data[i + 6])); 
-                        sub = parseFloat(subtotal).toFixed(2);
-                        iva = (parseFloat(sub * 0.12).toFixed(2));
-                        $("#total_p2").val(sub);
-                        $("#iva").val(iva);
-                        t_fc = ((parseFloat(sub) + parseFloat(iva)) + parseFloat($("#total_p").val())).toFixed(2);
-                        $("#tot").val(t_fc);
-                    }else{
-                        if(data[i + 7] == "No"){
-                            subtotal = (subtotal + parseFloat(data[i + 6])); 
-                            sub = parseFloat(subtotal).toFixed(2);
-                            iva = parseFloat($("#iva").val());
-                            t_fc = ((parseFloat(subtotal) + parseFloat(iva)) + parseFloat($("#total_p2").val())).toFixed(2);
-                            $("#total_p").val(sub);
-                            $("#tot").val(t_fc);
-                        }
-                    }
                 }
             }
         });
@@ -1187,8 +1164,6 @@ function inicio() {
                         .append("<a>" + item.value + "</a>")
                         .appendTo(ul);
             };
-
-            //////////////////////////////
         }
     });
     ////////////////////////////////////////////////////////////////////
@@ -1233,8 +1208,6 @@ function inicio() {
                         .append("<a>" + item.value + "</a>")
                         .appendTo(ul);
             };
-
-            //////////////////////////////
         }
     });
     //////////////////////////////////////////////////
@@ -1431,7 +1404,7 @@ function inicio() {
             $.getJSON('../procesos/retornar_devolucion_compra.php?com=' + valor, function(data) {
             var tama = data.length;
             if (tama !== 0) {
-                for (var i = 0; i < tama; i = i + 12)
+                for (var i = 0; i < tama; i = i + 17)
                 {
                     $("#fecha_actual").val(data[i]);
                     $("#hora_actual").val(data[i + 1 ]);
@@ -1444,6 +1417,11 @@ function inicio() {
                     $("#serie").val(data[i + 9]);
                     $("#autorizacion").val(data[i + 10]);
                     $("#observaciones").val(data[i + 11]);
+                    $("#total_p").val(data[i + 12]);
+                    $("#total_p2").val(data[i + 13]);
+                    $("#iva").val(data[i + 14]);
+                    $("#desc").val(data[i + 15]);
+                    $("#tot").val(data[i + 16]);
                 }
             }
         });
@@ -1453,35 +1431,18 @@ function inicio() {
         $.getJSON('../procesos/retornar_devolucion_compra2.php?com=' + valor, function(data) {
             var tama = data.length;
             if (tama !== 0) {
-                var subtotal = 0;
-                var iva = 0;
-                var t_fc = 0;
-                var sub;
-        
                 for (var i = 0; i < tama; i = i + 8)
                 {
-                    var datarow = {cod_producto: data[i], codigo: data[i + 1], detalle: data[i + 2], cantidad: data[i + 3], precio_u: data[i + 4], descuento: data[i + 5], precio_t: data[i + 6], iva: data[i + 7]};
+                    var datarow = {cod_producto: data[i],
+                        codigo: data[i + 1],
+                        detalle: data[i + 2],
+                        cantidad: data[i + 3],
+                        precio_u: data[i + 4],
+                        descuento: data[i + 5],
+                        precio_t: data[i + 6],
+                        iva: data[i + 7]};
                     var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
-            
-                    if(data[i + 7] == "Si"){
-                        subtotal = (subtotal + parseFloat(data[i + 6])); 
-                        sub = parseFloat(subtotal).toFixed(2);
-                        iva = (parseFloat(sub * 0.12).toFixed(2));
-                        $("#total_p2").val(sub);
-                        $("#iva").val(iva);
-                        t_fc = ((parseFloat(sub) + parseFloat(iva)) + parseFloat($("#total_p").val())).toFixed(2);
-                        $("#tot").val(t_fc);
-                    }else{
-                        if(data[i + 7] == "No"){
-                            subtotal = (subtotal + parseFloat(data[i + 6])); 
-                            sub = parseFloat(subtotal).toFixed(2);
-                            iva = parseFloat($("#iva").val());
-                            t_fc = ((parseFloat(subtotal) + parseFloat(iva)) + parseFloat($("#total_p2").val())).toFixed(2);
-                            $("#total_p").val(sub);
-                            $("#tot").val(t_fc);
-                        }
-                    }
-                }
+                 }
             }
         });
           
@@ -1554,7 +1515,7 @@ function inicio() {
             $.getJSON('../procesos/retornar_devolucion_compra.php?com=' + valor, function(data) {
             var tama = data.length;
             if (tama !== 0) {
-                for (var i = 0; i < tama; i = i + 12)
+                for (var i = 0; i < tama; i = i + 17)
                 {
                     $("#fecha_actual").val(data[i]);
                     $("#hora_actual").val(data[i + 1 ]);
@@ -1567,6 +1528,11 @@ function inicio() {
                     $("#serie").val(data[i + 9]);
                     $("#autorizacion").val(data[i + 10]);
                     $("#observaciones").val(data[i + 11]);
+                    $("#total_p").val(data[i + 12]);
+                    $("#total_p2").val(data[i + 13]);
+                    $("#iva").val(data[i + 14]);
+                    $("#desc").val(data[i + 15]);
+                    $("#tot").val(data[i + 16]);
                 }
             }
         });
@@ -1576,34 +1542,17 @@ function inicio() {
         $.getJSON('../procesos/retornar_devolucion_compra2.php?com=' + valor, function(data) {
             var tama = data.length;
             if (tama !== 0) {
-                var subtotal = 0;
-                var iva = 0;
-                var t_fc = 0;
-                var sub;
-        
                 for (var i = 0; i < tama; i = i + 8)
                 {
-                    var datarow = {cod_producto: data[i], codigo: data[i + 1], detalle: data[i + 2], cantidad: data[i + 3], precio_u: data[i + 4], descuento: data[i + 5], precio_t: data[i + 6], iva: data[i + 7]};
+                    var datarow = {cod_producto: data[i],
+                        codigo: data[i + 1],
+                        detalle: data[i + 2],
+                        cantidad: data[i + 3],
+                        precio_u: data[i + 4],
+                        descuento: data[i + 5],
+                        precio_t: data[i + 6],
+                        iva: data[i + 7]};
                     var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
-            
-                    if(data[i + 7] == "Si"){
-                        subtotal = (subtotal + parseFloat(data[i + 6])); 
-                        sub = parseFloat(subtotal).toFixed(2);
-                        iva = (parseFloat(sub * 0.12).toFixed(2));
-                        $("#total_p2").val(sub);
-                        $("#iva").val(iva);
-                        t_fc = ((parseFloat(sub) + parseFloat(iva)) + parseFloat($("#total_p").val())).toFixed(2);
-                        $("#tot").val(t_fc);
-                    }else{
-                        if(data[i + 7] == "No"){
-                            subtotal = (subtotal + parseFloat(data[i + 6])); 
-                            sub = parseFloat(subtotal).toFixed(2);
-                            iva = parseFloat($("#iva").val());
-                            t_fc = ((parseFloat(subtotal) + parseFloat(iva)) + parseFloat($("#total_p2").val())).toFixed(2);
-                            $("#total_p").val(sub);
-                            $("#tot").val(t_fc);
-                        }
-                    }
                 }
             }
         });

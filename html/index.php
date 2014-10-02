@@ -29,10 +29,6 @@ session_destroy();
     </head>
 
     <body>
-        <div class="navbar navbar-fixed-top">
-            
-        </div>
-
         <div class="account-container">
             <div class="content clearfix">
                 <form action="" method="post" name="form_admin">

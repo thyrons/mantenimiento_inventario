@@ -114,34 +114,69 @@ $cont1++;
                                     <div class="tabbable">
                                         <div class="widget-content">
                                             <div class="widget big-stats-container">
-                                                <form id="formularios_fac" name="formularios_fac" method="post" class="form">
+                                                <form id="formularios_fac" name="formularios_fac" method="post" class="form-horizontal">
                                                     <fieldset>
-                                                        <table cellpadding="2" border="0" style="margin-left: 10px">
-                                                            <tr>
-                                                                <td><label for="comprobante" style="width: 100% ">Comprobante:</label></td>  
-                                                                <td><input type="text" name="comprobante" id="comprobante" readonly class="campo" style="width: 60px" value="<?php echo $cont1 ?>"/> </td>
-                                                                <td><label for="fecha_actual"  style="width: 100%; margin-left: 15px">Fecha: </label></td>
-                                                                <td><input type="text" name="fecha_actual" id="fecha_actual" readonly value="<?php echo date("Y-m-d"); ?>" class="campo" style="width: 120px"/> </td>
-                                                                <td><label for="hora_pro"  style="width: 100%; margin-left: 15px">Hora: </label></td>
-                                                                <td><input type="text" name="hora_actual" id="hora_actual" readonly class="campo" style="width: 120px"/> </td>
-                                                                <td><label style="width: 100%; margin-left: 15px">Digitador (a): </label></td>
-                                                                <td><input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="campo" style="width: 200px" readonly/></td>
-                                                                <td><input type="hidden" name="comprobante2" id="comprobante2" class="campo" style="width: 100px" value="<?php echo $cont1 ?>" /></td>
-                                                            </tr>
-                                                        </table>
+                                                        <section class="columna_1">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Comprobante:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="comprobante" id="comprobante" readonly class="campo" value="<?php echo $cont1 ?>" style="width: 80px"/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
 
-                                                        <hr style="color: #0056b2;" /> 
-                                                        <table cellpadding="2" border="0" style="margin-left: 10px">
-                                                            <tr>
-                                                                <td><label style="width: 100%">Origen: </label></td>
-                                                                <td><input type="text" name="origen" id="origen" class="campo" placeholder="Ingrese el origen" style="margin-left: 5px" /></td>
-                                                                <td><label style="width: 100%; margin-left: 10px">Destino: </label></td>
-                                                                <td><input type="text" name="destino" id="destino" class="campo" placeholder="Ingrese el destino" style="margin-left: 5px" /></td>
-                                                            </tr>  
-                                                        </table>
+                                                        <section class="columna_2">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Fecha Actual:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="fecha_actual" id="fecha_actual" readonly value="<?php echo date("Y-m-d"); ?>" class="campo" style="width: 100px" />
+                                                                </div>
+                                                            </div>
+                                                        </section>
 
-                                                        <hr style="color: #0056b2;" /> 
-                                                        <p>Productos</p>
+                                                        <section class="columna_3">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli">Hora Actual:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="hora_actual" id="hora_actual" readonly class="campo" style="width: 100px"/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+
+                                                        <section class="columna_4">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="nombres_cli"> Digitad@r:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="campo" style="width: 200px" readonly/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </fieldset>
+
+                                                    <fieldset>
+                                                        <legend></legend>
+                                                        <section class="columna1">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="origen">Ingrese un Origen:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="origen" id="origen" class="campo" placeholder="Ingrese el origen" />
+                                                                </div>
+                                                            </div>   
+
+                                                        </section>
+
+                                                        <section class="columna2">
+                                                            <div class="control-group">											
+                                                                <label class="control-label" for="destino">Ingrese un Destino:</label>
+                                                                <div class="controls">
+                                                                    <input type="text" name="destino" id="destino" class="campo" placeholder="Ingrese el destino"/>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </fieldset>
+                                                    <br />
+                                                    <fieldset>
+                                                        <legend>Productos</legend>
                                                         <table cellpadding="2" border="0" style="margin-left: 60px; margin-left: 10px">
                                                             <tr>
                                                                 <td><label>Código:</label></td>   

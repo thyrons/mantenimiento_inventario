@@ -5,7 +5,6 @@ include 'base.php';
 conectarse();
 error_reporting(0);
 
-//
 /////////////contador productos//////////
 $cont = 0;
 $consulta = pg_query("select max(cod_productos) from productos");
@@ -14,6 +13,8 @@ while ($row = pg_fetch_row($consulta)) {
 }
 $cont++;
 ////////////////////////////////////////
+
+
 
 /////////////////guardar productos///////
 $valor = number_format($_POST[precio_compra], 2, '.', '');

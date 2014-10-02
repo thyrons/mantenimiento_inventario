@@ -128,7 +128,7 @@ function guardar_datos_excel(vector){
 	$.ajax({
         type: "POST",
         url: "../procesos/guardar_producto_excel.php",
-        data: "vector="+vector,
+        data: "var="+vector[0]+"&var1="+vector[1]+"&var2="+vector[2]+"&var3="+vector[3]+"&var4="+vector[4]+"&var5="+vector[5]+"&var6="+vector[6]+"&var7="+vector[7]+"&var8="+vector[8]+"&var9="+vector[9]+"&var10="+vector[10]+"&var11="+vector[11],
         success: function(data) {
             var val = data;
             if (val == 1)

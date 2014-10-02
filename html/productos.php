@@ -53,7 +53,7 @@ include '../menus/menu.php';
                     </a>
 
                     <a class="brand" href="">
-                        <?php echo $_SESSION['empresa']; ?>         
+                        P&S System			
                     </a>		
 
                     <div class="nav-collapse">
@@ -121,7 +121,10 @@ include '../menus/menu.php';
                                                     <div class="control-group">
                                                         <label class="control-label" for="precio_compra">Precio Compra: <font color="red">*</font></label>
                                                         <div class="controls">
-                                                            <input type="text"  name="precio_compra" id="precio_compra"   placeholder="$0.00" required  class="campo" />
+                                                            <div class="input-prepend input-append">
+                                                                <span class="add-on">$</span>
+                                                                <input type="text"  name="precio_compra" id="precio_compra"   placeholder="0.00" required  class="campo" style="width: 165px" />
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -142,18 +145,18 @@ include '../menus/menu.php';
                                                     <div class="control-group">
                                                         <label class="control-label" for="categoria">Categoría:</label>
                                                         <div class="controls">
-                                                            <select id="categoria" name="categoria" class="campo">
-                                                                <option value="">Seleccione una Categoria</option>
-                                                                <?php
-                                                                $consulta = pg_query("select * from categoria where id_empresa = '$_SESSION[id_empresa]'");
-                                                                while ($row = pg_fetch_row($consulta)) {
-                                                                    echo "<option id=$row[0] value=$row[1]>$row[1]</option>";
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                        <div class="controls3">
-                                                            <input type="button" class="btn btn-primary" id='btnCategoria' value="..." style="margin-left: 10px"/>
+                                                            <div class="input-append">
+                                                                <select id="categoria" name="categoria" class="campo" style="width: 165px">
+                                                                    <option value="">........Seleccione........</option>
+                                                                    <?php
+                                                                    $consulta = pg_query("select * from categoria where id_empresa = '$_SESSION[id_empresa]'");
+                                                                    while ($row = pg_fetch_row($consulta)) {
+                                                                        echo "<option id=$row[0] value=$row[1]>$row[1]</option>";
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                                <input type="button" class="btn btn-primary" id='btnCategoria' value="..." />
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -244,18 +247,18 @@ include '../menus/menu.php';
                                                     <div class="control-group">
                                                         <label class="control-label" for="marca">Marca:</label>
                                                         <div class="controls">
-                                                            <select id="marca" name="marca" class="campo" >
-                                                                <option value="">Seleccione una Marca</option>
-                                                                <?php
-                                                                $consulta2 = pg_query("select * from marcas where id_empresa = '$_SESSION[id_empresa]'");
-                                                                while ($row = pg_fetch_row($consulta2)) {
-                                                                    echo "<option id=$row[0] value=$row[1]>$row[1]</option>";
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                        <div class="controls3">
-                                                            <input type="button" class="btn btn-primary" id='btnMarca' value="..." style="margin-left: 10px"/>
+                                                            <div class="input-append">
+                                                                <select id="marca" name="marca" class="campo" style="width: 165px" >
+                                                                    <option value="">........Seleccione........</option>
+                                                                    <?php
+                                                                    $consulta2 = pg_query("select * from marcas where id_empresa = '$_SESSION[id_empresa]'");
+                                                                    while ($row = pg_fetch_row($consulta2)) {
+                                                                        echo "<option id=$row[0] value=$row[1]>$row[1]</option>";
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                                <input type="button" class="btn btn-primary" id='btnMarca' value="..." />
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -359,7 +362,7 @@ include '../menus/menu.php';
                 <div class="container">
                     <div class="row">
                         <div class="span12">
-                            &copy; 2014 <a href=""> <?php echo $_SESSION['empresa']; ?></a>.
+                            &copy; 2014 <a href="">P&S System</a>.
                         </div>
                     </div>
                 </div>
