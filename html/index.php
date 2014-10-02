@@ -41,7 +41,7 @@ session_destroy();
                         </div> <!-- /field -->
 
                         <div class="field">
-                            <label for="password">Password:</label>
+                            <label for="password">Passwords:</label>
                             <input type="password" id="txt_contra" name="txt_contra" placeholder="Constraseña" class="login password-field"/>
                         </div>
                     </div>
