@@ -10,7 +10,7 @@ include '../menus/menu.php';
     <head>
         <meta charset="utf-8">
         <title>.:ARCHIVOS DE EXCEL:.</title>
-       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes"> 
         <link rel="stylesheet" type="text/css" href="../css/buttons.css"/>
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui-1.10.4.custom.css"/>    
@@ -69,19 +69,19 @@ include '../menus/menu.php';
 
         <!-- /Inicio  Menu Principal -->
         <div class="subnavbar">
-                <?Php
-                // Cabecera Menu 
-                if ($_SESSION['cargo'] == '1') {
-                    print menu_1();
-                }
-                if ($_SESSION['cargo'] == '2') {
-                    print menu_2();
-                }
-                if ($_SESSION['cargo'] == '3') {
-                    print menu_3();
-                }
-                ?>  
-            </div>
+            <?Php
+            // Cabecera Menu 
+            if ($_SESSION['cargo'] == '1') {
+                print menu_1();
+            }
+            if ($_SESSION['cargo'] == '2') {
+                print menu_2();
+            }
+            if ($_SESSION['cargo'] == '3') {
+                print menu_3();
+            }
+            ?>  
+        </div>
         <!-- /Fin  Menu Principal -->
 
         <div class="main">
@@ -97,17 +97,26 @@ include '../menus/menu.php';
 
                                 <div class="widget-content">
                                     <div class="tabbable" id="centro">
-                                    <form id="formulario_excel" name="formulario_excel" method="post" class="form">
-                                        <fieldset>
-                                            <table cellpadding="2" border="0" style="margin-left: 10px;">
-                                                <tr>
-                                                    <td><label for="archivo_excel" style="width: 20%">Seleccione: </label></td>   
-                                                    <td><input type="file" name="archivo_excel" id="archivo_excel" class="campo" readonly style="width: 500px"/></td>
-                                                    <td><button class="btn btn-primary" id='btnGuardarCargar'><i class="icon-save"></i> Guardar y Cargar</button></td>
-                                                </tr>  
-                                            </table>  
-                                        </fieldset>
-                                    </form>
+                                        <form id="formulario_excel" name="formulario_excel" method="post" class="form">
+                                            <fieldset>
+                                                <div class="controls">
+                                                    <div class="alert alert-info">
+                                                        <h4>Recomendaciones</h4>  
+                                                        <br />
+                                                        <strong>Poner tipos numéricos y texto en las celdas que corresponde caso contrario saldra error de sintaxis.</strong>
+                                                        <br />
+                                                        <strong>Tener en cuenta de no repetir los articulos.</strong>
+                                                    </div>
+                                                </div>
+                                                <table cellpadding="2" border="0" style="margin-left: 10px;">
+                                                    <tr>
+                                                        <td><label for="archivo_excel" style="width: 20%">Seleccione: </label></td>   
+                                                        <td><input type="file" name="archivo_excel" id="archivo_excel" class="campo" readonly style="width: 500px"/></td>
+                                                        <td><button class="btn btn-primary" id='btnGuardarCargar'><i class="icon-save"></i> Guardar y Cargar</button></td>
+                                                    </tr>  
+                                                </table>  
+                                            </fieldset>
+                                        </form>
                                     </div>
                                     <div style="width:100%;height:300px;border:solid 0px;border-color:rgb(204, 201, 201);overflow:scroll;">
                                         <table style="width:100%;" class="table table-bordered table-hover table-condensed" id="tabla_excel" >
@@ -121,7 +130,7 @@ include '../menus/menu.php';
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    
+
                                                 </tr>
                                         </table>
                                     </div>  

@@ -47,6 +47,7 @@ function cargar(){
 
 }
 function guardarCargar(){
+     $("#tabla_excel tbody").empty(); 
 	$("#formulario_excel").submit(function(e)
 	{
 	    var formObj = $(this);
@@ -81,6 +82,7 @@ function guardarCargar(){
 	            } 	        
 	        });
 	        e.preventDefault();
+                $(this).unbind("submit");
 	    }
 	    else  //for olden browsers
 	    {
@@ -107,7 +109,7 @@ function guardarCargar(){
 }
 
 function cargarTabla(data){
-	for(var i=0;i<data.length;i+=12){
+	for(var i=0;i<data.length;i+=13){
 		vector = new Array();
 		vector[0]=data[i];
 		vector[1]=data[i+1];
@@ -121,14 +123,16 @@ function cargarTabla(data){
 		vector[9]=data[i+9];
 		vector[10]=data[i+10];
 		vector[11]=data[i+11];
+                vector[12]=data[i+12];
 		guardar_datos_excel(vector);
 	}
 }
+
 function guardar_datos_excel(vector){
 	$.ajax({
         type: "POST",
         url: "../procesos/guardar_producto_excel.php",
-        data: "var="+vector[0]+"&var1="+vector[1]+"&var2="+vector[2]+"&var3="+vector[3]+"&var4="+vector[4]+"&var5="+vector[5]+"&var6="+vector[6]+"&var7="+vector[7]+"&var8="+vector[8]+"&var9="+vector[9]+"&var10="+vector[10]+"&var11="+vector[11],
+        data: "var="+vector[0]+"&var1="+vector[1]+"&var2="+vector[2]+"&var3="+vector[3]+"&var4="+vector[4]+"&var5="+vector[5]+"&var6="+vector[6]+"&var7="+vector[7]+"&var8="+vector[8]+"&var9="+vector[9]+"&var10="+vector[10]+"&var11="+vector[11]+"&var12="+vector[12],
         success: function(data) {
             var val = data;
             if (val == 1)
@@ -144,8 +148,8 @@ function guardar_datos_excel(vector){
              	$("#tabla_excel tbody").append( "<tr>" +
             	"<td align=center>" + vector[0] + "</td>" +
             	"<td align=center>" + vector[1] + "</td>" +	            
-            	"<td align=center>" + 'Codigo de producto Repetido' + "</td>" +            
-            	"<td align=center>" + " <a class='elimina'><img src='../imagenes/invalid.png' onclick='return fn_dar_eliminar(event)'/>"  + "</td>" + "</tr>" );
+            	"<td align=center>" + 'Producto Repetido' + "</td>" +            
+            	"<td align=center>" + " <a class='elimina'><img src='../imagenes/invalid.png' />"  + "</td>" + "</tr>" );
             }
             if (val == 3)
             {
@@ -153,7 +157,7 @@ function guardar_datos_excel(vector){
             	"<td align=center>" + vector[0] + "</td>" +
             	"<td align=center>" + vector[1] + "</td>" +	            
             	"<td align=center>" + 'Sintaxis incorrecta' + "</td>" +            
-            	"<td align=center>" + " <a class='elimina'><img src='../imagenes/delete.png' onclick='return fn_dar_eliminar(event)'/>"  + "</td>" + "</tr>" );
+            	"<td align=center>" + " <a class='elimina'><img src='../imagenes/delete.png' />"  + "</td>" + "</tr>" );
             }
         }
     });

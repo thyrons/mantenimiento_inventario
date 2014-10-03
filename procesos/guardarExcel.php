@@ -43,6 +43,7 @@
 				$lista[] = $objCelda['J'];
 				$lista[] = $objCelda['K'];
 				$lista[] = $objCelda['L'];
+                                $lista[] = $objCelda['M'];
 			}
 			$cont++;
 		}	

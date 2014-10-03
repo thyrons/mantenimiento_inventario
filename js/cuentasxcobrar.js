@@ -423,8 +423,8 @@ function inicio() {
     
     $("#btnImprimir").click(function (){
         var temp=0;
-        var temp1=0;
         var temp2=0;
+        var temp3=0;
         var fil = jQuery("#list").jqGrid("getRowData");
         for (var i = 0; i < fil.length; i++) {
             var datos = fil[i];        
