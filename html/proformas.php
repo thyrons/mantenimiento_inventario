@@ -185,7 +185,6 @@ $cont1++;
                                                                 <label class="control-label" for="tipo_precio">Tipo de Precio: <font color="red">*</font></label>
                                                                 <div class="controls">
                                                                     <select id="tipo_precio" name="tipo_precio" style="width: 200px">
-                                                                        <option value="">........SELECCIONE........</option>
                                                                         <option value="MINORISTA">MINORISTA</option>
                                                                         <option value="MAYORISTA">MAYORISTA</option>
                                                                     </select>
