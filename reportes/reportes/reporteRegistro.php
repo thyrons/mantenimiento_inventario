@@ -41,7 +41,7 @@ session_start();
             $codigo.=$row[4]."";
             $codigo.='</h2>             
             <h2 style="width:379px;height:13px;">';
-            $codigo.=$row[36]." ".$row[37] ;
+            $codigo.=$row[34]." ".$row[35] ;
             $codigo.='</h2>          
         	</div>
          	<div id="medio1">
@@ -51,13 +51,13 @@ session_start();
         	</div>
         	<div id="medio2">
             <h2>';
-            $codigo.=$row[24]." ";
+            $codigo.=$row[22]." ";
             $codigo.='</h2>                                    
             <h2>';
-            $codigo.=$row[47]." ";
+            $codigo.=$row[45]." ";
             $codigo.='</h2>                        
             <h2>';
-            $codigo.= $row[19]." ";
+            $codigo.= $row[18]." ";
             $codigo.='</h2>                                  
         	</div>
           	<div id="medio3">
@@ -77,7 +77,7 @@ session_start();
             $codigo.=$row[16]." ";
             $codigo.='</h2>  
             <h2>';
-            $codigo.=$row[28]." ";
+            $codigo.=$row[26]." ";
             $codigo.='</h2>                           
         	</div>
          	<div id="acce">
@@ -109,12 +109,12 @@ session_start();
             </div>    
         	<div id="resp">
         	<h2>';
-             $codigo.="Entrege conforme:".$row[36]." ".$row[37] ;
+             $codigo.="Entrege conforme: ".$row[34]." ".$row[35] ;
              $codigo.='</h2>                          
         	</div>   
             <div id="resp1">
             <h2>';             
-             $codigo.="Recibi conforme:".$row[24];
+             $codigo.="Recibi conforme: ".$row[22];
              $codigo.='</h2>             
             </div>         
 			';	
@@ -152,7 +152,7 @@ session_start();
             $codigo.=$row[4]."";
              $codigo.='</h2>             
             <h2 style="width:379px;height:13px;">';
-            $codigo.=$row[36]." ".$row[37] ;
+            $codigo.=$row[34]." ".$row[35] ;
             $codigo.='</h2>                
             </div>
             <div id="medio1C">
@@ -162,13 +162,13 @@ session_start();
             </div>
             <div id="medio2C">
             <h2>';
-            $codigo.=$row[24]." ";
+            $codigo.=$row[22]." ";
             $codigo.='</h2>                                    
             <h2>';
-            $codigo.=$row[47]." ";
+            $codigo.=$row[45]." ";
             $codigo.='</h2>                        
             <h2>';
-            $codigo.= $row[19]." ";
+            $codigo.= $row[18]." ";
             $codigo.='</h2>                                  
             </div>
             <div id="medio3C">
@@ -188,7 +188,7 @@ session_start();
             $codigo.=$row[16]." ";
             $codigo.='</h2>  
              <h2>';
-            $codigo.=$row[28]." ";
+            $codigo.=$row[26]." ";
             $codigo.='</h2>                             
             </div>
             <div id="acceC">
@@ -201,6 +201,7 @@ session_start();
                 $codigo.=$row[6]." ";
                 $codigo.='</textarea>
                 <textarea name="">';
+			$codigo.=$row[5]." ";
                  $codigo.='</textarea>';
                 $codigo.='<h3 style="width:800px;margin:0px;padding:0px;font-size:11px;font-weight:normal;">&nbsp;&nbsp;El diagnóstico del equipo tiene un precio mínimo de $10.00 (Diez Dólares)</h3>';
                 $codigo.='<h3 style="width:800px;margin:0px;padding:0px;font-size:11px;font-weight:normal;">&nbsp;&nbsp;Toda máquina reparada y no retirada en tres meses será subastada</h3>';
@@ -219,12 +220,12 @@ session_start();
             </div>    
             <div id="respC">
             <h2>';
-             $codigo.="Entrege conforme:".$row[36]." ".$row[37] ;
+             $codigo.="Entrege conforme: ".$row[34]." ".$row[35] ;
              $codigo.='</h2>                          
             </div>   
             <div id="resp1C">
             <h2>';             
-             $codigo.="Recibi conforme:".$row[24];
+             $codigo.="Recibi conforme: ".$row[22];
              $codigo.='</h2>             
             </div></div></body>';  
         }                        
