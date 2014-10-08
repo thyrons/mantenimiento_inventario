@@ -10,5 +10,6 @@ while ($row = pg_fetch_row($consulta)) {
     $lista[] = $row[1];
     $lista[] = $row[2];
 }
+
 echo $lista = json_encode($lista);
 ?>

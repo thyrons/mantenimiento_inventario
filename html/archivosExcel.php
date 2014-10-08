@@ -3,6 +3,7 @@ session_start();
 if (empty($_SESSION['id'])) {
     header('Location: index.php');
 }
+
 include '../menus/menu.php';
 ?>
 <!DOCTYPE html>
@@ -71,8 +72,8 @@ include '../menus/menu.php';
         <div class="subnavbar">
             <?Php
             // Cabecera Menu 
-            
-            
+
+
             if ($_SESSION['cargo'] == '1') {
                 print menu_1();
             }

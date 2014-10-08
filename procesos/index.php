@@ -17,11 +17,11 @@ while ($row = pg_fetch_row($consulta)) {
 	$_SESSION['user'] = $row[10];
 }
 	$_SESSION['empresa'] ="P&S Systems";
-	$_SESSION['slogan'] ="Fabricación de Prendas de Vestir";
-	$_SESSION['propietario'] ="FARINANGO LEÓN MARÍA EUGENIA";
-	$_SESSION['direccion'] ="Matriz: Carlos Barahona 2-51 y Pasaje J / Sucursal: Sánchez y Cifuentes 15-37";
-	$_SESSION['telefono'] ="062 953 734 / 5 000 192";
-	$_SESSION['celular'] ="0993 740 497";
+	$_SESSION['slogan'] ="SERVICIOS INTEGRALES";
+	$_SESSION['propietario'] ="YEPEZ RIVERA PABLO SANTIAGO";
+	$_SESSION['direccion'] ="Av. Eugenio Espejo 9-66 y Juan Fransico Bonilla";
+	$_SESSION['telefono'] ="2603193";
+	$_SESSION['celular'] ="0987805075";
 	$_SESSION['pais_ciudad'] ="Ibarra - Ecuador";
 if($cont==1){
 	$data=1;

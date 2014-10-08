@@ -244,7 +244,6 @@ include '../menus/menu.php';
             </div> 
         </div> 
 
-
         <div class="footer">
             <div class="footer-inner">
                 <div class="container">
