@@ -36,8 +36,6 @@ $cont1++;
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/link_top.css" rel="stylesheet" />
 
-        <script type="text/javascript" src="../js/base.js"></script>
-        <script type="text/javascript" src="../js/bootstrap.js"></script>
         <script type="text/javascript" src="../js/bootstrap.js"></script>
         <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
         <script type="text/javascript" src="../js/jquery-ui-1.10.4.custom.min.js"></script>
@@ -51,6 +49,7 @@ $cont1++;
         <script type="text/javascript" src="../js/guidely/guidely.min.js"></script>
         <script type="text/javascript" src="../js/easing.js" ></script>
         <script type="text/javascript" src="../js/jquery.ui.totop.js" ></script>
+        
 
         <script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
         <link href="../css/sm-core-css.css" rel="stylesheet" type="text/css" />
@@ -118,7 +117,7 @@ $cont1++;
                                         <div class="widget-content">
                                             <div class="widget big-stats-container">
                                                 <form id="formularios_fac" name="formularios_fac" method="post" class="form-horizontal">
-                                                   <fieldset>
+                                                    <fieldset>
                                                         <section class="columna_1">
                                                             <div class="control-group">											
                                                                 <label class="control-label" for="nombres_cli">Comprobante:</label>
@@ -202,6 +201,8 @@ $cont1++;
                 </div> 
             </div> 
         </div>
+        <script type="text/javascript" src="../js/base.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker-es.js"></script>
 
         <div class="footer">
             <div class="footer-inner">

@@ -9,7 +9,6 @@ include '../procesos/base.php';
 conectarse();
 error_reporting(0);
 
-
 /////////////////contador cuentas///////////
 $cont1 = 0;
 $consulta = pg_query("select max(id_cuentas_cobrar) from pagos_cobrar");
@@ -36,7 +35,6 @@ $cont1++;
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/link_top.css" rel="stylesheet" />
 
-        <script type="text/javascript" src="../js/base.js"></script>
         <script type="text/javascript" src="../js/bootstrap.js"></script>
         <script type="text/javascript" src="../js/jquery-loader.js"></script>
         <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
@@ -286,6 +284,8 @@ $cont1++;
                 </div> 
             </div> 
         </div> 
+        <script type="text/javascript" src="../js/base.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker-es.js"></script>
 
         <div class="footer">
             <div class="footer-inner">

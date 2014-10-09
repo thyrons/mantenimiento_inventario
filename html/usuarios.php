@@ -22,8 +22,6 @@ include '../menus/menu.php';
         <link href="../css/font-awesome.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
 
-        <script type="text/javascript" src="../js/base.js"></script>
-        <script type="text/javascript" src="../js/bootstrap.js"></script>
         <script type="text/javascript" src="../js/bootstrap.js"></script>
         <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
         <script type="text/javascript" src="../js/jquery-ui-1.10.4.custom.min.js"></script>
@@ -111,6 +109,8 @@ include '../menus/menu.php';
                 </div> 
             </div> 
         </div> 
+        <script type="text/javascript" src="../js/base.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker-es.js"></script>
 
         <div class="footer">
             <div class="footer-inner">

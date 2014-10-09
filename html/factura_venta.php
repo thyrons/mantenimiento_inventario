@@ -42,8 +42,6 @@ $cont1++;
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/link_top.css" rel="stylesheet" />
 
-
-        <script type="text/javascript" src="../js/base.js"></script>
         <script type="text/javascript" src="../js/bootstrap.js"></script>
         <script type="text/javascript" src="../js/jquery-loader.js"></script>
         <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
@@ -125,7 +123,7 @@ $cont1++;
                                     <div class="tabbable">
                                         <div class="widget-content">
                                             <div class="widget big-stats-container">
-                                                <form id="formularios_fac" name="formularios_fac" method="post">
+                                                <form id="formularios_fac" name="formularios_fac" method="post" class="form-horizontal">
                                                     <fieldset>
                                                         <table cellpadding="2" border="0" style="margin-left: 10px">
                                                             <tr>
@@ -257,12 +255,10 @@ $cont1++;
                                                                 <td><label for="total_p2" style="width: 100%" >Tarifa  12:</label></td>
                                                                 <td><input type="text" style="width: 80px" name="total_p2" id="total_p2" readonly value="0.00" class="campo"/></td>
                                                             </tr>
-
                                                             <tr>
                                                                 <td><label for="iva" style="width:100%" >12 %Iva:</label></td>
                                                                 <td><input type="text" style="width:80px" name="iva" id="iva" readonly value="0.00" class="campo"/></td>
                                                             </tr>
-
                                                             <tr>
                                                                 <td><label for="desc" style="width: 100%" >Descuentos:</label></td>
                                                                 <td><input type="text" style="width: 80px" name="desc" id="desc" value="0.00" class="campo" readonly/></td>
@@ -342,6 +338,8 @@ $cont1++;
                 </div> 
             </div> 
         </div> 
+        <script type="text/javascript" src="../js/base.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker-es.js"></script>
 
         <div class="footer">
             <div class="footer-inner">
