@@ -1,4 +1,6 @@
+
 $(document).on("ready", inicio);
+
 
 function evento(e) {
     e.preventDefault();
@@ -1623,6 +1625,8 @@ $("#clave").val("");
 }
 
 function inicio() {
+    jQuery().UItoTop({ easingType: 'easeOutQuart' });
+    //jQuery.noConflict();
     //////////////para hora///////////
     show();
     ///////////////////

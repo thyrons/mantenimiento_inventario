@@ -40,6 +40,8 @@ $cont1++;
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
         <link href="../css/font-awesome.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
+        <link href="../css/link_top.css" rel="stylesheet" />
+
 
         <script type="text/javascript" src="../js/base.js"></script>
         <script type="text/javascript" src="../js/bootstrap.js"></script>
@@ -54,10 +56,13 @@ $cont1++;
         <script type="text/javascript" src="../js/datosUser.js"></script>
         <script type="text/javascript" src="../js/ventana_reporte.js"></script>
         <script type="text/javascript" src="../js/guidely/guidely.min.js"></script>
+        <script type="text/javascript" src="../js/easing.js" ></script>
+        <script type="text/javascript" src="../js/jquery.ui.totop.js" ></script>
 
         <script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
         <link href="../css/sm-core-css.css" rel="stylesheet" type="text/css" />
         <link href="../css/sm-blue/sm-blue.css" rel="stylesheet" type="text/css" />
+
     </head>
 
     <body>
@@ -350,4 +355,8 @@ $cont1++;
             </div> 
         </div>
     </body>
+    <a href="" id="toTop" style="display: inline;">
+        <span id="toTopHover" style="opacity: 0;"></span>
+        "toTop"
+    </a>
 </html>

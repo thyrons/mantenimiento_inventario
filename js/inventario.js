@@ -265,6 +265,7 @@ function guardar_inventario() {
 }
 
 function inicio() {
+    jQuery().UItoTop({ easingType: 'easeOutQuart' });
     //////////////para hora///////////
     show();
     ///////////////////

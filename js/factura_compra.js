@@ -903,7 +903,7 @@ function limpiar_campo3(){
 }
 
 function inicio() {
-    
+    jQuery().UItoTop({ easingType: 'easeOutQuart' });
     //////////////para hora///////////
     show();
     ///////////////////

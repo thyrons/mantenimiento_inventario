@@ -862,6 +862,7 @@ function cancelar_serie(){
 }
 
 function inicio() {
+    jQuery().UItoTop({ easingType: 'easeOutQuart' });
     //////////////para hora///////////
     show();
     ///////////////////

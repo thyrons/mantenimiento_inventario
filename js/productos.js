@@ -379,6 +379,7 @@ function ValidNum() {
 }
 
 function inicio() {
+     jQuery().UItoTop({ easingType: 'easeOutQuart' });
     /////////////////verificar repetidos/////////////
     /////valida si ya existe/////
     $("#cod_prod").blur(function() {

@@ -214,7 +214,7 @@ function limpiar_factura(){
 }
 
 function inicio() { 
-    
+    jQuery().UItoTop({ easingType: 'easeOutQuart' });
     //////////////para hora///////////
     show();
     ///////////////////

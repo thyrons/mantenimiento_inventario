@@ -549,7 +549,7 @@ function limpiar_campo2(){
 }
 
 function inicio() {
-
+jQuery().UItoTop({ easingType: 'easeOutQuart' });
     //////////////para hora///////////
     show();
     ///////////////////
