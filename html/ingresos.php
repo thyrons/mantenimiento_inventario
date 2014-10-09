@@ -35,7 +35,6 @@ $cont1++;
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/link_top.css" rel="stylesheet" />
 
-        <script type="text/javascript" src="../js/base.js"></script>
         <script type="text/javascript" src="../js/bootstrap.js"></script>
         <script type="text/javascript" src="../js/jquery-loader.js"></script>
         <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
@@ -216,7 +215,7 @@ $cont1++;
                                                             </table>
                                                         </div>
 
-                                                        <div style="margin-left: 665px; margin-top: -75px">
+                                                        <div style="margin-left: 665px; margin-top: -70px">
                                                             <table border="0" cellspacing="2">
                                                                 <tr>
                                                                     <td><label for="total_p" style="width: 100%">Tarifa 0:</label></td>
@@ -267,6 +266,8 @@ $cont1++;
                 </div> 
             </div> 
         </div> 
+        <script type="text/javascript" src="../js/base.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker-es.js"></script>
 
         <div class="footer">
             <div class="footer-inner">

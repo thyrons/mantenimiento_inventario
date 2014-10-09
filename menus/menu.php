@@ -186,12 +186,6 @@ function menu_1() {
                     <li><a href="../html/repacionEquipo.php" target="_blank">Reparación</a></li>
                     <li><a href="../html/entregaEquipos.php" target="_blank">Entrega</a></li>
                     <li><a href="../html/restablecer.php" target="_blank">Restablecer</a></li>
-                    <li><a href="">Estado Equipos</a>
-                        <ul>
-                            <li><a href="../html/reparacionInterna.php" target="_blank">Reparación Interna</a></li>
-                            <li><a href="../html/reparacionExterna.php" target="_blank">Reparación Externa</a></li>
-                        </ul>
-                  </li>
                 </ul>
             </li> 
            
@@ -309,7 +303,6 @@ function menu_2() {
                    
                    <li><a href="" target="_parent">Compras</a>
                         <ul>
-                            
                             <li><a href="">Resumen de compras locales</a>
                                <ul>
                                   <li><a href="" id="agrupados_proveedor">Agrupados por proveedor</a></li>
@@ -317,7 +310,6 @@ function menu_2() {
                                   <li><a href="">Devoluciones en compras</a></li>
                                   <li><a href="">IVA en compras</a></li>
                                   <li><a href="">Por tipo de comprobante</a></li>
-                                  
                                </ul>
                             </li>
                         </ul>
