@@ -19,19 +19,19 @@ function cancelar(){
 function guardar_empresa(){
     if ($("#nombre_empresa").val() === "") {
         $("#nombre_empresa").focus();
-        alert("Ingrese nombre de la empresa");
+        alertify.alert("Ingrese nombre de la empresa");
     } else {
         if ($("#ruc_empresa").val() === "") {
             $("#ruc_empresa").focus();
-            alert("Ingrese ruc de la empresa");
+            alertify.alert("Ingrese ruc de la empresa");
         }else{
             if ($("#direccion_empresa").val() === "") {
                 $("#direccion_empresa").focus();
-                alert("Ingrese dirección de la empresa");
+                alertify.alert("Ingrese dirección de la empresa");
             }else{
                 if ($("#telefono_empresa").val() === "") {
                     $("#telefono_empresa").focus();
-                    alert("Ingrese telefóno de la empresa");
+                    alertify.alert("Ingrese telefóno de la empresa");
                 }else{
                     $.ajax({
                         type: "POST",
@@ -42,18 +42,55 @@ function guardar_empresa(){
                             var val = data;
                             if (val == 1)
                             {
-                                alert("Empresa guardada Correctamente");
-                                location.reload();
+                                alertify.alert("Empresa guardada Correctamente",function(){
+                                    location.reload();
+                                });
                             }
                         }
                     });
                 }
             }
         }
-        
     }
 }
 
+function enter(e) {
+    if (e.which === 13 || e.keyCode === 13) {
+        ingresarSistema();
+        return false;
+    }
+    return true;
+}
+
+function ingresarSistema() {
+    if ($("#txt_usuario").val() === "") {
+        $("#txt_usuario").focus();
+        alertify.alert("Ingrese el usuario");
+    } else {
+        if ($("#txt_contra").val() === "") {
+            $("#txt_contra").focus();
+            alertify.alert("Ingrese la contraseña");
+        }else{
+            $.ajax({
+                url: '../procesos/index.php',
+                type: 'POST',
+                data: "usuario=" + $("#txt_usuario").val() + "&clave=" + $("#txt_contra").val(),
+                success: function(data) {
+                    var val = data;
+                    if (val == 1) {
+                        window.location.href = "principal.php";  
+                    }else{
+                        if (val == 0) {
+                            alertify.alert("Error... Los datos son incorrectos ingrese nuevamente");
+                            $("#txt_contra").val("")
+                            $("#txt_contra").focus();
+                        }
+                    }
+                }
+            });
+        }
+    }
+}
 
 function inicio()
 {
@@ -84,79 +121,7 @@ function inicio()
     
     ///////////////////////////////
     $("#txt_usuario").focus();
-    $("#txt_contra").on("keyup", enter);
-    $("#txt_usuario").on("keyup", enter);
+    $("#txt_contra").on("keypress", enter);
+    $("#txt_usuario").on("keypress", enter);
     $("#btnIngreso").on("click", ingresarSistema);
-}
-
-
-
-function ingresarSistema(e)
-{
-    e.preventDefault();
-    var repe = 0;
-
-    if ($("#txt_usuario").val() === "") {
-        alert("Ingrese el usuario");
-        $("#txt_usuario").focus();
-        repe = 1;
-    } else {
-        if ($("#txt_contra").val() === "") {
-            alert("Ingrese la contraseña");
-            $("#txt_contra").focus();
-            repe = 1;
-        }
-
-        if (repe === 0) {
-            $.ajax({
-                url: '../procesos/index.php',
-                type: 'POST',
-                data: "usuario=" + $("#txt_usuario").val() + "&clave=" + $("#txt_contra").val() + "&id_empresa=" + $("#empresa").val(),
-                success: function(data) {
-                    var val = data;
-                    if (val == 1)
-                    {
-                        if($("#empresa").val() === "" ||$("#empresa").val() === null){
-                            if (confirm("Desea crear una nueva empresa") == true) {
-                                $("#crear_empresa").dialog("open");  
-                            }else{
-                                $("#txt_usuario").val("");
-                                $("#txt_contra").val("");
-                            }
-                        }else{
-                            window.location.href = "principal.php";  
-                        }
-                    }else{
-                        if (val == 2)
-                        {
-                            if($("#empresa").val() === "" ||$("#empresa").val() === null){
-                                alert("Imposible acceder al sistema"); 
-                                $("#txt_usuario").val("");
-                                $("#txt_contra").val("");
-                            }else{
-                                window.location.href = "principal.php";  
-                            }
-                        }else{
-                            if (val == 0)
-                            {
-                                alert("Error... Los datos son incorrectos ingrese nuevamente");
-                                $("#txt_contra").val("")
-                                $("#txt_contra").focus();
-                            }
-                        }
-                    }
-                   
-                }
-            });
-        }
-    }
-}
-
-function enter(e) {
-    if (event.which === 13 || event.keyCode === 13) {
-        ingresarSistema();
-        return false;
-    }
-    return true;
-
 }

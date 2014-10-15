@@ -15,9 +15,10 @@ session_destroy();
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui-1.10.4.custom.css"/> 
         <link href="../css/font-awesome.css" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-
         <link href="../css/style.css" rel="stylesheet" type="text/css">
         <link href="../css/pages/signin.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../css/alertify.core.css" />
+        <link rel="stylesheet" href="../css/alertify.default.css" id="toggleCSS" />
 
         <!--<script src="js/jquery-1.7.2.min.js"></script>-->
         <script src="../js/bootstrap.js"></script>
@@ -25,7 +26,8 @@ session_destroy();
         <script type="text/javascript" src="../js/jquery-ui-1.10.4.custom.min.js"></script>
         <script type="text/javascript" src="../js/validCampoFranz.js" ></script>
         <script type="text/javascript" src="../js/index.js"></script>
-        <script src="../js/signin.js"></script>
+        <script type="text/javascript" src="../js/signin.js"></script>
+        <script type="text/javascript" src="../js/alertify.min.js"></script>
     </head>
 
     <body>

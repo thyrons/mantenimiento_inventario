@@ -75,15 +75,15 @@ function autocompletar() {
 function comprobar() {
     if ($("#tipo_docu").val() === "") {
         $("#tipo_docu").focus();
-        alert("Seleccione tipo documento");
+        alertify.alert("Seleccione tipo documento");
     } else {
         if ($("#empresa").val() === "") {
             $("#ruc_ci").focus();
-            alert("Indique una empresa");
+            alertify.alert("Indique una empresa");
         } else {
             if ($("#tipo_comprobante").val() === "") {
                 $("#tipo_comprobante").focus();
-                alert("Seleccione tipo comprobante");
+                alertify.alert("Seleccione tipo comprobante");
             } else {
                 if ($("#serie1").val() === "") {
                     $("#serie1").focus();
@@ -101,7 +101,7 @@ function comprobar() {
                             }else{
                                 if ($("#total").val() === "") {
                                     $("#total").focus();
-                                    alert("Ingrese el total de la factura");
+                                    alertify.alert("Ingrese el total de la factura");
                                 }
                             }
                         }
@@ -116,22 +116,22 @@ function comprobar() {
 function guardar_gasto() {
     if ($("#tipo_docu").val() === "") {
         $("#tipo_docu").focus();
-        alert("Seleccione tipo documento");
+        alertify.alert("Seleccione tipo documento");
     } else {
         if ($("#empresa").val() === "") {
             $("#ruc_ci").focus();
-            alert("Indique una empresa");
+            alertify.alert("Indique una empresa");
         } else {
             if ($("#num_factura").val() === "") {
-                alert("Ingrese el numero de la factura");
+                alertify.alert("Ingrese el numero de la factura");
                 $("#num_factura").focus();
             } else {
                 if ($("#descripcion").val() === "") {
-                    alert("Ingrese la descripción");
+                    alertify.alert("Ingrese la descripción");
                     $("#descripcion").focus();
                 }else{
                     if ($("#total").val() === "") {
-                        alert("Ingrese el total del gasto");
+                        alertify.alert("Ingrese el total del gasto");
                         $("#total").focus();
                     }else{
                         $.ajax({
@@ -140,11 +140,9 @@ function guardar_gasto() {
                             data: "id_proveedor=" + $("#id_proveedor").val() + "&comprobante=" + $("#comprobante").val() + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&num_factura=" + $("#num_factura").val() + "&descripcion=" + $("#descripcion").val() + "&total=" + $("#total").val(),
                             success: function(data) {
                                 var val = data;
-                                if (val == 1)
-                                {
+                                if (val == 1) {
                                     window.open("../reportes/reportes/reporte_gasto.php?id="+$("#comprobante").val(),'_blank');
-                                    alert("Registro Guardado correctamente");
-                                    location.reload();
+                                    alertify.alert("Registro Guardado correctamente", function(){location.reload();});
                                 }
                             }
                         });
@@ -202,7 +200,7 @@ function flecha_atras(){
                     }
                 });
                 }else{
-                alert("No hay mas registros posteriores!!");
+                alertify.alert("No hay mas registros posteriores!!");
             }
         }
     });
@@ -255,7 +253,7 @@ function flecha_siguiente(){
                     }
                 });
                 }else{
-                alert("No hay mas registros superiores!!");
+                alertify.alert("No hay mas registros superiores!!");
             }
         }
     });
@@ -345,12 +343,12 @@ function inicio() {
     ////////////////eventos////////////////////
     //$("input[type=text]").on("keyup", enter);
 
-    $("#ruc_ci").on("keyup", enter);
-    $("#empresa").on("keyup", enter);
-    $("#serie1").on("keyup", enter);
-    $("#serie2").on("keyup", enter);
-    $("#serie3").on("keyup", enter);
-    $("#total").on("keyup", enter);
+    $("#ruc_ci").on("keypress", enter);
+    $("#empresa").on("keypress", enter);
+    $("#serie1").on("keypress", enter);
+    $("#serie2").on("keypress", enter);
+    $("#serie3").on("keypress", enter);
+    $("#total").on("keypress", enter);
     /////////////////////////////////////////
 
     //////////atributos////////////
@@ -557,9 +555,8 @@ function inicio() {
                 }
             });
          $("#buscar_gastos_internos").dialog("close");
-        }
-        else {
-            alert("Seleccione una cuenta");
+        } else {
+          alertify.alert("Seleccione un Gasto Interno");
         }
     }
         
@@ -634,9 +631,8 @@ function inicio() {
                 }
             });
             $("#buscar_gastos_internos").dialog("close");
-        }
-        else {
-            alert("Seleccione una cuenta");
+        } else {
+          alertify.alert("Seleccione un Gasto Interno");
         }
     }
   });   

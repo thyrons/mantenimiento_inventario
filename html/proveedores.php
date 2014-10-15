@@ -21,6 +21,10 @@ include '../menus/menu.php';
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
         <link href="../css/font-awesome.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/alertify.core.css" />
+        <link rel="stylesheet" href="../css/alertify.default.css" id="toggleCSS" />
+        <link href="../css/sm-core-css.css" rel="stylesheet" type="text/css" />
+        <link href="../css/sm-blue/sm-blue.css" rel="stylesheet" type="text/css" />
 
         <script type="text/javascript" src="../js/bootstrap.js"></script>
         <script type="text/javascript" src="../js/jquery-loader.js"></script>
@@ -34,10 +38,8 @@ include '../menus/menu.php';
         <script type="text/javascript" src="../js/datosUser.js"></script>
         <script type="text/javascript" src="../js/ventana_reporte.js"></script>
         <script type="text/javascript" src="../js/guidely/guidely.min.js"></script>
-
+        <script type="text/javascript" src="../js/alertify.min.js"></script>
         <script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
-        <link href="../css/sm-core-css.css" rel="stylesheet" type="text/css" />
-        <link href="../css/sm-blue/sm-blue.css" rel="stylesheet" type="text/css" />
     </head>
 
     <body>
@@ -52,16 +54,7 @@ include '../menus/menu.php';
 
                     <a class="brand" href="">
                         <?php echo $_SESSION['empresa']; ?>         
-                    </a>		
-
-                    <div class="nav-collapse">
-                        <ul class="nav pull-right">
-                            <div class="controls">
-                                <button class="btn btn-facebook-alt"><i class="icon-facebook-sign"></i> Facebook</button>
-                                <button class="btn btn-twitter-alt"><i class="icon-twitter-sign"></i> Twitter</button>
-                            </div>
-                        </ul>
-                    </div>	
+                    </a>			
                 </div> 
             </div> 
         </div> 
@@ -137,7 +130,7 @@ include '../menus/menu.php';
                                                     <div class="control-group">
                                                         <label class="control-label" for="correo">E-mail: <font color="red">*</font></label>
                                                         <div class="controls">
-                                                            <input type="email" name="correo" id="correo" placeholder="xxxx@example.com" class="campo"/>
+                                                            <input type="text" name="correo" id="correo" placeholder="xxxx@example.com" class="campo"/>
                                                         </div>  
                                                     </div> 
 
@@ -171,15 +164,16 @@ include '../menus/menu.php';
                                                     <div class="control-group">											
                                                         <label class="control-label" for="ruc_ci">RUC/CI: <font color="red">*</font></label>
                                                         <div class="controls">
-                                                            <input type="text" name="ruc_ci"  id="ruc_ci" placeholder="10000000000" required class="campo">
-                                                            <input type="hidden" name="id_proveedor"  id="id_proveedor" readonly class="campo">
-                                                        </div>			
+                                                            <input type="text" name="ruc_ci"  id="ruc_ci" placeholder="10000000000" required class="campo" />
+                                                            <input type="hidden" name="id_proveedor"  id="id_proveedor" readonly class="campo" >
+                                                        </div>	
+                                                        <!--<div id="mensaje1" class="errores">Dame tu nombre</div>-->
                                                     </div>
 
                                                     <div class="control-group">											
                                                         <label class="control-label" for="representante_legal">Representante Legal: </label>
                                                         <div class="controls">
-                                                            <input type="text" name="representante_legal" id="representante_legal" placeholder="Representante Legal" required class="campo"/>
+                                                            <input type="text" name="representante_legal" id="representante_legal" placeholder="Representante Legal" required class="campo" />
                                                         </div>
                                                     </div>
 

@@ -54,57 +54,58 @@ var dialogo4 ={
     hide: "blind"
 }
 
-function abrirDialogo(e)
-{
+function abrirDialogo() {
     $("#proveedores").dialog("open");
 }
 
-function guardar_proveedor(e) {
+function guardar_proveedor() {
     var iden = $("#ruc_ci").val();
-    if ($("#tipo_docu").val() === "")
-    {
+    var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var correo = $("#correo").val();
+    
+    if ($("#tipo_docu").val() === "") {
         $("#tipo_docu").focus();
-        alert("Seleccione un tipo de documento ");
+        alertify.alert("Seleccione un tipo de documento ");
     } else {
         if ($("#tipo_docu").val() === "Cedula" && iden.length < 10) {
             $("#ruc_ci").focus();
-            alert("Error.. Minimo 10 digitos ");
+            alertify.alert("Error.. Minimo 10 digitos ");
         } else {
             if ($("#tipo_docu").val() === "Ruc" && iden.length < 13) {
                 $("#ruc_ci").focus();
-                alert("Error.. Minimo 13 digitos ");
+                alertify.alert("Error.. Minimo 13 digitos ");
             } else {
                 if ($("#empresa_pro").val() === "") {
                     $("#empresa_pro").focus();
-                    alert("Indique nombre de la empresa");
+                    alertify.alert("Indique nombre de la empresa");
                 } else {
                     if ($("#direccion_pro").val() === "") {
                         $("#direccion_pro").focus();
-                        alert("Indique la dirección");
+                        alertify.alert("Indique la dirección");
                     } else {
                         if ($("#nro_telefono").val() === "") {
                             $("#nro_telefono").focus();
-                            alert("Indique número telefónico");
+                            alertify.alert("Indique número telefónico");
                         } else {
-                            if ($("#correo").val() === "") {
+                            if (!expr.test(correo) || $("#correo").val() === "") {
                                 $("#correo").focus();
-                                alert("Ingrese el correo");
-                            } else {
+                                alertify.alert("Ingrese un correo");
+                            }else{
                                 if ($("#pais_pro").val() === "") {
                                     $("#pais_pro").focus();
-                                    alert("Ingrese el pais");
+                                    alertify.alert("Ingrese el país");
                                 } else {
                                     if ($("#ciudad_pro").val() === "") {
                                         $("#ciudad_pro").focus();
-                                        alert("Ingrese la ciudad");
+                                        alertify.alert("Ingrese la ciudad");
                                     } else {
                                         if ($("#forma_pago").val() === "") {
                                             $("#forma_pago").focus();
-                                            alert("Seleccione forma de pago");
+                                            alertify.alert("Seleccione forma de pago");
                                         } else {
                                             if ($("#principal_pro").val() === "") {
                                                 $("#principal_pro").focus();
-                                                alert("Seleccione un tipo");
+                                                alertify.alert("Seleccione un tipo");
                                             }else{
                                                 $.ajax({
                                                     type: "POST",
@@ -113,11 +114,11 @@ function guardar_proveedor(e) {
                                                     "&empresa_pro=" + $("#empresa_pro").val() + "&representante_legal=" + $("#representante_legal").val()
                                                     + "&visitador=" + $("#visitador").val() + "&direccion_pro=" + $("#direccion_pro").val() + "&nro_telefono=" + $("#nro_telefono").val() + "&nro_celular=" + $("#nro_celular").val() + "&fax=" + $("#fax").val() + "&pais_pro=" + $("#pais_pro").val() + "&ciudad_pro=" + $("#ciudad_pro").val() + "&forma_pago=" + $("#forma_pago").val() + "&correo=" + $("#correo").val() + "&principal_pro=" + $("#principal_pro").val() + "&observaciones_pro=" + $("#observaciones_pro").val(),
                                                     success: function(data) {
-                                                       var  val = data;
+                                                        var val = data;
                                                         if (val == 1)
                                                         {
-                                                            alert("Datos Guardados Correctamente");
-                                                            location.reload();
+                                                            
+                                                            alertify.alert("Datos Guardados Correctamente",function(){location.reload();});
                                                         }
                                                     }
                                                 }); 
@@ -129,61 +130,62 @@ function guardar_proveedor(e) {
                         }
                     }
                 }
-            }
+            } 
         }
     }
 }
 
-function modificar_proveedor(e) {
+function modificar_proveedor() {
     var iden = $("#ruc_ci").val();
-    if ($("#id_proveedor").val() === "")
-    {
-        alert("Seleccione un proveedor");
+    var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var correo = $("#correo").val();
+    
+    if ($("#id_proveedor").val() === "") {
+        alertify.alert("Seleccione un proveedor");
     } else {
-        if ($("#tipo_docu").val() === "")
-        {
+        if ($("#tipo_docu").val() === "") {
             $("#tipo_docu").focus();
-            alert("Seleccione un tipo de documento ");
+            alertify.alert("Seleccione un tipo de documento ");
         } else {
             if ($("#tipo_docu").val() === "Cedula" && iden.length < 10) {
                 $("#ruc_ci").focus();
-                alert("Error.. Minimo 10 digitos ");
+                alertify.alert("Error.. Minimo 10 digitos ");
             } else {
                 if ($("#tipo_docu").val() === "Ruc" && iden.length < 13) {
                     $("#ruc_ci").focus();
-                    alert("Error.. Minimo 13 digitos ");
+                    alertify.alert("Error.. Minimo 13 digitos ");
                 } else {
                     if ($("#empresa_pro").val() === "") {
                         $("#empresa_pro").focus();
-                        alert("Indique nombre de la empresa");
+                        alertify.alert("Indique nombre de la empresa");
                     } else {
                         if ($("#direccion_pro").val() === "") {
                             $("#direccion_pro").focus();
-                            alert("Indique la dirección");
+                            alertify.alert("Indique la dirección");
                         } else {
                             if ($("#nro_telefono").val() === "") {
                                 $("#nro_telefono").focus();
-                                alert("Indique número telefónico");
+                                alertify.alert("Indique número telefónico");
                             } else {
-                                if ($("#correo").val() === "") {
+                                if (!expr.test(correo) || $("#correo").val() === "") {
                                     $("#correo").focus();
-                                    alert("Ingrese el correo");
+                                    alertify.alert("Ingrese un correo");
                                 } else {
                                     if ($("#pais_pro").val() === "") {
                                         $("#pais_pro").focus();
-                                        alert("Ingrese el pais");
+                                        alertify.alert("Ingrese el pais");
                                     } else {
                                         if ($("#ciudad_pro").val() === "") {
                                             $("#ciudad_pro").focus();
-                                            alert("Ingrese la ciudad");
+                                            alertify.alert("Ingrese la ciudad");
                                         } else {
                                             if ($("#forma_pago").val() === "") {
                                                 $("#forma_pago").focus();
-                                                alert("Seleccione forma de pago");
+                                                alertify.alert("Seleccione forma de pago");
                                             } else {
                                                 if ($("#principal_pro").val() === "") {
                                                     $("#principal_pro").focus();
-                                                    alert("Seleccione un tipo");
+                                                    alertify.alert("Seleccione un tipo");
                                                 }else{
                                                     $.ajax({
                                                         type: "POST",
@@ -195,8 +197,7 @@ function modificar_proveedor(e) {
                                                             var val = data;
                                                             if (val == 1)
                                                             {
-                                                                alert("Datos Modificados Correctamente");
-                                                                location.reload();
+                                                                 alertify.alert("Datos Modificados Correctamente",function(){location.reload();});
                                                             }
                                                         }
                                                     });
@@ -215,18 +216,17 @@ function modificar_proveedor(e) {
 }
 
 function eliminar_proveedor() {
-    if ($("#id_proveedor").val() === "")
-    {
-        alert("Seleccione un proveedor");
+    if ($("#id_proveedor").val() === "") {
+        alertify.alert("Seleccione un proveedor");
     } else {
-         $("#clave_permiso").dialog("open"); 
+        $("#clave_permiso").dialog("open"); 
     }
 }
 
 function validar_acceso(){
     if($("#clave").val() == ""){
-        alert("Ingrese la clave");
         $("#clave").focus();
+        alertify.alert("Ingrese la clave");
     }else{
         $.ajax({
             url: '../procesos/validar_acceso.php',
@@ -234,15 +234,13 @@ function validar_acceso(){
             data: "clave=" + $("#clave").val(),
             success: function(data) {
                 var val = data;
-                if (val == 0)
-                {
-                    alert("Error... La clave es incorrecta ingrese nuevamente");
+                if (val == 0) {
                     $("#clave").val("");
                     $("#clave").focus();
-                }else{
-                    if (val == 1)
-                    {
-                        $("#seguro").dialog("open");   
+                    alertify.alert("Error... La clave es incorrecta ingrese nuevamente");
+                }else {
+                    if (val == 1) {
+                       $("#seguro").dialog("open");   
                     }
                 }
             }
@@ -251,16 +249,14 @@ function validar_acceso(){
 }
 
 function aceptar(){
-$.ajax({
+    $.ajax({
         type: "POST",
         url: "../procesos/eliminar_proveedor.php",
         data: "id_proveedor=" + $("#id_proveedor").val(),
         success: function(data) {
             var val = data;
-            if (val == 1)
-            {
-                alert("Proveedor Eliminado Correctamente");
-                location.reload();
+            if (val == 1) {
+                alertify.alert("Proveedor Eliminado Correctamente",function(){location.reload();});
             }
         }
     }); 
@@ -295,7 +291,21 @@ function Num_Let() {
     return true;
 }
 
+function reset () {
+    $("#toggleCSS").attr("href", "../css/alertify.default.css");
+    alertify.set({
+        labels : {
+            ok     : "OK",
+            cancel : "Cancel"
+        },
+        delay : 5000,
+        buttonReverse : false,
+        buttonFocus   : "ok"
+    });
+}
+
 function inicio() {
+    
     $("#nro_telefono").validCampoFranz("0123456789");
     $("#nro_celular").validCampoFranz("0123456789");
 
@@ -323,13 +333,12 @@ function inicio() {
                     $("#ruc_ci").unbind("keypress");
                     $("#ruc_ci").removeAttr("disabled");
                     $("#ruc_ci").attr("maxlength", "30");
-
                 }
             }
-
         }
     });
     /////////////////////////////
+  
 
     //////para validar cedula//////
     $("#ruc_ci").keyup(function() {
@@ -364,48 +373,195 @@ function inicio() {
                     if (parseInt(ci.charAt(9)) === residuo) {
                     }
                     else {
-                        alert("Error.... Cedula Incorrecta");
+                        alertify.alert("Error.... Cédula Incorrecta");
                         $("#ruc_ci").val("");
                     }
                 }
             }
         }else{
             if ($("#tipo_docu option:selected").text() === "Ruc") {
-                var ruc = ci.substr(10,13);
+                ///////////validar limite ruc////////////////
+                var ruc_ci = ci.substr(10,13);
+                ///////////////////////////////////
                 
-                if(ruc == "001" ){
-                    var ce = ci.substr(0,10);
-                    for (i = 0; i < 9; i++) {
-                        if (i % 2 === 0) {
-                            if (parseInt(ce.charAt(i)) * 2 > 9) {
-                                cont = (parseInt(ce.charAt(i)) * 2) - 9;
+                ///////////////ruc/////////////////
+                var ruc = $("#ruc_ci").val();
+                digito3 = ruc.substring(2,3);
+                var digito3 = ruc.substring(2,3);
+                ///////////////////////////////////////
+                
+                if(ruc_ci == "001" ){
+                    if(digito3 == 6){
+                        var psuma = 0;
+                        var pcadena = 0;
+                        var p;
+                        var presiduo;
+                        var pveri;
+                        for(p=1 ; p<9 ; p++){
+                            if(p==1){
+                                pcadena = ruc.substring(p-1,p);
+                                pcadena = parseInt(pcadena)*3;
+                                psuma+=parseInt(pcadena);
+                            }else{
+                                if(p==2){
+                                    pcadena = ruc.substring(p-1,p);
+                                    pcadena = parseInt(pcadena)*2;
+                                    psuma+= parseInt(pcadena);
+                                }else{
+                                    if(p==3){
+                                        pcadena = ruc.substring(p-1,p);
+                                        pcadena = parseInt(pcadena)*7;
+                                        psuma+= parseInt(pcadena);	
+                                    }else{
+                                        if (p==4){
+                                            pcadena = ruc.substring(p-1,p);
+                                            pcadena = parseInt(pcadena)*6;
+                                            psuma+= parseInt(pcadena);
+                                        }else{
+                                            if (p==5){
+                                                pcadena = ruc.substring(p-1,p);
+                                                pcadena = parseInt(pcadena)*5;
+                                                psuma+= parseInt(pcadena);
+                                            }else{
+                                                if (p==6){
+                                                    pcadena = ruc.substring(p-1,p);
+                                                    pcadena = parseInt(pcadena)*4;
+                                                    psuma+= parseInt(pcadena);
+                                                }else{
+                                                    if (p==7){
+                                                        pcadena = ruc.substring(p-1,p);
+                                                        pcadena = parseInt(pcadena)*3;
+                                                        psuma+= parseInt(pcadena);
+                                                    }else{
+                                                        if (p==8){
+                                                            pcadena = ruc.substring(p-1,p);
+                                                            pcadena = parseInt(pcadena)*2;
+                                                            psuma+= parseInt(pcadena);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
-                            else {
-                                cont = (parseInt(ce.charAt(i)) * 2);
-                            }
-                            impares = impares + cont;
                         }
-                        else {
-                            pares = pares + parseInt(ce.charAt(i));
-                        }
-                    }
-                    total = pares + impares;
-                    if (total % 10 === 0) {
-                    }
-                    else {
-                        residuo = total % 10;
-                        residuo = 10 - residuo;
-                        if (parseInt(ce.charAt(9)) === residuo) {
-                        }
-                        else {
-                            alert("Error.... Ruc Incorrecto");
+                        presiduo = (psuma%11);
+                        presiduo = 11-presiduo;
+                        pveri = ruc.substring(8,9);
+                        if(presiduo != pveri){
+                            alertify.alert("Error.... Ruc de personas Públicas incorrecto!!!");
                             $("#ruc_ci").val("");
+                        }else{
+                        // alert("Ruc pertenece a personas publicas");
                         }
-                    }
+                    }else{
+                        if(digito3 == 9){
+                            var jsuma = 0;
+                            var jcadena= 0;
+                            var jresiduo;
+                            var jveri;
+                            for(var j = 1 ; j<10; j++){
+                                if(j==1){
+                                    jcadena = ruc.substring(j-1,j);
+                                    jcadena  =parseInt(jcadena)*4;
+                                    jsuma+=parseInt(jcadena);
+                                }else{
+                                    if(j==2){
+                                        jcadena = ruc.substring(j-1,j);
+                                        jcadena  = parseInt(jcadena)*3;
+                                        jsuma+=parseInt(jcadena);
+                                    }else{
+                                        if(j==3){
+                                            jcadena = ruc.substring(j-1,j);
+                                            jcadena  = parseInt(jcadena)*2;
+                                            jsuma+=parseInt(jcadena);
+                                        }else{
+                                            if(j==4){
+                                                jcadena = ruc.substring(j-1,j);
+                                                jcadena  = parseInt(jcadena)*7;
+                                                jsuma+=parseInt(jcadena);
+                                            }else{
+                                                if(j==5){
+                                                    jcadena = ruc.substring(j-1,j);
+                                                    jcadena  = parseInt(jcadena)*6;
+                                                    jsuma+=parseInt(jcadena);
+                                                }else{
+                                                    if(j==6){
+                                                        jcadena = ruc.substring(j-1,j);
+                                                        jcadena  = parseInt(jcadena)*5;
+                                                        jsuma+=parseInt(jcadena);
+                                                    }else{
+                                                        if(j==7){
+                                                            jcadena = ruc.substring(j-1,j);
+                                                            jcadena  =parseInt(jcadena)*4;
+                                                            jsuma+=parseInt(jcadena);
+                                                        }else{
+                                                            if(j==8){
+                                                                jcadena = ruc.substring(j-1,j);
+                                                                jcadena  =parseInt(jcadena)*3;
+                                                                jsuma+=parseInt(jcadena);
+                                                            }else{
+                                                                if(j==9){
+                                                                    jcadena = ruc.substring(j-1,j);
+                                                                    jcadena  =parseInt(jcadena)*2;
+                                                                    jsuma+=parseInt(jcadena);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                } 
+                            }
+                            jresiduo = (jsuma % 11);
+                            jresiduo = 11-jresiduo;
+                            jveri = ruc.substring(9,10);
+                            if(jresiduo!=jveri){
+                                alertify.alert("Error.... Ruc de personas Jurídicas incorrecto!!!");
+                                $("#ruc_ci").val("");
+                            }else{
+                            //alert("Ruc pertenece a personas juridicas");
+                            }
+                        }else{
+                            if(digito3 < 6){
+                                var ce = ci.substr(0,10);
+                                for (i = 0; i < 9; i++) {
+                                    if (i % 2 === 0) {
+                                        if (parseInt(ce.charAt(i)) * 2 > 9) {
+                                            cont = (parseInt(ce.charAt(i)) * 2) - 9;
+                                        }
+                                        else {
+                                            cont = (parseInt(ce.charAt(i)) * 2);
+                                        }
+                                        impares = impares + cont;
+                                    }
+                                    else {
+                                        pares = pares + parseInt(ce.charAt(i));
+                                    }
+                                }
+                                total = pares + impares;
+                                if (total % 10 === 0) {
+                                }
+                                else {
+                                    residuo = total % 10;
+                                    residuo = 10 - residuo;
+                                    if (parseInt(ce.charAt(9)) === residuo) {
+                                    //alert("Ruc pertenece a personas naturales");  
+                                    }else {
+                                        $("#ruc_ci").val("");
+                                        alertify.alert("Error.... Ruc de personas Naturales incorrecto!!!");
+                                    }
+                                }
+                            }
+                        }
+                    }                       
                 }else{
                     if($("#ruc_ci").val().length === 13){
-                        alert("Error.... Ruc Incorrecto");   
-                        $("#ruc_ci").val("");
+                         $("#ruc_ci").val("");
+                        alertify.alert("Error.... Ruc Incorrecto!!!");
                     }
                 }
             }
@@ -421,11 +577,10 @@ function inicio() {
             data: "cedula=" + $("#ruc_ci").val(),
             success: function(data) {
                 var val = data;
-                if (val == 1)
-                {
-                    alert("Error... El proveedor ya ésta registrado");
+                if (val == 1) {
                     $("#ruc_ci").val("");
                     $("#ruc_ci").focus();
+                    alertify.alert("Error... El proveedor ya ésta registrado");
                 }
             }
         });
@@ -549,9 +704,8 @@ function inicio() {
                 jQuery("#list").jqGrid('GridToForm', id, "#proveedores_form");
                 $("#btnGuardar").attr("disabled", true);
                 $("#proveedores").dialog("close");
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+              alertify.alert("Seleccione un fila");
             }
         }
     });

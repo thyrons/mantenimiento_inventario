@@ -77,20 +77,20 @@ function enter2(event) {
 function entrar() {
     if ($("#cod_producto").val() === "") {
         $("#codigo").focus();
-        alert("Ingrese un producto");
+        alertify.alert("Ingrese un producto");
     } else {
         if ($("#producto").val() === "") {
             $("#producto").focus();
-            alert("Ingrese un producto");
+            alertify.alert("Ingrese un producto");
         } else {
             if ($("#cantidad").val() === "") {
                 $("#cantidad").focus();
-                alert("Ingrese una cantidad");
+                alertify.alert("Ingrese una cantidad");
             } else {
                 if ($("#cantidad").val() === "0") {
                     $("#cantidad").val("");
                     $("#cantidad").focus();
-                    alert("Ingrese una cantidad válida");
+                    alertify.alert("Ingrese una cantidad válida");
                 } else {
                     var filas = jQuery("#list2").jqGrid("getRowData");
                     var su = 0;
@@ -136,7 +136,7 @@ function entrar() {
                             $("#cantidad").val("");
                         }
                         else {
-                            alert("Error... Solo se puede ingresar un producto a la vez");
+                            alertify.alert("Error... Solo se puede ingresar un producto a la vez");
                             $("#codigo").focus();
                         }
                     }
@@ -150,28 +150,26 @@ function entrar() {
 function entrar2() {
     if ($("#cod_producto2").val() === "") {
         $("#codigo2").focus();
-        alert("Ingrese un producto");
+        alertify.alert("Ingrese un producto");
     } else {
         if ($("#producto2").val() === "") {
             $("#producto2").focus();
-            alert("Ingrese un producto");
+            alertify.alert("Ingrese un producto");
         } else {
             if ($("#cantidad2").val() === "") {
                 $("#cantidad2").focus();
-                alert("Ingrese una cantidad");
+                alertify.alert("Ingrese una cantidad");
             } else {
                 if ($("#precio2").val() === "") {
                     $("#precio2").focus();
-                    alert("Ingrese precio costo");
+                    alertify.alert("Ingrese precio costo");
                 } else {
                     if ($("#cantidad2").val() === "0") {
                         $("#cantidad2").val("");
                         $("#cantidad2").focus();
-                        alert("Ingrese una cantidad válida");
+                        alertify.alert("Ingrese una cantidad válida");
                     } else {
-                        if (parseInt($("#cantidad2").val()) <= parseInt($("#disponibles").val()))
-                        {
-
+                        if (parseInt($("#cantidad2").val()) <= parseInt($("#disponibles").val())) {
                             var filas = jQuery("#list").jqGrid("getRowData");
                             var su = 0;
                             var total = 0;
@@ -252,7 +250,7 @@ function entrar2() {
                             $("#subtot").val(sub);
                             $("#codigo2").focus();
                         } else {
-                            alert("Error... Fuera de stock");
+                            alertify.alert("Error... Fuera de stock");
                             $("#cantidad2").focus();
                         }
                     }
@@ -319,18 +317,17 @@ function guardar_ordenes() {
                     if (val == 1)
                     {
                         window.open("../reportes/reportes/orden_produccion.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
-                        alert(" Ordenes de producción guardada correctamente");
-                        location.reload();
+                        alertify.alert(" Ordenes de producción guardada correctamente", function(){location.reload();});
                     }
                 }
             });
         } else {
-            alert("Error... Ingrese los componentes del producto");
             $("#codigo2").focus();
+            alertify.alert("Error... Ingrese los componentes del producto");
         }
     } else {
-        alert("Error... Ingrese el producto a realizar");
         $("#codigo").focus();
+        alertify.alert("Error... Ingrese el producto a realizar");
     }
 }
 
@@ -366,7 +363,6 @@ function flecha_atras(){
                             $("#fecha_actual").val(data[i]);
                             $("#hora_actual").val(data[i + 1 ]);
                             $("#digitador").val(data[i + 2 ] + " " + data[i + 3 ] );
-
                         }
                     }
                 });
@@ -413,7 +409,7 @@ function flecha_atras(){
                     }
                 });
             }else{
-                alert("No hay mas registros posteriores!!");
+                alertify.alert("No hay mas registros posteriores!!");
             }
         }
     });
@@ -496,7 +492,7 @@ function flecha_siguiente(){
                     }
                 });
             }else{
-                alert("No hay mas registros superiores!!");
+                alertify.alert("No hay mas registros superiores!!");
             }
         }
     });
@@ -598,15 +594,15 @@ function inicio() {
     $("#codigo2").on("keyup", limpiar_campo3);
     $("#producto2").on("keyup", limpiar_campo4);
     
-    $("#codigo").on("keyup", enter);
-    $("#producto").on("keyup", enter);
-    $("#cantidad").on("keyup", enter);
+    $("#codigo").on("keypress", enter);
+    $("#producto").on("keypress", enter);
+    $("#cantidad").on("keypress", enter);
     /////////////////////////////////////////
 
-    $("#codigo2").on("keyup", enter2);
-    $("#producto2").on("keyup", enter2);
-    $("#cantidad2").on("keyup", enter2);
-    $("#precio2").on("keyup", enter2);
+    $("#codigo2").on("keypress", enter2);
+    $("#producto2").on("keypress", enter2);
+    $("#cantidad2").on("keypress", enter2);
+    $("#precio2").on("keypress", enter2);
     //////////////para precio////////
 
     $("#precio2").keypress(function(e) {
@@ -1081,7 +1077,7 @@ function inicio() {
         $("#ordenes").dialog("close");
         }
         else {
-            alert("Seleccione una orden");
+            alertify.alert("Seleccione una orden");
         }
     }
 });    

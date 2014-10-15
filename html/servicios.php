@@ -21,6 +21,8 @@ include '../menus/menu.php';
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
         <link href="../css/font-awesome.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
+        <link href="../css/sm-core-css.css" rel="stylesheet" type="text/css" />
+        <link href="../css/sm-blue/sm-blue.css" rel="stylesheet" type="text/css" />
 
         <script type="text/javascript" src="../js/base.js"></script>
         <script type="text/javascript" src="../js/bootstrap.js"></script>
@@ -35,10 +37,7 @@ include '../menus/menu.php';
         <script type="text/javascript" src="../js/datosUser.js"></script>
         <script type="text/javascript" src="../js/ventana_reporte.js"></script>
         <script type="text/javascript" src="../js/guidely/guidely.min.js"></script>
-
         <script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
-        <link href="../css/sm-core-css.css" rel="stylesheet" type="text/css" />
-        <link href="../css/sm-blue/sm-blue.css" rel="stylesheet" type="text/css" />
     </head>
 
     <body>
@@ -53,22 +52,13 @@ include '../menus/menu.php';
 
                     <a class="brand" href="">
                         <?php echo $_SESSION['empresa']; ?>         
-                    </a>		
-
-                    <div class="nav-collapse">
-                        <ul class="nav pull-right">
-                            <div class="controls">
-                                <button class="btn btn-facebook-alt"><i class="icon-facebook-sign"></i> Facebook</button>
-                                <button class="btn btn-twitter-alt"><i class="icon-twitter-sign"></i> Twitter</button>
-                            </div>
-                        </ul>
-                    </div>	
+                    </a>			
                 </div> 
             </div> 
         </div> 
 
         <!-- /Inicio  Menu Principal -->
-         <div class="subnavbar">
+        <div class="subnavbar">
             <div class="subnavbar-inner">
                 <?Php
                 // Cabecera Menu 
