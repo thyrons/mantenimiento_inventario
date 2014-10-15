@@ -18,7 +18,7 @@ session_start();
     </header>        
     <hr>
     <div id="linea">
-        <h3>NOTA DE ENTREGA </h3>
+        <h3>RECIBO DE COBRO </h3>
     </div>';
     include '../../procesos/base.php';
     conectarse();    

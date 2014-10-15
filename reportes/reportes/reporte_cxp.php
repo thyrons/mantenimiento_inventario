@@ -18,7 +18,7 @@ session_start();
     </header>        
     <hr>
     <div id="linea">
-        <h3>CUENTA POR PAGAR </h3>
+        <h3>RECIBO DE PAGO </h3>
     </div>';
     include '../../procesos/base.php';
     conectarse();    
