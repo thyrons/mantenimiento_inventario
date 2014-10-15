@@ -59,25 +59,26 @@ function enter2(e) {
 }
 
 function entrar() {
+    reset();
     if ($("#cod_producto").val() === "") {
         $("#codigo").focus();
-        alert("Ingrese un producto");
+        alertify.alert("Ingrese un producto");
     } else {
         if ($("#codigo").val() === "") {
             $("#codigo").focus();
-            alert("Ingrese un producto");
+            alertify.alert("Ingrese un producto");
         } else {
             if ($("#producto").val() === "") {
                 $("#producto").focus();
-                alert("Ingrese un producto");
+                alertify.alert("Ingrese un producto");
             } else {
                 if ($("#cantidad").val() === "") {
                     $("#cantidad").focus();
-                    alert("Ingrese una cantidad");
+                    alertify.alert("Ingrese una cantidad");
                 } else {
                     if ($("#cantidad").val() === "0") {
                         $("#cantidad").focus();
-                        alert("Ingrese una cantidad");
+                        alertify.alert("Ingrese una cantidad");
                     } else {
                         $("#precio").focus();
                     }
@@ -85,32 +86,33 @@ function entrar() {
             }
         }
     }
+    return false;
 }
 
 function entrar2() {
     if ($("#cod_producto").val() === "") {
         $("#codigo").focus();
-        alert("Ingrese un producto");
+        alertify.alert("Ingrese un producto");
     } else {
         if ($("#codigo").val() === "") {
             $("#codigo").focus();
-            alert("Ingrese un producto");
+            alertify.alert("Ingrese un producto");
         } else {
             if ($("#producto").val() === "") {
                 $("#producto").focus();
-                alert("Ingrese un producto");
+                alertify.alert("Ingrese un producto");
             } else {
                 if ($("#cantidad").val() === "") {
                     $("#cantidad").focus();
-                    alert("Ingrese una cantidad");
+                    alertify.alert("Ingrese una cantidad");
                 } else {
                     if ($("#cantidad").val() === "0") {
                         $("#cantidad").focus();
-                        alert("Ingrese una cantidad");
+                        alertify.alert("Ingrese una cantidad");
                     } else {
                         if ($("#precio").val() === "") {
                             $("#precio").focus();
-                            alert("Ingrese un precio");
+                            alertify.alert("Ingrese un precio");
                         } else {
                             // $("#descuento").focus();
                             //alert("ok");
@@ -213,10 +215,9 @@ function entrar2() {
 
 function guardar_inventario() {
     var tam = jQuery("#list").jqGrid("getRowData");
-
     
     if (tam.length === 0) {
-        alert("Error... Ingrese productos en el inventario");
+        alertify.alert("Error... Ingrese productos en el inventario");
     } else {
         var v1 = new Array();
         var v2 = new Array();
@@ -256,12 +257,28 @@ function guardar_inventario() {
                 var val = data;
                 if (val == 1)
                 {
-                    alert("Inventario Guardado correctamente");
-                    location.reload();
+                    alertify.alert("Inventario Guardado correctamente",function(){location.reload();});
                 }
             }
         });
     }
+}
+
+function nuevo(){
+ location.reload();   
+}
+
+function reset () {
+    $("#toggleCSS").attr("href", "../css/alertify.default.css");
+    alertify.set({
+        labels : {
+            ok     : "OK",
+            cancel : "Cancel"
+        },
+        delay : 5000,
+        buttonReverse : false,
+        buttonFocus   : "ok"
+    });
 }
 
 function inicio() {
@@ -288,13 +305,14 @@ function inicio() {
     });
     
     $("#btnGuardar").on("click", guardar_inventario);
+    $("#btnNuevo").on("click", nuevo);
     //////////////////////
     
     //////inmput////////
-    $("#codigo").on("keyup", enter);
-    $("#producto").on("keyup", enter);
-    $("#cantidad").on("keyup", enter);
-    $("#precio").on("keyup", enter2);
+    $("#codigo").on("keypress", enter );
+    $("#producto").on("keypress", enter);
+    $("#cantidad").on("keypress", enter);
+    $("#precio").on("keypress", enter2);
     ///////////////////
     
     /////buscador productos codigo///// 

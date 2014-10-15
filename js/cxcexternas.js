@@ -31,8 +31,7 @@ var dialogo2 =
     hide: "blind"    
 }
 
-function abrirDialogo(e)
-{
+function abrirDialogo(e) {
     e.preventDefault();
     $("#prod").dialog("open");
 
@@ -81,19 +80,19 @@ function enter(e) {
 function comprobar() {
     if ($("#id_cliente").val() === "") {
         $("#ruc_ci").focus();
-        alert("Ingrese un cliente");
+        alertify.alert("Ingrese un cliente");
     } else {
         if ($("#num_factura").val() === "") {
             $("#num_factura").focus();
-            alert("Ingrese Factura Preimpresa");
+            alertify.alert("Ingrese Factura Preimpresa");
         }else{
             if ($("#tipo_documento").val() === "") {
                 $("#tipo_documento").focus();
-                alert("Seleccione tipo Documento");
+                alertify.alert("Seleccione tipo Documento");
             }else{
                 if ($("#total").val() === "") {
                     $("#total").focus();
-                    alert("Ingrese el total de la factura");
+                    alertify.alert("Ingrese el total de la factura");
                 }
             }
         }
@@ -104,11 +103,11 @@ function comprobar() {
 function guardar_cuenta() {
     if ($("#id_cliente").val() === "") {
         $("#ruc_ci").focus();
-        alert("Ingrese un cliente");
+        alertify.alert("Ingrese un cliente");
     } else {
         if ($("#num_factura").val() === "") {
             $("#num_factura").focus();
-            alert("Ingrese Factura Preimpresa");
+            alertify.alert("Ingrese Factura Preimpresa");
         }else{
             $.ajax({
                 type: "POST",
@@ -116,19 +115,18 @@ function guardar_cuenta() {
                 data: "num_fac=" + $("#num_factura").val(),
                 success: function(data) {
                     var val = data;
-                    if (val == 1)
-                    {
-                        alert("Error... El número de factura ya existe");
+                    if (val == 1) {
                         $("#num_factura").val("");
                         $("#num_factura").focus();
+                        alertify.alert("Error... El número de factura ya existe");
                     }else{
                         if ($("#tipo_documento").val() === "") {
                             $("#tipo_documento").focus();
-                            alert("Seleccione tipo Documento");
+                            alertify.alert("Seleccione tipo Documento");
                         }else{
                             if ($("#total").val() === "") {
                                 $("#total").focus();
-                                alert("Ingrese el total de la factura");
+                                alertify.alert("Ingrese el total de la factura");
                             }else{
                                 $.ajax({
                                     type: "POST",
@@ -136,10 +134,8 @@ function guardar_cuenta() {
                                     data: "id_cliente=" + $("#id_cliente").val() + "&comprobante=" + $("#comprobante").val() + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&num_factura=" + $("#num_factura").val() + "&tipo_documento=" + $("#tipo_documento").val() + "&total=" + $("#total").val(),
                                     success: function(data) {
                                         val = data;
-                                        if (val == 1)
-                                        {
-                                            alert("Registro Guardado correctamente");
-                                            location.reload();
+                                        if (val == 1) {
+                                            alertify.alert("Registro Guardado correctamente", function(){ location.reload();});
                                         }
                                     }
                                 });
@@ -195,7 +191,7 @@ function flecha_atras(){
                     }
                 });
             }else{
-                alert("No hay mas registros posteriores!!");
+                alertify.alert("No hay mas registros posteriores!!");
             }
         }
     });
@@ -244,7 +240,7 @@ function flecha_siguiente(){
                     }
                 });
                 }else{
-                alert("No hay mas registros superiores!!");
+                alertify.alert("No hay mas registros superiores!!");
             }
         }
     });
@@ -314,9 +310,9 @@ function inicio() {
     //////////////validaciones////////////
     $("#ruc_ci").on("keyup", limpiar_campo);
     $("#nombres_completos").on("keyup", limpiar_campo2);
-    $("#ruc_ci").on("keyup", enter);
-    $("#num_factura").on("keyup", enter);
-    $("#total").on("keyup", enter);
+    $("#ruc_ci").on("keypress", enter);
+    $("#num_factura").on("keypress", enter);
+    $("#total").on("keypress", enter);
     //////////////////////////////////////
     
      $("#num_factura").attr("maxlength", "20");
@@ -569,7 +565,7 @@ function inicio() {
                 $("#buscar_cartera_cobrar").dialog("close");
             }
             else {
-                alert("Seleccione una cuenta");
+                alertify.alert("Seleccione una Cuenta");
             }
         }
         
@@ -651,7 +647,7 @@ function inicio() {
                 $("#buscar_cartera_cobrar").dialog("close");
             }
             else {
-                alert("Seleccione una cuenta");
+                alertify.alert("Seleccione una Cuenta");
             }
         }
     });

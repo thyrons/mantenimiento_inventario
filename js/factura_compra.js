@@ -64,21 +64,19 @@ var dialogo2 =
     hide: "blind"    
 }
 
-function abrirDialogo()
-{
-    if ($("#carga_series").val() === "")
-    {
-        alert("Error... Seleccione un producto");
+function abrirDialogo() {
+    if ($("#carga_series").val() === "") {
+        alertify.alert("Error... Seleccione un producto");
     } else {
         if ($("#carga_series").val() === "No") {
-            alert("Error... El producto no contiene series");
             $("#descuento").focus();
+            alertify.alert("Error... El producto no contiene series");
         } else {
             if ($("#cantidad").val() !== "") {
                 $("#series").dialog("open");
             } else {
-                alert("Error... Indique una cantidad");
                 $("#cantidad").focus();
+                alertify.alert("Error... Indique una cantidad");
             }
         }
     }
@@ -143,23 +141,23 @@ function autocompletar() {
 function entrar() {
     if ($("#cod_producto").val() === "") {
         $("#codigo").focus();
-        alert("Ingrese un producto");
+        alertify.alert("Ingrese un producto");
     } else {
         if ($("#codigo").val() === "") {
             $("#codigo").focus();
-            alert("Ingrese un producto");
+            alertify.alert("Ingrese un producto");
         } else {
             if ($("#producto").val() === "") {
                 $("#producto").focus();
-                alert("Ingrese un producto");
+                alertify.alert("Ingrese un producto");
             } else {
                 if ($("#cantidad").val() === "") {
                     $("#cantidad").focus();
-                    alert("Ingrese una cantidad");
+                    alertify.alert("Ingrese una cantidad");
                 } else {
                     if ($("#cantidad").val() === "0") {
                         $("#cantidad").focus();
-                        alert("Ingrese una cantidad");
+                        alertify.alert("Ingrese una cantidad");
                     } else {
                         $("#precio").focus();
                     }
@@ -172,27 +170,27 @@ function entrar() {
 function comprobar() {
     if ($("#cod_producto").val() === "") {
         $("#codigo").focus();
-        alert("Ingrese un producto");
+        alertify.alert("Ingrese un producto");
     } else {
         if ($("#codigo").val() === "") {
             $("#codigo").focus();
-            alert("Ingrese un producto");
+            alertify.alert("Ingrese un producto");
         } else {
             if ($("#producto").val() === "") {
                 $("#producto").focus();
-                alert("Ingrese un producto");
+                alertify.alert("Ingrese un producto");
             } else {
                 if ($("#cantidad").val() === "") {
                     $("#cantidad").focus();
-                    alert("Ingrese una cantidad");
+                    alertify.alert("Ingrese una cantidad");
                 } else {
                     if ($("#cantidad").val() === "0") {
                         $("#cantidad").focus();
-                        alert("Ingrese una cantidad");
+                        alertify.alert("Ingrese una cantidad");
                     } else {
                         if ($("#precio").val() === "") {
                             $("#precio").focus();
-                            alert("Ingrese un precio");
+                            alertify.alert("Ingrese un precio");
                         } else {
                             $("#descuento").focus();
                         }
@@ -206,27 +204,27 @@ function comprobar() {
 function comprobar2() {
     if ($("#cod_producto").val() === "") {
         $("#codigo").focus();
-        alert("Ingrese un producto");
+        alertify.alert("Ingrese un producto");
     } else {
         if ($("#codigo").val() === "") {
             $("#codigo").focus();
-            alert("Ingrese un producto");
+            alertify.alert("Ingrese un producto");
         } else {
             if ($("#producto").val() === "") {
                 $("#producto").focus();
-                alert("Ingrese un producto");
+                alertify.alert("Ingrese un producto");
             } else {
                 if ($("#cantidad").val() === "") {
                     $("#cantidad").focus();
-                    alert("Ingrese una cantidad");
+                    alertify.alert("Ingrese una cantidad");
                 } else {
                     if ($("#cantidad").val() === "0") {
                         $("#cantidad").focus();
-                        alert("Ingrese una cantidad");
+                        alertify.alert("Ingrese una cantidad");
                     } else {
                         if ($("#precio").val() === "") {
                             $("#precio").focus();
-                            alert("Ingrese un precio");
+                            alertify.alert("Ingrese un precio");
                         } else {
                             var filas = jQuery("#list").jqGrid("getRowData");
                             var descuento = 0;
@@ -415,15 +413,15 @@ function comprobar2() {
 function comprobar3() {
     if ($("#tipo_docu").val() === "") {
         $("#tipo_docu").focus();
-        alert("Seleccione tipo documento");
+        alertify.alert("Seleccione tipo documento");
     } else {
         if ($("#empresa").val() === "") {
             $("#ruc_ci").focus();
-            alert("Indique una empresa");
+            alertify.alert("Indique una empresa");
         } else {
             if ($("#tipo_comprobante").val() === "") {
                 $("#tipo_comprobante").focus();
-                alert("Seleccione tipo comprobante");
+                alertify.alert("Seleccione tipo comprobante");
             } else {
                 if ($("#serie1").val() === "") {
                     $("#serie1").focus();
@@ -447,8 +445,8 @@ function comprobar3() {
 
 function comprobar4() {
     if ($("#autorizacion").val() === "") {
-        alert("Ingrese la autorización");
         $("#autorizacion").focus();
+        alertify.alert("Ingrese la autorización");
     } else {
         $("#codigo").focus();
     }
@@ -467,11 +465,10 @@ function agregar() {
             data: "serie=" + $("#serie").val(),
             success: function(data) {
                 var val = data;
-                if (val == 1)
-                {
-                    alert("Error... Serie ya registrada");
+                if (val == 1) {
                     $("#serie").val("");
                     $("#serie").focus();
+                    alertify.alert("Error... Serie ya registrada");
                 }else{
                     if (filas2.length < canti) {
                         if (filas2.length === 0) {
@@ -500,22 +497,22 @@ function agregar() {
                                 $("#serie").val("");
                                  $("#serie").focus();
                             } else {
-                                alert("Error... Serie ingresada");
                                 $("#serie").val("");
-                                 $("#serie").focus();
+                                $("#serie").focus();
+                                alertify.alert("Error... Serie ingresada");
                             }
                         }
                     } else {
-                        alert("Error... Alcanzo el limite máximo");
                         $("#serie").val("");
                         $("#btnAgregar").attr("disabled", "disabled");
+                        alertify.alert("Error... Alcanzo el limite máximo");
                     }
                 }
             }
         });
     } else {
-        alert("Error... Indique una serie");
         $("#serie").focus();
+        alertify.alert("Error... Indique una serie");
     }
 }
 
@@ -523,7 +520,7 @@ function agregar() {
 function guardar_serie() {
     var tam2 = jQuery("#list2").jqGrid("getRowData");
     if ($("#cod_producto").val() === "") {
-        alert("Error... Seleccione un producto");
+        alertify.alert("Error... Seleccione un producto");
     } else {
         if (tam2.length > 0) {
             var v1 = new Array();
@@ -553,7 +550,7 @@ function guardar_serie() {
                 }
             });
         } else {
-            alert("Error... Ingrese las series");
+            alertify.alert("Error... Ingrese las series");
         }
     }
 }
@@ -563,26 +560,26 @@ function guardar_factura() {
 
     if ($("#tipo_docu").val() === "") {
         $("#tipo_docu").focus();
-        alert("Seleccione tipo documento");
+        alertify.alert("Seleccione tipo documento");
     } else {
         if ($("#empresa").val() === "") {
             $("#ruc_ci").focus();
-            alert("Indique una empresa");
+            alertify.alert("Indique una empresa");
         } else {
             if ($("#tipo_comprobante").val() === "") {
                 $("#tipo_comprobante").focus();
-                alert("Seleccione tipo comprobante");
+                alertify.alert("Seleccione tipo comprobante");
             } else {
                 if ($("#serie1").val() === "") {
-                    alert("Ingrese la serie");
+                    alertify.alert("Ingrese la serie");
                     $("#serie1").focus();
                 } else {
                     if ($("#serie2").val() === "") {
-                        alert("Ingrese la serie");
+                        alertify.alert("Ingrese la serie");
                         $("#serie2").focus();
                     } else {
                         if ($("#serie3").val() === "") {
-                            alert("Ingrese la serie");
+                            alertify.alert("Ingrese la serie");
                             $("#serie3").focus();
                         } else {
                             var num_fac = $("#serie1").val() + "-" + $("#serie2").val() + "-" + $("#serie3").val();
@@ -592,18 +589,17 @@ function guardar_factura() {
                                 data: "num_fac=" + num_fac + "&id_proveedor=" + $("#id_proveedor").val(),
                                 success: function(data) {
                                     var val = data;
-                                    if (val == 1)
-                                    {
-                                        alert("Error... El número de factura ya existe");
+                                    if (val == 1) {
                                         $("#serie3").val("");
                                         $("#serie3").focus();
+                                        alertify.alert("Error... El número de factura ya existe");
                                     }else{
                                         if ($("#autorizacion").val() === "") {
-                                            alert("Ingrese la autorización");
                                             $("#autorizacion").focus();
+                                            alertify.alert("Ingrese la autorización");
                                         }else{
                                             if (tam.length === 0) {
-                                                alert("Error... Llene productos a la factura");
+                                                alertify.alert("Error... Llene productos a la factura");
                                             } else {
                                                 var v1 = new Array();
                                                 var v2 = new Array();
@@ -641,8 +637,7 @@ function guardar_factura() {
                                                         if (val == 1)
                                                         {
                                                             window.open("../reportes/reportes/factura_compra.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
-                                                            alert("Factura Guardada correctamente");
-                                                            location.reload();
+                                                            alertify.alert("Factura Guardada correctamente", function(){location.reload();});
                                                         }
                                                     }
                                                 });
@@ -754,7 +749,7 @@ $.ajax({
                     }
                 });
              }else{
-             alert("No hay mas registros posteriores!!");
+             alertify.alert("No hay mas registros posteriores!!");
             }
         }
     });
@@ -856,7 +851,7 @@ $.ajax({
                 }
             });
             }else{
-                alert("No hay mas registros superiores!!");
+                alertify.alert("No hay mas registros superiores!!");
             }
         }
     });    
@@ -975,17 +970,17 @@ function inicio() {
     $("#ruc_ci").on("keyup", limpiar_campo);
     $("#codigo").on("keyup", limpiar_campo2);
     $("#producto").on("keyup", limpiar_campo3);
-    $("#codigo").on("keyup", enter);
-    $("#producto").on("keyup", enter);
-    $("#cantidad").on("keyup", enter);
-    $("#precio").on("keyup", enter2);
-    $("#descuento").on("keyup", enter3);
-    $("#ruc_ci").on("keyup", enter4);
-    $("#empresa").on("keyup", enter4);
-    $("#serie1").on("keyup", enter4);
-    $("#serie2").on("keyup", enter4);
-    $("#serie3").on("keyup", enter4);
-    $("#autorizacion").on("keyup", enter5);
+    $("#codigo").on("keypress", enter);
+    $("#producto").on("keypress", enter);
+    $("#cantidad").on("keypress", enter);
+    $("#precio").on("keypress", enter2);
+    $("#descuento").on("keypress", enter3);
+    $("#ruc_ci").on("keypress", enter4);
+    $("#empresa").on("keypress", enter4);
+    $("#serie1").on("keypress", enter4);
+    $("#serie2").on("keypress", enter4);
+    $("#serie3").on("keypress", enter4);
+    $("#autorizacion").on("keypress", enter5);
     /////////////////////////////////////////
 
     //////////atributos////////////
@@ -997,7 +992,6 @@ function inicio() {
     /////////////////////////////////
 
     //////////////para precio////////
-
     $("#precio").keypress(function(e) {
         var key;
         if (window.event)
@@ -1022,7 +1016,6 @@ function inicio() {
         }
         return true;
     });
-
     ////////////////////////////////
 
     ///////////adelanto//////////////
@@ -1527,7 +1520,7 @@ function inicio() {
             $("#buscar_facturas_compras").dialog("close");
         }
         else {
-            alert("Seleccione una cuenta");
+            alertify.alert("Seleccione una Factura");
         }
     }
         
@@ -1643,11 +1636,10 @@ function inicio() {
                 }
             }
         });
-        
        $("#buscar_facturas_compras").dialog("close");
         }
         else {
-            alert("Seleccione una cuenta");
+            alertify.alert("Seleccione una Factura");
         }
     }
   });
