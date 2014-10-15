@@ -48,7 +48,7 @@ if($search=='false'){
             $SQL = "select * from productos where $_GET[searchField] like '%$_GET[searchString]%' ORDER BY $sidx $sord offset $start limit $limit";
         }
         if($_GET['searchOper']=='nc'){ 
-        $SQL = "select * from productos where $_GET[searchField] not like '%$_GET[searchString]%' ORDER BY $sidx $sord offset $start limit $limit"; 
+            $SQL = "select * from productos where $_GET[searchField] not like '%$_GET[searchString]%' ORDER BY $sidx $sord offset $start limit $limit"; 
         }
         if($_GET['searchOper']=='in'){ 
             $SQL = "select * from productos where $_GET[searchField] like '%$_GET[searchString]%' ORDER BY $sidx $sord offset $start limit $limit";

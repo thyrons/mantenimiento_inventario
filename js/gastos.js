@@ -96,119 +96,6 @@ function ValidNum(e) {
     return true;
 }
 
-function guardar_factura() {
-    var tam = jQuery("#list").jqGrid("getRowData");
-
-    if ($("#num_factura").val() === "") {
-        $("#num_factura").focus();
-        alert("Indique número de la factura");
-    } else {
-        var num_factu = ("001" + "-" + "001" + "-" + $("#num_factura").val());
-        
-        $.ajax({
-            type: "POST",
-            url: "../procesos/comparar_num_venta.php",
-            data: "num_fac=" + num_factu,
-            success: function(data) {
-                var val = data;
-                if (val == 1)
-                {
-                    alert("Error... El número de factura ya existe");
-                    $("#num_factura").val("");
-                    $("#num_factura").focus();
-                }else{
-                    if ($("#ruc_ci").val() === "") {
-                        $("#ruc_ci").focus();
-                        alert("Indique un cliente");
-                    } else {
-                        if ($("#ruc_ci").val().length !== 10 && $("#ruc_ci").val().length !== 13) {
-                            alert("Error... Ingrese una Identificación valida");
-                            $("#ruc_ci").val("");
-                            $("#ruc_ci").focus();
-                        } else{
-                            if ($("#nombre_cliente").val() === "") {
-                                $("#nombre_cliente").focus();
-                                alert("Nombres del cliente");
-                            }else{
-                                if ($("#direccion_cliente").val() === "") {
-                                    $("#direccion_cliente").focus();
-                                    alert("Dirección del cliente");
-                                }else{
-                                    if ($("#saldo").val() === "") {
-                                        $("#saldo").focus();
-                                        alert("Indique un saldo");
-                                    } else {
-                                        if ($("#tipo_precio").val() === "") {
-                                            alert("Seleccione un tipo de precio");
-                                            $("#tipo_precio").focus();
-                                        } else {
-                                            if (tam.length === 0) {
-                                                alert("Error... Llene productos a la factura");
-                                            } else {
-                                                if ($("#formas").val() === "Credito" && $("#meses").val() === "") {
-                                                    $("#meses").focus();
-                                                    alert("Meses a diferir");
-                                                } else {
-                                                    var v1 = new Array();
-                                                    var v2 = new Array();
-                                                    var v3 = new Array();
-                                                    var v4 = new Array();
-                                                    var v5 = new Array();
-                                                    var v6 = new Array();
-                                                    var string_v1 = "";
-                                                    var string_v2 = "";
-                                                    var string_v3 = "";
-                                                    var string_v4 = "";
-                                                    var string_v5 = "";
-                                                    var string_v6 = "";
-                                                    var fil = jQuery("#list").jqGrid("getRowData");
-                                                    for (var i = 0; i < fil.length; i++) {
-                                                        var datos = fil[i];
-                                                        v1[i] = datos['cod_producto'];
-                                                        v2[i] = datos['cantidad'];
-                                                        v3[i] = datos['precio_u'];
-                                                        v4[i] = datos['descuento'];
-                                                        v5[i] = datos['total'];
-                                                        v6[i] = datos['pendiente'];
-                                                    }
-                                                    for (i = 0; i < fil.length; i++) {
-                                                        string_v1 = string_v1 + "|" + v1[i];
-                                                        string_v2 = string_v2 + "|" + v2[i];
-                                                        string_v3 = string_v3 + "|" + v3[i];
-                                                        string_v4 = string_v4 + "|" + v4[i];
-                                                        string_v5 = string_v5 + "|" + v5[i];
-                                                        string_v6 = string_v6 + "|" + v6[i];
-                                                    }
-                                                    
-                                                    var seriee = ("001" + "-" + "001" + "-" + $("#num_factura").val());
-                                                    $.ajax({
-                                                        type: "POST",
-                                                        url: "../procesos/guardar_factura_venta.php",
-                                                        data: "id_cliente=" + $("#id_cliente").val() + "&comprobante=" + $("#comprobante").val() + "&num_factura=" + seriee + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&proforma=" + $("#proforma").val() + "&cancelacion=" + $("#cancelacion").val() + "&tipo_precio=" + $("#tipo_precio").val() + "&formas=" + $("#formas").val() + "&adelanto=" + $("#adelanto").val() + "&meses=" + $("#meses").val() + "&autorizacion=" + $("#autorizacion").val()+ "&fecha_auto=" + $("#fecha_auto").val()+ "&fecha_caducidad=" + $("#fecha_caducidad").val() + "&tarifa0=" + $("#total_p").val() + "&tarifa12=" + $("#total_p2").val() + "&iva=" + $("#iva").val() + "&desc=" + $("#desc").val() + "&tot=" + $("#tot").val() + "&ruc_ci=" + $("#ruc_ci").val() + "&nombre_cliente=" + $("#nombre_cliente").val() + "&direccion_cliente=" + $("#direccion_cliente").val() + "&telefono_cliente=" + $("#telefono_cliente").val() + "&saldo=" + $("#saldo").val() + "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5+ "&campo6=" + string_v6,
-                                                        success: function(data) {
-                                                            val = data;
-                                                            if (val == 1)
-                                                            {
-                                                                window.open("../reportes_sistema/factura_venta.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
-                                                                alert("Factura Guardada correctamente");
-                                                                location.reload();
-                                                            }
-                                                        }
-                                                    });
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        } 
-                    } 
-                }
-            }
-        });
-    }
-}
-
 function limpiar_factura(){
     location.reload(); 
 }
@@ -273,7 +160,6 @@ function inicio() {
         e.preventDefault();
     });
 
-    $("#btnGuardar").on("click", guardar_factura);
     $("#btnAceptar").click(function (){
         var id = jQuery("#list2").jqGrid('getGridParam', 'selrow');
         jQuery('#list2').jqGrid('restoreRow', id);
@@ -339,7 +225,6 @@ function inicio() {
         return true;
     });
     ////////////////////////////////
-   
 
     ///////////calendarios////////////
     $("#fecha_actual").datepicker({
@@ -375,10 +260,9 @@ function inicio() {
         var ret = jQuery("#list2").jqGrid('getRowData', id); 
         
         if(parseFloat(ret.total_gasto) <= parseFloat(0.00)){
-           alert("Factura al limite");   
+           alertify.alert("Factura al limite");   
         }else{
             $("#ingreso_gastos").dialog("open"); 
-            
         }
     }
         }).jqGrid('navGrid', '#pager2',
@@ -415,15 +299,13 @@ function inicio() {
         jQuery('#list2').jqGrid('restoreRow', id);
         if (id) {
            var ret = jQuery("#list2").jqGrid('getRowData', id);
- 
            if(parseFloat(ret.total_gasto) <= parseFloat(0.00)){
-           alert("Factura al limite");   
+           alertify.alert("Factura al limite");   
             }else{
                 $("#ingreso_gastos").dialog("open"); 
             }
-        }
-        else {
-            alert("Seleccione una cuenta");
+        }  else {
+            alertify.alert("Seleccione una Factura");
         }
     }
 });
@@ -432,17 +314,16 @@ function inicio() {
 
 
 function crear_gasto(id_factura, total_gasto, total_venta ){
-
     if($("#descripcion").val() == ""){
-        alert("Ingrese la descripción");
         $("#descripcion").focus();
+        alertify.alert("Ingrese la descripción");
     }else{
         if($("#valor").val() == ""){
-            alert("Ingrese el valor");
             $("#valor").focus();
+            alertify.alert("Ingrese el valor");
         } else{
-            if(parseFloat($("#valor").val()) > parseFloat(total_gasto)){
-                alert("Error... El valor excede al saldo disponible");
+            if(parseFloat($("#valor").val()) > parseFloat(total_gasto)) {
+                alertify.alert("Error... El valor excede al saldo disponible");
             }else{
                 ///////////////guardar gastos///////////////////
                 $.ajax({
@@ -451,11 +332,10 @@ function crear_gasto(id_factura, total_gasto, total_venta ){
                     data: "id_factura_venta=" + id_factura + "&comprobante=" + $("#comprobante").val() + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&descripcion=" + $("#descripcion").val() + "&valor=" + $("#valor").val() + "&saldo=" + total_venta,
                     success: function(data) {
                         var val = data;
-                        if (val == 1)
-                        {
-                            alert("Gasto Agragado");
+                        if (val == 1) {
                             $("#ingreso_gastos").dialog("close");
                             $("#buscar_facturas_venta").dialog("close");
+                            alertify.alert("Gasto Agragado");
                         }
                     }
                 }); 
@@ -485,7 +365,6 @@ function crear_gasto(id_factura, total_gasto, total_venta ){
                         $("#descripcion").val("");
                         $("#valor").val("");
                         $("#list2").trigger('reloadGrid');
-
                     }                    
                 });
             }

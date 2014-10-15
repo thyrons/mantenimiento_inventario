@@ -88,17 +88,17 @@ function enter1(e) {
 }
 
 function comprobar() {
-    if ($("#id_cliente").val() === "") {
+    if ($("#id_proveedor").val() === "") {
         $("#ruc_ci").focus();
-        alert("Ingrese un cliente");
+        alertify.alert("Ingrese un Proveedor");
     } else {
         if ($("#ruc_ci").val() === "") {
             $("#ruc_ci").focus();
-            alert("Identificación del cliente");
+            alertify.alert("Identificación del Proveedor");
         }else{
             if ($("#forma_pago").val() === "") {
                 $("#forma_pago").focus();
-                alert("Error... Seleccione forma de pago");
+                alertify.alert("Error... Seleccione forma de pago");
             }
         }
     }
@@ -106,11 +106,11 @@ function comprobar() {
 
 function entrar() {
     if ($("#num_factura").val() === "") {
-        alert("Error... Seleccione una factura");
+        alertify.alert("Error... Seleccione una factura");
     } else {
         if ($("#valor_pagado").val() === "") {
             $("#valor_pagado").focus();
-            alert("Ingrese un valor");
+            alertify.alert("Ingrese un valor");
         } else {
             $("#list").jqGrid("clearGridData", true);
             var filas = jQuery("#list").jqGrid("getRowData");
@@ -140,7 +140,7 @@ function entrar() {
 function cargar_facturas(){
     var id = $("#id_proveedor").val();
     if (id === "") {
-        alert("Error... Seleccione un proveedor");
+        alertify.alert("Error... Seleccione un proveedor");
         $("#ruc_ci").focus();
         $("#num_factura").val("");
     } else {
@@ -156,23 +156,23 @@ function guardar_pagos(){
     var tam = jQuery("#list").jqGrid("getRowData");
 
     if ($("#id_proveedor").val() === "") {
-        $("#ruc_ci").focus();
-        alert("Ingrese un cliente");
+        $("#tipo_docu").focus();
+        alertify.alert("Ingrese un Proveedor");
     } else {
         if ($("#ruc_ci").val() === "") {
             $("#ruc_ci").focus();
-            alert("Identificación del cliente");
+            alertify.alert("Identificación del Proveedor");
         }else{
             if ($("#forma_pago").val() === "0") {
                 $("#forma_pago").focus();
-                alert("Error... Seleccione forma de pago");
+                alertify.alert("Error... Seleccione forma de pago");
             }else{
                 if ($("#tipo_pago").val() === "") {
                     $("#tipo_pago").focus();
-                    alert("Error... Seleccione tipo de pago");
+                    alertify.alert("Error... Seleccione tipo de pago");
                 }else{
                     if (tam.length === 0) {
-                        alert("Error... Ingrese un pago");
+                        alertify.alert("Error... Ingrese un pago");
                     }else{
                         var v1 = new Array();
                         var v2 = new Array();
@@ -215,16 +215,14 @@ function guardar_pagos(){
                             data: "id_proveedor=" + $("#id_proveedor").val() + "&comprobante=" + $("#comprobante").val() + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&forma_pago=" + $("#forma_pago").val() + "&tipo_pago=" + $("#tipo_pago").val() + "&observaciones=" + $("#observaciones").val() + "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5 + "&campo6=" + string_v6+ "&campo7=" + string_v7 ,
                             success: function(data) {
                                 var val = data;
-                                if (val == 1)
-                                {
+                                if (val == 1) {
                                      if($("#tipo_pago").val()=="EXTERNA")
                                     {
                                         window.open("../reportes/reportes/reporte_cxp.php?tipo_pago="+$("#tipo_pago").val()+"&id="+v2[0]+"&comprobante="+$("#comprobante").val()+"&proveedor="+$("#id_proveedor").val(),'_blank');
                                     }else{
                                         window.open("../reportes/reportes/reporte_cxp.php?tipo_pago="+$("#tipo_pago").val()+"&id="+v2[0]+"&comprobante="+$("#comprobante").val()+"&temp2="+v6[0]+"&temp3="+v7[0]+"&proveedor="+$("#id_proveedor").val(),'_blank');
                                     }  
-                                    alert("Pago Guardado correctamente");
-                                    location.reload();
+                                    alertify.alert("Pago Guardado correctamente", function(){location.reload();});
                                 }
                             }
                         });
@@ -294,7 +292,7 @@ function flecha_atras(){
                 }
              });
             }else{
-                alert("No hay mas registros posteriores!!");
+                alertify.alert("No hay mas registros posteriores!!");
             }
         }
     });
@@ -358,7 +356,7 @@ function flecha_siguiente(){
                 }
              });
             }else{
-                alert("No hay mas registros superiores!!");
+                alertify.alert("No hay mas registros superiores!!");
             }
         }
     });
@@ -414,8 +412,7 @@ jQuery().UItoTop({ easingType: 'easeOutQuart' });
             temp2 = datos['valor_pagado'];    
             temp3 = datos['saldo'];                            
         }
-        if($("#tipo_pago").val()=="EXTERNA")
-        {            
+        if($("#tipo_pago").val()=="EXTERNA") {            
             window.open("../reportes/reportes/reporte_cxp.php?tipo_pago="+$("#tipo_pago").val()+"&id="+temp+"&comprobante="+$("#comprobante").val()+"&proveedor="+$("#id_proveedor").val(),'_blank');
         }else{
             window.open("../reportes/reportes/reporte_cxp.php?tipo_pago="+$("#tipo_pago").val()+"&id="+temp+"&comprobante="+$("#comprobante").val()+"&temp2="+temp2+"&temp3="+temp3+"&proveedor="+$("#id_proveedor").val(),'_blank');
@@ -474,8 +471,8 @@ jQuery().UItoTop({ easingType: 'easeOutQuart' });
     ////////////////////////////////
 
     //////////////validaciones////////////
-    $("#ruc_ci").on("keyup", enter);
-    $("#valor_pagado").on("keyup", enter1);
+    $("#ruc_ci").on("keypress", enter);
+    $("#valor_pagado").on("keypress", enter1);
 
    //////////////buscar proveedor///////////////////
     $("#tipo_docu").change(function() {
@@ -672,7 +669,7 @@ jQuery("#list2").jqGrid({
             $("#list").jqGrid("clearGridData", true);
         }
         else {
-            alert("Seleccione una cuenta");
+            alertify.alert("Seleccione una Cuenta");
         }
     }
 }).jqGrid('navGrid', '#pager2', {
@@ -704,7 +701,7 @@ jQuery("#list2").jqGrid('navButtonAdd', '#pager2', {caption: "Añadir",
            $("#list").jqGrid("clearGridData", true);
         }
         else {
-            alert("Seleccione una cuenta");
+            alertify.alert("Seleccione una Cuenta");
         }
     }
 });
@@ -879,7 +876,7 @@ jQuery("#list2").jqGrid('navButtonAdd', '#pager2', {caption: "Añadir",
 
         }
         else {
-            alert("Seleccione una cuenta");
+            alertify.alert("Seleccione una Cuenta a Pagar");
         }
     }
 });
