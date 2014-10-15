@@ -225,15 +225,15 @@ class PDF extends PDF_Rotate
 			$pdf->SetTextColor(0,0,0);	
 			$pdf->SetFont('Arial','',8); 		
 			$pdf->Cell(55,50,'',0,1,'C');				 			
-			$pdf->Text(25,74,utf8_decode(''.strtoupper($fila[8])),0,'C', 0);////CLIENTE (X,Y)	
-			$pdf->Text(25,80,utf8_decode(''.strtoupper($fila[9])),0,'C', 0);////RUC (X,Y)	
-			$pdf->Text(25,86,utf8_decode(''.strtoupper($fila[10])),0,'C', 0);///DIRECCION (X,Y)	
-			$pdf->Text(25,92,utf8_decode(''.strtoupper($fila[11])),0,'C', 0);///TELEFONO(X,Y)	
-			$pdf->Text(115,92,utf8_decode(''.strtoupper($fila[12])),0,'C', 0);///CIUDAD(X,Y)			
-			$pdf->Text(180,74,utf8_decode(strtoupper($fila[13])),0,'C', 0);///FECHA EMISION (X,Y)
-			$pdf->Text(180,80,utf8_decode(strtoupper($fila[14])),0,'C', 0);////FORMA PAGO (X,Y)
-			$pdf->Text(183,86,utf8_decode(strtoupper($fila[15])),0,'C', 0);///FECHA VENCIMIENTO (X,Y)			
-			$pdf->Ln(28);							
+			$pdf->Text(25,76,utf8_decode(''.strtoupper($fila[8])),0,'C', 0);////CLIENTE (X,Y)	
+			$pdf->Text(25,82,utf8_decode(''.strtoupper($fila[9])),0,'C', 0);////RUC (X,Y)	
+			$pdf->Text(25,88,utf8_decode(''.strtoupper($fila[10])),0,'C', 0);///DIRECCION (X,Y)	
+			$pdf->Text(25,94,utf8_decode(''.strtoupper($fila[11])),0,'C', 0);///TELEFONO(X,Y)	
+			$pdf->Text(115,94,utf8_decode(''.strtoupper($fila[12])),0,'C', 0);///CIUDAD(X,Y)			
+			$pdf->Text(180,76,utf8_decode(strtoupper($fila[13])),0,'C', 0);///FECHA EMISION (X,Y)
+			$pdf->Text(180,82,utf8_decode(strtoupper($fila[14])),0,'C', 0);////FORMA PAGO (X,Y)
+			$pdf->Text(183,88,utf8_decode(strtoupper($fila[15])),0,'C', 0);///FECHA VENCIMIENTO (X,Y)			
+			$pdf->Ln(32);							
 		}		           
 	}	
 	///////////////
@@ -305,7 +305,7 @@ class PDF extends PDF_Rotate
 	$fila = pg_fetch_row($sql);       	        
 	$pdf->SetFont('Arial','',8);	   	  	
 	$pdf->SetX(50);			  	
-	$pdf->SetY(238);//////////LETRAS EN  NUMEROS Y SUBTOTALES	
+	$pdf->SetY(249);//////////LETRAS EN  NUMEROS Y SUBTOTALES	
 	$pdf->Cell(125,8,utf8_decode('                             '.$letras->ValorEnLetras($fila[4],"dolares")),0,0,'L');	
 	$pdf->SetFont('Arial','',8);	
 	$pdf->SetX(172);			  	
