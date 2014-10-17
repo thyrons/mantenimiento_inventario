@@ -1004,9 +1004,8 @@ jQuery().UItoTop({ easingType: 'easeOutQuart' });
             });
  
          $("#buscar_egresos").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione un Egreso");
+        } else {
+          alertify.alert("Seleccione un Egreso");
         }
     }
 });

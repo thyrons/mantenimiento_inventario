@@ -479,7 +479,6 @@ function agregar() {
                             su = jQuery("#list2").jqGrid('addRowData', count, datarow);
                             $("#serie").val("");
                             $("#serie").focus();
-                            
                         } else {
                             var repe = 0;
                             for (var i = 0; i < filas2.length; i++) {
@@ -541,8 +540,7 @@ function guardar_serie() {
                 data: "cod_producto=" + $("#cod_producto").val() + "&campo1=" + string_v1+ "&comprobante=" + $("#comprobante").val(),
                 success: function(data) {
                    var  val = data;
-                    if (val == 1)
-                    {
+                    if (val == 1) {
                         $("#list2").jqGrid("clearGridData", true);
                         $("#series").dialog("close");
                         $("#descuento").focus();  
@@ -634,10 +632,11 @@ function guardar_factura() {
                                                     data: "id_proveedor=" + $("#id_proveedor").val() + "&comprobante=" + $("#comprobante").val() + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&fecha_registro=" + $("#fecha_registro").val() + "&fecha_emision=" + $("#fecha_emision").val() + "&fecha_caducidad=" + $("#fecha_caducidad").val() + "&tipo_comprobante=" + $("#tipo_comprobante").val() + "&serie=" + seriee + "&autorizacion=" + $("#autorizacion").val() + "&cancelacion=" + $("#cancelacion").val() + "&formas=" + $("#formas").val() + "&tarifa0=" + $("#total_p").val() + "&tarifa12=" + $("#total_p2").val() + "&iva=" + $("#iva").val() + "&desc=" + $("#desc").val() + "&tot=" + $("#tot").val() + "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5,
                                                     success: function(data) {
                                                        var  val = data;
-                                                        if (val == 1)
-                                                        {
-                                                            window.open("../reportes/reportes/factura_compra.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
-                                                            alertify.alert("Factura Guardada correctamente", function(){location.reload();});
+                                                        if (val == 1) {
+                                                            alertify.alert("Factura Guardada correctamente", function(){
+                                                            window.open("../reportes/reportes/factura_compra.php?hoja=A4&id="+$("#comprobante").val(),'_blank');    
+                                                            location.reload();
+                                                            });
                                                         }
                                                     }
                                                 });
@@ -1149,9 +1148,9 @@ function inicio() {
 
     //////////////////calcular meses/////////
     $("#meses").change(function() {
+        $("#meses").val("");
         if ($("#formas").val() === "Contado") {
-            alert("Error...No se puede diferer");
-            $("#meses").val("");
+            alertify.alert("Error...No se puede diferer");
         } else {
             if ($("#formas").val() === "Credito") {
                 var resta = ($("#tot").val() - $("#adelanto").val());
@@ -1180,7 +1179,7 @@ function inicio() {
                     $("#meses").removeAttr("disabled");
                     $("#cuotas").removeAttr("disabled");
                 } else {
-                    alert("Error...Ingrese un monto a la factura");
+                    alertify.alert("Error...Ingrese un monto a la factura");
                     $("#formas option[value=" + 'Contado' + "]").attr("selected", true);
                 }
             }
@@ -1516,14 +1515,11 @@ function inicio() {
                 }
             }
         });
-          
             $("#buscar_facturas_compras").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione una Factura");
+        } else {
+          alertify.alert("Seleccione una Factura");
         }
     }
-        
         }).jqGrid('navGrid', '#pager3',
         {
             add: false,
@@ -1637,9 +1633,8 @@ function inicio() {
             }
         });
        $("#buscar_facturas_compras").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione una Factura");
+        } else {
+          alertify.alert("Seleccione una Factura");
         }
     }
   });

@@ -436,8 +436,7 @@ function entrar3() {
                                     $("#descuento").val("");
                                     $("#disponibles").val("");
                                     $('#combobox').children().remove().end();
-                                }
-                                else {
+                                } else {
                                     repe = 0;
                                     for (i = 0; i < filas.length; i++) {
                                         id = filas[i];
@@ -479,8 +478,7 @@ function entrar3() {
                                         $("#descuento").val("");
                                         $("#disponibles").val("");
                                         $('#combobox').children().remove().end();
-                                    }
-                                    else {
+                                    } else {
                                         if ($("#descuento").val() !== "")
                                         {
                                             desc = $("#descuento").val();
@@ -721,12 +719,10 @@ function abrirDialogo() {
                             }, 2500 );
                             this.input.autocomplete( "instance" ).term = "";
                         },
-
                         _destroy: function() {
                             this.wrapper.remove();
                             this.element.show();
                         }
-
                     });
                     $("#combobox" ).combobox();
                 }
@@ -826,8 +822,7 @@ function nuevo_cliente(){
                     }else{
                         if ($("#ruc_ci").val().length !== 10 && $("#ruc_ci").val().length !== 13) {
                             alertify.alert("Error... Ingrese una Identificación valida");
-                            $("#ruc_ci").val("");   
-                        }else{ 
+                        }else{  
                             $("#direccion_cliente").removeAttr("disabled");
                             $("#telefono_cliente").removeAttr("disabled");
                             $("#saldo").removeAttr("disabled");
@@ -1032,8 +1027,6 @@ function guardar_serie() {
     }
 }
 
-
-
 function guardar_factura() {
     var tam = jQuery("#list").jqGrid("getRowData");
 
@@ -1124,8 +1117,8 @@ function guardar_factura() {
                                                         success: function(data) {
                                                             var val = data;
                                                             if (val == 1) {
-                                                                window.open("../reportes_sistema/factura_venta.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
                                                                 alertify.alert("Factura Guardada correctamente", function(){
+                                                                    window.open("../reportes_sistema/factura_venta.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
                                                                     location.reload();
                                                                 });
                                                             }
@@ -1558,6 +1551,12 @@ function inicio() {
         min: 0, 
         max: 0
     });
+    
+   //////////validacion ruc cedula/////////////
+      $("#ruc_ci").validarCedulaEC({
+      strict: false
+    });
+   ///////////////////////////////// 
     ///////////////////////////////////
     //
     /////////////validador factura//////
@@ -2373,9 +2372,8 @@ function inicio() {
                 }
             });
             $("#buscar_facturas_venta").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione una Factura");
+        } else {
+          alertify.alert("Seleccione una Factura");
         }
     }
         
@@ -2536,9 +2534,8 @@ function inicio() {
                 }
             });
             $("#buscar_facturas_venta").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione una Factura");
+        } else {
+          alertify.alert("Seleccione una Factura");
         }
     }
 });

@@ -110,8 +110,7 @@ function entrar() {
                         $("#precio_v").val("");
                         $("#stock").val("");
                         $("#codigo").focus();
-                    }
-                    else {
+                    } else {
                         var repe = 0;
                         for (var i = 0; i < filas.length; i++) {
                             var id = filas[i];
@@ -134,10 +133,9 @@ function entrar() {
                             $("#precio_v").val("");
                             $("#stock").val("");
                             $("#cantidad").val("");
-                        }
-                        else {
-                            alertify.alert("Error... Solo se puede ingresar un producto a la vez");
+                        } else {
                             $("#codigo").focus();
+                            alertify.alert("Error... Solo se puede ingresar un producto a la vez");
                         }
                     }
                 }
@@ -191,8 +189,7 @@ function entrar2() {
                                 $("#precio2").val("");
                                 $("#p_venta2").val("");
                                 $("#disponibles").val("");
-                            }
-                            else {
+                            } else {
                                 var repe = 0;
                                 for (var i = 0; i < filas.length; i++) {
                                     var id = filas[i];
@@ -218,8 +215,7 @@ function entrar2() {
                                     $("#precio2").val("");
                                     $("#p_venta2").val("");
                                     $("#disponibles").val("");
-                                }
-                                else {
+                                } else {
                                     total = ($("#cantidad2").val() * $("#precio2").val()).toFixed(2);
                                     datarow = {
                                         cod_productos: $("#cod_producto2").val(), 
@@ -250,8 +246,8 @@ function entrar2() {
                             $("#subtot").val(sub);
                             $("#codigo2").focus();
                         } else {
-                            alertify.alert("Error... Fuera de stock");
                             $("#cantidad2").focus();
+                            alertify.alert("Error... Fuera de stock");
                         }
                     }
                 }
@@ -314,10 +310,11 @@ function guardar_ordenes() {
                 data: "comprobante=" + $("#comprobante").val() + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&subtotal=" + $("#subtot").val() + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5 + "&campo6=" + string_v6,
                 success: function(data) {
                     var val = data;
-                    if (val == 1)
-                    {
+                    if (val == 1) {
+                        alertify.alert(" Ordenes de producción guardada correctamente", function(){
                         window.open("../reportes/reportes/orden_produccion.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
-                        alertify.alert(" Ordenes de producción guardada correctamente", function(){location.reload();});
+                        location.reload();
+                        });
                     }
                 }
             });
@@ -447,7 +444,6 @@ function flecha_siguiente(){
                             $("#fecha_actual").val(data[i]);
                             $("#hora_actual").val(data[i + 1 ]);
                             $("#digitador").val(data[i + 2 ] + " " + data[i + 3 ] );
-
                         }
                     }
                 });
@@ -1075,9 +1071,8 @@ function inicio() {
         });
         /////////////////////////////////////////////////////////
         $("#ordenes").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione una orden");
+        } else {
+          alertify.alert("Seleccione una orden");
         }
     }
 });    

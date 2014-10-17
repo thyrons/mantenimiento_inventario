@@ -139,9 +139,9 @@ function entrar() {
 function cargar_facturas(){
     var id = $("#id_cliente").val();
     if (id === "") {
-        alertify.alert("Error... Seleccione un cliente");
-        $("#ruc_ci").focus();
         $("#num_factura").val("");
+        $("#ruc_ci").focus();
+        alertify.alert("Error... Seleccione un cliente");
     } else {
         $("#list2").jqGrid('setGridParam', {
             url: '../xml/xmlFacturas_venta.php?id_cliente=' + id + '&tipo=' + $("#tipo_pago").val()   , 

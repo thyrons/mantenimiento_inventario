@@ -563,9 +563,8 @@ function inicio() {
                     }
                 });
                 $("#buscar_cartera_cobrar").dialog("close");
-            }
-            else {
-                alertify.alert("Seleccione una Cuenta");
+            } else {
+              alertify.alert("Seleccione una Cuenta");
             }
         }
         
@@ -645,9 +644,8 @@ function inicio() {
                     }
                 });
                 $("#buscar_cartera_cobrar").dialog("close");
-            }
-            else {
-                alertify.alert("Seleccione una Cuenta");
+            } else {
+              alertify.alert("Seleccione una Cuenta");
             }
         }
     });

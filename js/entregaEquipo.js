@@ -126,8 +126,7 @@ function inicio()
                             {
                                 if((data[i + 1] / data[i + 4])>=0){
                                     resp=data[i + 1] / data[i + 4];
-                                }
-                                else{
+                                } else{
                                     resp=0;
                                 }
                                 
@@ -146,19 +145,16 @@ function inicio()
                     });
                 }
                 if (ret.id_estado == 0) {
-                    alert("El producto fue ingresado recientemente");
+                    alertify.alert("El producto fue ingresado recientemente");
                 }
-                if (ret.id_estado == 2)
-                {
-                    alert("El producto ya fue entregado");
+                if (ret.id_estado == 2) {
+                    alertify.alert("El producto ya fue entregado");
                 }
-                if (ret.id_estado == 3)
-                {
-                    alert("El producto esta en estado de reparación a cargo del técnico: " + ret.tecnico);
+                if (ret.id_estado == 3) {
+                    alertify.alert("El producto esta en estado de reparación a cargo del técnico: " + ret.tecnico);
                 }
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+                alertify.alert("Seleccione un fila");
             }
         }
     }).jqGrid('navGrid', '#pager',
@@ -214,8 +210,7 @@ function inicio()
                             {
                                 if((data[i + 1] / data[i + 4])>=0){
                                     resp=data[i + 1] / data[i + 4];
-                                }
-                                else{
+                                } else{
                                     resp=0;
                                 }
                                 
@@ -234,19 +229,16 @@ function inicio()
                     });
                 }
                 if (ret.id_estado == 0) {
-                    alert("El producto aún no esta pendiente para su reparación");
+                    alertify.alert("El producto aún no esta pendiente para su reparación");
                 }
-                if (ret.id_estado == 2)
-                {
-                    alert("El producto ya fue entregado");
+                if (ret.id_estado == 2) {
+                    alertify.alert("El producto ya fue entregado");
                 }
-                if (ret.id_estado == 3)
-                {
-                    alert("El producto esta en estado de reparación a cargo del técnico: " + ret.tecnico);
+                if (ret.id_estado == 3) {
+                    alertify.alert("El producto esta en estado de reparación a cargo del técnico: " + ret.tecnico);
                 }
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+                alertify.alert("Seleccione un fila");
                 
             }
         }
@@ -299,11 +291,10 @@ function inicio()
                 if(ret.id_estado==2){
                     window.open("../reportes/reportes/rep_entrega.php?id=" + ret.txtRegistro);
                }else{
-                alert("Error.. solo puede ver los reportes de los equipos entregados")
+                alertify.alert("Error.. solo puede ver los reportes de los equipos entregados")
                }
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+              alertify.alert("Seleccione un fila");
             }
         }
     }).jqGrid('navGrid', '#pager1',
@@ -344,11 +335,10 @@ function inicio()
                if(ret.id_estado==2){
                     window.open("../reportes/reportes/rep_entrega.php?id=" + ret.txtRegistro);
                }else{
-                alert("Error.. solo puede ver los reportes de los equipos entregados")
+                alertify.alert("Error.. solo puede ver los reportes de los equipos entregados")
                }
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+              alertify.alert("Seleccione un fila");
                 
             }
         }
@@ -423,13 +413,13 @@ function guardarReparacion()
         data: "id_registro=" + $("#txtRegistro").val() + "&total=" + $("#txtTotal").val() + "&descuento=" + $("#txtDesc").val() + "&hoy=" + hoy,
         success: function(response) {
             var data = response;
-            alert("Datos Modificados");
-            //window.open("../reportes/reportes/reporteEntrega.php?id=" + vect1 + "&val=" + vect2 + "&desc=" + $("#txtDesc").val() + "&total=" + $("#txtTotal").val().substr(2) + "&id_registro=" + $("#txtRegistro").val() + "&hoy=" + hoy);
+            alertify.alert("Datos Modificados", function(){
             window.open("../reportes/reportes/rep_entrega.php?id=" + $("#txtRegistro").val());
             limpiarDatos();
             location.reload();
             $("#tablaEn").css("display", "block");
-            $("#entregaP").css("display", "none");
+            $("#entregaP").css("display", "none");    
+            });
         }
     });
 }
@@ -455,28 +445,27 @@ function limpiarDatos()
     $("#tblRepracion tbody tr").remove();
     jQuery("#list").trigger("reloadGrid");
 }
+
 function guardarReco() {
-    if ($("#txtDetTe").val() !=="")
-    {
+    if ($("#txtDetTe").val() !=="") {
         $.ajax({
             type: "POST",
             url: "../procesos/agregarReco.php",
             data: "id=" + $("#idR").val() + "&reco=" + $("#txtDetTe").val(),
             success: function(data) {
-                val = data;
+                var val = data;
                 if (val == 1) {
-                    alert("Datos Agregados");
+                    alertify.alert("Datos Agregados", function(){
                     $("#modDetTec").dialog('close');
                     $("#idR").val("");
-                    $("#txtDetTe").val("");
-                }
-                else {
-                    alert("Error al momento de guardar");
+                    $("#txtDetTe").val("");    
+                    });
+                } else {
+                    alertify.alert("Error al momento de guardar");
                 }
             }
         });
-    }
-    else {
-        alert("Llene los campos antes de continuar");
+    } else {
+      alertify.alert("Llene los campos antes de continuar");
     }
 }

@@ -214,8 +214,7 @@ function comprobar2() {
                         $("#cantidad").val("");
                         $("#p_venta").val("");
                         $("#descuento").val("");
-                    }
-                    else {
+                    } else {
                         var repe = 0;
                         for (var i = 0; i < filas.length; i++) {
                             var id = filas[i];
@@ -253,8 +252,7 @@ function comprobar2() {
                             $("#cantidad").val("");
                             $("#p_venta").val("");
                             $("#descuento").val("");
-                        }
-                        else {
+                        } else {
                             if ($("#descuento").val() !== "")
                                 {
                                     desc = $("#descuento").val();
@@ -396,10 +394,11 @@ function guardar_proforma() {
                     data: "id_cliente=" + $("#id_cliente").val() + "&comprobante=" + $("#comprobante").val() + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&tipo_precio=" + $("#tipo_precio").val() + "&tarifa0=" + $("#total_p").val() + "&tarifa12=" + $("#total_p2").val() + "&iva=" + $("#iva").val() + "&desc=" + $("#desc").val() + "&tot=" + $("#tot").val() + "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5 + "&observaciones=" + $("#observaciones").val(),
                     success: function(data) {
                         var val = data;
-                        if (val == 1)
-                        {
-                            window.open("../reportes/reportes/proforma.php?id="+$("#comprobante").val(),'_blank');
-                            alertify.alert("Proforma Guardada correctamente",function(){location.reload();});   
+                        if (val == 1) {
+                            alertify.alert("Proforma Guardada correctamente",function(){
+                            window.open("../reportes/reportes/proforma.php?id="+$("#comprobante").val(),'_blank');    
+                            location.reload();
+                            });   
                         }
                     }
                 });
@@ -1155,9 +1154,8 @@ function inicio() {
             }
         });
        $("#buscar_proformas").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione una Proforma");
+        } else {
+          alertify.alert("Seleccione una Proforma");
         }
     }
 });

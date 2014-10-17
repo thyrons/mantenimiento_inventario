@@ -35,6 +35,7 @@ function fn_dar_eliminar(e) {
         });
     });
 }
+
 function agregarR() {
     $("#tblRepracion tbody").append("<tr>" +
             "<td align=center>" + $("#selectRepa").val() + "</td>" +
@@ -45,6 +46,7 @@ function agregarR() {
             "<td align=center style='display:none;'>" + "Servicio" + "</td>" + "</tr>");
     Rtotal();
 }
+
 function inicio() {
     $("#selectPro").focus(function() {
         $("#contador").val("0");
@@ -199,9 +201,8 @@ function inicio() {
                 ///
                 $("#formReparaEquipo").css("display", "block");
                 $("#grilla").css("display", "none");
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+              alertify.alert("Seleccione un fila");
             }
         }
     }).jqGrid('navGrid', '#pager',
@@ -252,9 +253,8 @@ function inicio() {
                 ///
                 $("#formReparaEquipo").css("display", "block");
                 $("#grilla").css("display", "none");
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+              alertify.alert("Seleccione un fila");
             }
         }
     });
@@ -264,9 +264,8 @@ function inicio() {
             if (id) {
                 var ret = jQuery("#list").jqGrid('getRowData', id);
                 window.open("../reportes/reportes/reporteRegistro.php?id=" + ret.txtRegistro);
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+              alertify.alert("Seleccione un fila");
             }
         }
     });
@@ -287,9 +286,8 @@ function inicio() {
                         $("#txtDetTe").val(val);
                     }
                 });
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+              alertify.alert("Seleccione un fila");
             }
         }
     });
@@ -372,50 +370,42 @@ function guardarTrabajo() {
             url: "../procesos/reparacionEquipos.php",
             data: "id_registro=" + $("#txtRegistro").val() + "&total_reparaciones=" + $("#txtMante").val().substr(2) + "&vector0=" + vect0 + "&vector1=" + vect1 + "&vector2=" + vect2 + "&vector3=" + vect3 + "&vector5=" + vect5 + "&recomendacion=" + $("#txtReco").val() + "&tipo=" + "g",
             success: function(data) {
-                val = data;
-                if (val == 1)
-                {
-                    alert("Datos Guardados");
-                    location.reload();
+                var val = data;
+                if (val == 1) {
+                    alertify.alert("Datos Guardados", function(){location.reload();});
                 }
-                if (val == 0)
-                {
-                    alert("Error.. durante el proceso");
+                if (val == 0) {
+                    alertify.alert("Error.. durante el proceso");
                 }
             }
         });
-
-
     }
     else {
-        alert("Antes de proceder ingrese las reparaciones realizadas")
+        alertify.alert("Antes de proceder ingrese las reparaciones realizadas")
         $("#tRepraciones").dialog("open");
     }
 }
 
 function guardarReco() {
-    if ($("#txtDetTe").val() !== "")
-    {
+    if ($("#txtDetTe").val() !== "") {
         $.ajax({
             type: "POST",
             url: "../procesos/agregarReco.php",
             data: "id=" + $("#idR").val() + "&reco=" + $("#txtDetTe").val(),
             success: function(data) {
-                val = data;
+                var val = data;
                 if (val == 1) {
                     alert("Datos Agregados");
                     $("#modDetTec").dialog('close');
                     $("#idR").val("");
                     $("#txtDetTe").val("");
-                }
-                else {
-                    alert("Error al momento de guardar");
+                } else {
+                  alertify.alert("Error al momento de guardar");
                 }
             }
         });
-    }
-    else {
-        alert("Llene los campos antes de continuar");
+    } else {
+      alertify.alert("Llene los campos antes de continuar");
     }
 }
 function agregarProducto() {

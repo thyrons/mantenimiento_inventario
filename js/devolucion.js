@@ -227,8 +227,7 @@ function entrar2() {
                                         $("#precio").val("");
                                         $("#descuento").val("");
                                         ///////////////////////////
-                                    }
-                                    else {
+                                    } else {
                                         cal = parseFloat($("#precio").val()).toFixed(2);
                                         total = ($("#cantidad").val() * cal).toFixed(2);
                                         datarow = {cod_producto: $("#cod_producto").val(), codigo: $("#codigo").val(), detalle: $("#producto").val(), cantidad: $("#cantidad").val(), precio_u: cal, descuento: $("#descuento").val(), precio_t: total, iva: $("#iva_producto").val()};
@@ -626,10 +625,11 @@ function guardar_devolucion() {
                                 data: "id_proveedor=" + $("#id_proveedor").val() + "&comprobante=" + $("#comprobante").val() + "&id_factura_compra=" + $("#id_factura_compra").val() + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&tipo_comprobante=" + $("#tipo_comprobante").val() + "&serie=" + $("#serie").val() + "&autorizacion=" + $("#autorizacion").val() + "&tarifa0=" + $("#total_p").val() + "&tarifa12=" + $("#total_p2").val() + "&iva=" + $("#iva").val() + "&desc=" + $("#desc").val() + "&tot=" + $("#tot").val() + "&observaciones=" + $("#observaciones").val() + "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5,
                                 success: function(data) {
                                     var val = data;
-                                    if (val == 1)
-                                    {
-                                        window.open("../reportes/reportes/devolucion_compra.php?id="+$("#comprobante").val(),'_blank');
-                                        alertify.alert("Devolución Guardada correctamente",function(){location.reload();});
+                                    if (val == 1) {
+                                        alertify.alert("Devolución Guardada correctamente",function(){
+                                        window.open("../reportes/reportes/devolucion_compra.php?id="+$("#comprobante").val(),'_blank');    
+                                        location.reload();
+                                        });
                                     }
                                 }
                             });
@@ -1008,7 +1008,6 @@ function inicio() {
             $("#serie").val("");
             $("#autorizacion").val("");
             $("#id_factura_compra").val("");
-
         } else {
             if (tipo === "Ruc") {
                 $("#ruc_ci").validCampoFranz("0123456789");
@@ -1267,7 +1266,6 @@ function inicio() {
                         }
                     });
                     
-                    
                     if (ret.iva === "Si") {
                         tarifa12 = ($("#total_p2").val() - ret.precio_t).toFixed(2);
                         $("#total_p2").val(tarifa12);
@@ -1440,9 +1438,8 @@ function inicio() {
         });
           
         $("#buscar_devolucion_compras").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione una Factura");
+        } else {
+          alertify.alert("Seleccione una Factura");
         }
     }
         
@@ -1551,9 +1548,8 @@ function inicio() {
         });
         
        $("#buscar_devolucion_compras").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione una Factura");
+        } else {
+          alertify.alert("Seleccione una Factura");
         }
     }
   }); 

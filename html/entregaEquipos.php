@@ -23,6 +23,8 @@ include '../menus/menu.php';
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/sm-core-css.css" rel="stylesheet" type="text/css" />
         <link href="../css/sm-blue/sm-blue.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="../css/alertify.core.css" />
+        <link rel="stylesheet" href="../css/alertify.default.css" id="toggleCSS" />
 
         <script type="text/javascript" src="../js/bootstrap.js"></script>
         <script type="text/javascript" src="../js/jquery-loader.js"></script>
@@ -37,7 +39,7 @@ include '../menus/menu.php';
         <script type="text/javascript" src="../js/ventana_reporte.js"></script>
         <script type="text/javascript" src="../js/guidely/guidely.min.js"></script>
         <script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
-
+        <script type="text/javascript" src="../js/alertify.min.js"></script>
     </head>
 
     <body>

@@ -175,7 +175,6 @@ function guardar_cxp() {
                                     }
                                 }
                             });
-
                         }
                     }
                 }
@@ -586,9 +585,8 @@ function inicio() {
                 }
             });
          $("#buscar_cartera_pagar").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione una Cuenta");
+        } else {
+          alertify.alert("Seleccione una Cuenta");
         }
     }
         
@@ -670,9 +668,8 @@ function inicio() {
                 }
             });
             $("#buscar_cartera_pagar").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione una Cuenta");
+        } else {
+          alertify.alert("Seleccione una Cuenta");
         }
     }
   });   

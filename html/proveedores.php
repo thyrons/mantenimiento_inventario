@@ -40,6 +40,7 @@ include '../menus/menu.php';
         <script type="text/javascript" src="../js/guidely/guidely.min.js"></script>
         <script type="text/javascript" src="../js/alertify.min.js"></script>
         <script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
+        <script type="text/javascript" src="../js/ruc_jquery_validator.min.js"></script>
     </head>
 
     <body>
