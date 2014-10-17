@@ -219,3 +219,5 @@ pip-log.txt
 
 /reportes/doompdf/*
 reportes/doompdf/*
+
+*.log
