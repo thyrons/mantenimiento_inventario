@@ -12,7 +12,7 @@ while ($row = pg_fetch_row($consulta)) {
         'nombre_cliente' => $row[3],
         'direccion_cliente' => $row[5],
         'telefono_cliente' => $row[6],
-        'saldo' => $row[11]
+        'correo' => $row[10]
     );
 }
 

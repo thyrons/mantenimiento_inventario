@@ -259,7 +259,7 @@ function aceptar(){
             var val = data;
             if (val == 1) {
                 alertify.alert("Proveedor Eliminado Correctamente",function(){
-                    location.reload();
+                location.reload();
                 });
             }
         }
