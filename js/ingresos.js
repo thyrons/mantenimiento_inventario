@@ -1041,9 +1041,8 @@ function inicio() {
             }
         });
        $("#buscar_ingresos").dialog("close");
-        }
-        else {
-            alertify.alert("Seleccione un Ingreso");
+        } else {
+          alertify.alert("Seleccione un Ingreso");
         }
     }
 });

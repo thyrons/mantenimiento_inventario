@@ -62,6 +62,7 @@ $cont1++;
         <script type="text/javascript" src="../js/jquery.ui.totop.js" ></script>
         <script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
         <script type="text/javascript" src="../js/alertify.min.js"></script>
+        <script type="text/javascript" src="../js/ruc_jquery_validator.min.js"></script>
     </head>
 
     <body>

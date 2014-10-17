@@ -140,9 +140,9 @@ function entrar() {
 function cargar_facturas(){
     var id = $("#id_proveedor").val();
     if (id === "") {
-        alertify.alert("Error... Seleccione un proveedor");
-        $("#ruc_ci").focus();
         $("#num_factura").val("");
+        $("#ruc_ci").focus();
+        alertify.alert("Error... Seleccione un proveedor");
     } else {
         $("#list2").jqGrid('setGridParam', {
             url: '../xml/xmlFacturas_compra.php?id_proveedor=' + id + '&tipo=' + $("#tipo_pago").val()   , 
@@ -232,7 +232,6 @@ function guardar_pagos(){
         }
     }
 }
-
 
 function flecha_atras(){
    $.ajax({
@@ -873,10 +872,8 @@ jQuery("#list2").jqGrid('navButtonAdd', '#pager2', {caption: "Añadir",
       });
       /////////////////////////////////////////////////// 
        $("#buscar_cuentas_pagar").dialog("close");      
-
-        }
-        else {
-            alertify.alert("Seleccione una Cuenta a Pagar");
+        } else {
+          alertify.alert("Seleccione una Cuenta a Pagar");
         }
     }
 });

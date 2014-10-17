@@ -67,28 +67,28 @@ function getCurrentTime() {
 
 function guardarRegistro() {
     if($("#txtClienteId").val() === ""){
-        alert("Ingrese un cliente");
         $("#txtCliente").focus(); 
+        alertify.alert("Ingrese un cliente");
     }else{
         if($("#txtTipoEquipoId").val() === ""){
-            alert("Ingrese el tipo de equipo");
-            $("#txtTipoEquipo").focus(); 
+             $("#txtTipoEquipo").focus();
+            alertify.alert("Ingrese el tipo de equipo");
         }else{
             if($("#txtModelo").val() === ""){
-                alert("Ingrese un modelo");
                 $("#txtModelo").focus(); 
+                alertify.alert("Ingrese un modelo");
             }else{
                 if($("#txtSerie").val() === ""){
-                    alert("Ingrese la serie");
-                    $("#txtSerie").focus(); 
+                    $("#txtSerie").focus();
+                    alertify.alert("Ingrese la serie");
                 }else{
                     if($("#txtColorId").val() === ""){
-                        alert("Ingrese un color");
                         $("#txtColor").focus(); 
+                        alertify.alert("Ingrese un color");
                     }else{
                         if($("#txtMarcaId").val() === ""){
-                            alert("Ingrese una marca");
-                            $("#txtMarca").focus(); 
+                            $("#txtMarca").focus();
+                            alertify.alert("Ingrese una marca");
                         }else{
                             $.ajax({
                                 type: "POST",
@@ -96,18 +96,16 @@ function guardarRegistro() {
                                 data: "txtRegistro=" + $("#txtRegistro").val() + "&txtClienteId=" + $("#txtClienteId").val() + "&txtIngreso=" + $("#txtIngreso").val() + "&txtTipoEquipoId=" + $("#txtTipoEquipoId").val() + "&txtModelo=" + $("#txtModelo").val() + "&txtSerie=" + $("#txtSerie").val() + "&txtColorId=" + $("#txtColorId").val() + "&txtMarcaId=" + $("#txtMarcaId").val() + "&txtObservaciones=" + $("#txtObservaciones").val() + "&txtAccesorios=" + $("#txtAccesorios").val() + "&txtSalida=" + $("#txtSalida").val() + "&tipo=" + "g",
                                 success: function(data) {
                                     var val = data;
-                                    if (val == 0)
-                                    {
-                                        alert("Datos Guardados");
+                                    if (val == 0) {
+                                        alertify.alert("Datos Guardados", function(){
                                         id = $("#txtRegistro").val();
                                         window.open("../reportes/reportes/reporteRegistro.php?id=" + id);
                                         limpiarDatos();
-                                        $("#txtRegistro").val(parseInt(id) + 1);
-
-                                    }
-                                    if (val == 1)
-                                    {
-                                        alert("Error.. durante el proceso");
+                                        $("#txtRegistro").val(parseInt(id) + 1);   
+                                        });
+                                    } 
+                                    if (val == 1) {
+                                        alertify.alert("Error.. durante el proceso");
                                     }
                                 }
                             });
@@ -121,44 +119,43 @@ function guardarRegistro() {
 
 function modificarRegistro(e){
     if($("#txtClienteId").val() === ""){
-        alert("Ingrese un cliente");
         $("#txtCliente").focus(); 
+        alertify.alert("Ingrese un registro");
     }else{
         if($("#txtTipoEquipoId").val() === ""){
-            alert("Ingrese el tipo de equipo");
             $("#txtTipoEquipo").focus(); 
+            alertify.alert("Ingrese el tipo de equipo");
         }else{
             if($("#txtModelo").val() === ""){
-                alert("Ingrese un modelo");
                 $("#txtModelo").focus(); 
+                alertify.alert("Ingrese un modelo");
             }else{
                 if($("#txtSerie").val() === ""){
-                    alert("Ingrese la serie");
-                    $("#txtSerie").focus(); 
+                    $("#txtSerie").focus();
+                    alertify.alert("Ingrese la serie");
                 }else{
                     if($("#txtColorId").val() === ""){
-                        alert("Ingrese un color");
                         $("#txtColor").focus(); 
+                        alertify.alert("Ingrese un color");
                     }else{
                         if($("#txtMarcaId").val() === ""){
-                            alert("Ingrese una marca");
-                            $("#txtMarca").focus(); 
+                            $("#txtMarca").focus();
+                            alertify.alert("Ingrese una marca");
                         }else{
                             $.ajax({
                                 type: "POST",
                                 url: "../procesos/procesosRegistroEquipo.php",
                                 data: "txtRegistro=" + $("#txtRegistro").val() + "&txtClienteId=" + $("#txtClienteId").val() + "&txtIngreso=" + $("#txtIngreso").val() + "&txtTipoEquipoId=" + $("#txtTipoEquipoId").val() + "&txtModelo=" + $("#txtModelo").val() + "&txtSerie=" + $("#txtSerie").val() + "&txtColorId=" + $("#txtColorId").val() + "&txtMarcaId=" + $("#txtMarcaId").val() + "&txtObservaciones=" + $("#txtObservaciones").val() + "&txtAccesorios=" + $("#txtAccesorios").val() + "&txtSalida=" + $("#txtSalida").val() + "&tipo=" + "m",
                                 success: function(data) {
-                                    val = data;
-                                    if (val == 0)
-                                    {
-                                        alert("Datos Modificados");
+                                    var val = data; 
+                                    if (val == 0) {
+                                        alertify.alert("Datos Modificados", function(){
                                         $("#txtRegistro").val("");
-                                        location.reload();
+                                        location.reload();   
+                                        });
                                     }
-                                    if (val == 1)
-                                    {
-                                        alert("Error.. durante el proceso");
+                                    if (val == 1) {
+                                        alertify.alert("Error.. durante el proceso");
                                     }
                                 }
                             });
@@ -199,7 +196,7 @@ function flecha_atras(){
                 $("#txtAccesorios").val(data[i + 16]);
             }
         }else{
-            alert("Error... Limite de ingresos");
+            alertify.alert("No hay mas registros posteriores!!");
         }
     });
 } 
@@ -236,7 +233,7 @@ function flecha_siguiente(){
                     $("#txtAccesorios").val(data[i + 16]);
                 }
             }else{
-            alert("Error... Limite de ingresos");
+            alertify.alert("No hay mas registros superiores!!");
            }
         });
     }
@@ -444,9 +441,8 @@ function inicio()
                 jQuery("#list").jqGrid('GridToForm', id, "#formRegistroEquipo");
                 $("#bRegistros").dialog('close');
                 $("#btnGuardar").attr("disabled", true);
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+              alertify.alert("Seleccione un fila");
             }
         }
     }).jqGrid('navGrid', '#pager',
@@ -487,9 +483,8 @@ function inicio()
                 jQuery("#list").jqGrid('GridToForm', id, "#formRegistroEquipo");
                 $("#bRegistros").dialog('close');
                 $("#btnGuardar").attr("disabled", true);
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+              alertify.alert("Seleccione un fila");
             }
         }
     });
@@ -500,9 +495,8 @@ function inicio()
             if (id) {
                 var ret = jQuery("#list").jqGrid('getRowData', id);
                 window.open("../reportes/reportes/reporteRegistro.php?id=" + ret.txtRegistro);
-            }
-            else {
-                alert("Seleccione un fila");
+            } else {
+              alertify.alert("Seleccione un fila");
             }
         }
     });

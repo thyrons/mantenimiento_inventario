@@ -112,7 +112,6 @@ function comprobar() {
     }
 }
 
-
 function guardar_gasto() {
     if ($("#tipo_docu").val() === "") {
         $("#tipo_docu").focus();
@@ -141,8 +140,10 @@ function guardar_gasto() {
                             success: function(data) {
                                 var val = data;
                                 if (val == 1) {
-                                    window.open("../reportes/reportes/reporte_gasto.php?id="+$("#comprobante").val(),'_blank');
-                                    alertify.alert("Registro Guardado correctamente", function(){location.reload();});
+                                    alertify.alert("Registro Guardado correctamente", function(){
+                                    window.open("../reportes/reportes/reporte_gasto.php?id="+$("#comprobante").val(),'_blank');    
+                                    location.reload();
+                                    });
                                 }
                             }
                         });
@@ -338,10 +339,6 @@ function inicio() {
         $("#buscar_gastos_internos").dialog("open");   
     });
     /////////////////////////// 
-
-
-    ////////////////eventos////////////////////
-    //$("input[type=text]").on("keyup", enter);
 
     $("#ruc_ci").on("keypress", enter);
     $("#empresa").on("keypress", enter);
