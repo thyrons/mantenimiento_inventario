@@ -136,7 +136,7 @@ $cont1++;
 
                                                         <table cellpadding="2" border="0" style="margin-left: 10px">
                                                             <tr>
-                                                                <td><label style="width: 100%">Digitador (a): <font color="red">*</font></label></td>
+                                                                <td><label style="width: 100%">Digitador (a): </label></td>
                                                                 <td><input type="text" name="digitador" id="digitador" value="<?php echo $_SESSION['nombres'] ?>" class="campo" style="width: 200px" readonly/></td>
                                                                 <td><label style="width: 100%; margin-left: 10px">Nro de Factura Preimpresa: </label></td>
                                                                 <td><label style="width: 100%; margin-left: 10px">001  - </label></td>
@@ -160,10 +160,10 @@ $cont1++;
                                                             <tr>
                                                                 <td><label style="width: 100%">Dirección: <font color="red">*</font></label></td>  
                                                                 <td><input type="text" name="direccion_cliente" id="direccion_cliente" class="campo" style="width: 250px" /></td>
-                                                                <td><label style="width: 100%; margin-left: 10px">Teléfono: </label></td>  
+                                                                <td><label style="width: 100%; margin-left: 10px">Teléfono: <font color="red">*</font></label></td>  
                                                                 <td><input type="text" name="telefono_cliente" id="telefono_cliente" class="campo" style="width: 120px; margin-left: 5px" /></td>
-                                                                <td><label style="width: 100%; margin-left: 10px">Saldo disponible: </label></td>  
-                                                                <td><input type="text" name="saldo" id="saldo" class="campo" style="width: 120px; margin-left: 5px" /></td>
+                                                                <td><label style="width: 100%; margin-left: 10px">Correo: </label></td>  
+                                                                <td><input type="text" name="correo" id="correo" class="campo" style="margin-left: 5px" /></td>
                                                                 <td><input type="hidden" name="id_cliente" id="id_cliente" class="campo" style="width: 120px; margin-left: 5px" /></td>
                                                         </table>
 
@@ -181,7 +181,7 @@ $cont1++;
 
                                                         <table cellpadding="2" style="margin-left: 10px">
                                                             <tr>
-                                                                <td><label for="autorizacion"  style="width: 100%">Autorización: <font color="red">*</font></label></td>
+                                                                <td><label for="autorizacion"  style="width: 100%">Autorización: </label></td>
                                                                 <td><input type="text" name="autorizacion" id="autorizacion" class="campo" maxlength="45"/></td>
                                                                 <td><label for="fecha_auto" style="margin-left: 10px">Fecha autorización:</label></td>
                                                                 <td><input type="text" name="fecha_auto" id="fecha_auto" class="campo" style="width: 120px; margin-left: 5px" value="<?php echo date("Y-m-d"); ?>" readonly /></td>

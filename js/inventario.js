@@ -212,7 +212,6 @@ function entrar2() {
     }
 }
 
-
 function guardar_inventario() {
     var tam = jQuery("#list").jqGrid("getRowData");
     

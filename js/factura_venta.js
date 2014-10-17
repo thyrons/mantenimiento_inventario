@@ -136,6 +136,14 @@ function enter4(e) {
     return true;
 }
 
+function enter5(e) {
+    if (e.which === 13 || e.keyCode === 13) {
+        comprobar2();
+        return false;
+    }
+    return true;
+}
+
 function entrar() {
     if ($("#cod_producto").val() === "") {
         $("#codigo").focus();
@@ -807,9 +815,8 @@ function comprobar() {
 function nuevo_cliente(){
     alertify.confirm("Desea registrar un nuevo cliente", function (e) {
         if (e) {
-            alertify.success("Ingrese datos del cliente");
-            //////////////verificar si esxiste cliente/////////////
-            $.ajax({
+             //////////////verificar si esxiste cliente/////////////
+             $.ajax({
                 type: "POST",
                 url: "../procesos/comparar_cedulas.php",
                 data: "cedula=" + $("#ruc_ci").val(),
@@ -818,14 +825,173 @@ function nuevo_cliente(){
                     if (val == 1) {
                         $("#ruc_ci").val("");
                         $("#ruc_ci").focus();
-                        alertify.alert("Error... El cliente esta registrado");
+                        alertify.error('Error... El cliente esta registrado');
                     }else{
                         if ($("#ruc_ci").val().length !== 10 && $("#ruc_ci").val().length !== 13) {
-                            alertify.alert("Error... Ingrese una Identificación valida");
-                        }else{  
-                            $("#direccion_cliente").removeAttr("disabled");
-                            $("#telefono_cliente").removeAttr("disabled");
-                            $("#saldo").removeAttr("disabled");
+                            alertify.error('Error... Ingrese una Identificación valida');
+                        }else{
+                            ////////////////////validar cedula ruc/////////////////////
+                            var numero = $("#ruc_ci").val();
+                            var suma = 0;      
+                            var residuo = 0;      
+                            var pri = false;      
+                            var pub = false;            
+                            var nat = false;                     
+                            var modulo = 11;
+                            var p1;
+                            var p2;
+                            var p3;
+                            var p4;
+                            var p5;
+                            var p6;
+                            var p7;
+                            var p8;            
+                            var p9; 
+
+                            /* Aqui almacenamos los digitos de la cedula en variables. */
+                            var d1  = numero.substr(0,1);         
+                            var d2  = numero.substr(1,1);         
+                            var d3  = numero.substr(2,1);         
+                            var d4  = numero.substr(3,1);         
+                            var d5  = numero.substr(4,1);         
+                            var d6  = numero.substr(5,1);         
+                            var d7  = numero.substr(6,1);         
+                            var d8  = numero.substr(7,1);         
+                            var d9  = numero.substr(8,1);         
+                            var d10 = numero.substr(9,1);  
+
+                            /* El tercer digito es: */                           
+                            /* 9 para sociedades privadas y extranjeros   */         
+                            /* 6 para sociedades publicas */         
+                            /* menor que 6 (0,1,2,3,4,5) para personas naturales */ 
+
+                            if (d3 < 6){           
+                                nat = true;            
+                                p1 = d1 * 2;
+                                if (p1 >= 10) p1 -= 9;
+                                p2 = d2 * 1;
+                                if (p2 >= 10) p2 -= 9;
+                                p3 = d3 * 2;
+                                if (p3 >= 10) p3 -= 9;
+                                p4 = d4 * 1;
+                                if (p4 >= 10) p4 -= 9;
+                                p5 = d5 * 2;
+                                if (p5 >= 10) p5 -= 9;
+                                p6 = d6 * 1;
+                                if (p6 >= 10) p6 -= 9; 
+                                p7 = d7 * 2;
+                                if (p7 >= 10) p7 -= 9;
+                                p8 = d8 * 1;
+                                if (p8 >= 10) p8 -= 9;
+                                p9 = d9 * 2;
+                                if (p9 >= 10) p9 -= 9;             
+                                modulo = 10;
+                            } else if(d3 == 6){           
+                                pub = true;             
+                                p1 = d1 * 3;
+                                p2 = d2 * 2;
+                                p3 = d3 * 7;
+                                p4 = d4 * 6;
+                                p5 = d5 * 5;
+                                p6 = d6 * 4;
+                                p7 = d7 * 3;
+                                p8 = d8 * 2;            
+                                p9 = 0;            
+                            } else if(d3 == 9) {          
+                                pri = true;                                   
+                                p1 = d1 * 4;
+                                p2 = d2 * 3;
+                                p3 = d3 * 2;
+                                p4 = d4 * 7;
+                                p5 = d5 * 6;
+                                p6 = d6 * 5;
+                                p7 = d7 * 4;
+                                p8 = d8 * 3;
+                                p9 = d9 * 2;            
+                            }
+
+                            suma = p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9;                
+                            residuo = suma % modulo;                                         
+
+                            var digitoVerificador = residuo==0 ? 0: modulo - residuo; 
+                            if (numero.length === 10) {
+                                if(nat == true){
+                                if (digitoVerificador != d10){                          
+                                    alertify.error('El número de cédula es incorrecto.');
+                                    $("#direccion_cliente").attr("disabled", "disabled");
+                                    $("#telefono_cliente").attr("disabled", "disabled");
+                                    $("#correo").attr("disabled", "disabled");
+                                    }else{
+                                    alertify.success('El número de cédula es correcto.');
+                                    $("#nombre_cliente").focus();
+                                    $("#direccion_cliente").removeAttr("disabled");
+                                    $("#telefono_cliente").removeAttr("disabled");
+                                    $("#correo").removeAttr("disabled");
+                                 }
+                               }
+                            }else{
+                                var ruc = numero.substr(10,13);
+                                var digito3 = numero.substring(2,3);
+                                if(ruc == "001" ){
+                                   if(digito3 < 6){ 
+                                     if(nat == true){
+                                      if (digitoVerificador != d10){                          
+                                          alertify.error('El ruc persona natural es incorrecto.');
+                                          $("#direccion_cliente").attr("disabled", "disabled");
+                                          $("#telefono_cliente").attr("disabled", "disabled");
+                                          $("#correo").attr("disabled", "disabled");
+                                         }else{
+                                         alertify.success('El ruc persona natural es correcto.');
+                                         $("#nombre_cliente").focus();
+                                         $("#direccion_cliente").removeAttr("disabled");
+                                         $("#telefono_cliente").removeAttr("disabled");
+                                         $("#correo").removeAttr("disabled");
+                                          } 
+                                         }
+                                       }else{
+                                           if(digito3 == 6){ 
+                                            if (pub==true){  
+                                                if (digitoVerificador != d9){                          
+                                                    alertify.error('El ruc público es incorrecto.');
+                                                    $("#direccion_cliente").attr("disabled", "disabled");
+                                                    $("#telefono_cliente").attr("disabled", "disabled");
+                                                    $("#correo").attr("disabled", "disabled");
+                                                }else{
+                                                    alertify.success('El ruc público es correcto.');
+                                                    $("#nombre_cliente").focus();
+                                                    $("#direccion_cliente").removeAttr("disabled");
+                                                    $("#telefono_cliente").removeAttr("disabled");
+                                                    $("#correo").removeAttr("disabled");
+                                                } 
+                                            }
+                                        }else{
+                                            if(digito3 == 9){
+                                            if(pri == true){
+                                                if (digitoVerificador != d10){                          
+                                                    alertify.error('El ruc privado es incorrecto.');
+                                                    $("#direccion_cliente").attr("disabled", "disabled");
+                                                    $("#telefono_cliente").attr("disabled", "disabled");
+                                                    $("#correo").attr("disabled", "disabled");
+                                                }else{
+                                                    alertify.success('El ruc privado es correcto.');
+                                                    $("#nombre_cliente").focus();
+                                                    $("#direccion_cliente").removeAttr("disabled");
+                                                    $("#telefono_cliente").removeAttr("disabled");
+                                                    $("#correo").removeAttr("disabled");
+                                                } 
+                                             }
+                                           } 
+                                         }
+                                       }  
+                                }else{
+                                if(numero.length === 13){
+                                    alertify.error('El ruc es incorrecto.');
+                                    $("#direccion_cliente").attr("disabled", "disabled");
+                                    $("#telefono_cliente").attr("disabled", "disabled");
+                                    $("#correo").attr("disabled", "disabled");
+                                }
+                              }
+                            }
                         }
                     }
                 }
@@ -834,7 +1000,7 @@ function nuevo_cliente(){
             $("#ruc_ci").val("");
             $("#direccion_cliente").attr("disabled", "disabled");
             $("#telefono_cliente").attr("disabled", "disabled");
-            $("#saldo").attr("disabled", "disabled");
+            $("#correo").attr("disabled", "disabled");
         }
     });
 }
@@ -858,6 +1024,30 @@ function comprobar1() {
             } 
         }
     }
+}
+
+function comprobar2(){
+if ($("#ruc_ci").val() === "") {
+        $("#ruc_ci").focus();
+        alertify.alert("Indique un cliente");
+    }else {
+         if ($("#nombre_cliente").val() === "") {
+          $("#nombre_cliente").focus();
+           alertify.alert("Nombres del cliente");
+        }else{
+          if ($("#direccion_cliente").val() === "") {
+              $("#direccion_cliente").focus();
+               alertify.alert("Dirección del cliente");
+              }else{
+               if ($("#telefono_cliente").val() === "") {
+               $("#telefono_cliente").focus();
+               alertify.alert("Telefóno del cliente");
+               }else{
+                   $("#correo").focus();
+               } 
+            }  
+        } 
+    }    
 }
 
 function agregar_proforma() {
@@ -894,58 +1084,78 @@ function agregar_proforma() {
                 $("#list").jqGrid("clearGridData", true);
                 var descuento = 0;
                 var multi = 0;
-                var cal = 0;
                 var total = 0;
                 for (var i = 0; i < tama; i = i + 9)
                 {
                     var temp = 0;
                     var temp1 = 0;
-                    if (data[i + 8] === 0) {
-                        temp = 0;
-                        temp1 = data[i + 3];
-                    }
-                    else {
-                        if (data[i + 8] < data[i + 3]) {
-                            temp = data[i + 8];
-                            temp1 = data[i + 3] - data[i + 8];
-                        } else {
-                            if (data[i + 8] > data[i + 3]) {
-                                temp = data[i + 3];
-                                temp1 = 0;
-                            }
-                            else {
-                                if (data[i + 8] === data[i + 3]) {
-                                    temp = data[i + 3];
-                                    temp1 = 0;
-                                }
-                                else {
-                                    if (data[i + 3] === data[i + 8]) {
-                                        temp = data[i + 3];
-                                        temp1 = 0;
-                                    }
-                                }
-                            }
+                    if(parseInt(data[i + 3]) < 0){
+                       temp = 0; 
+                       temp1 = data[i + 4] ;
+                    }else{
+                        if(parseInt(data[i + 4]) > parseInt(data[i + 3])){
+                        temp = data[i + 3]; 
+                        temp1 = data[i + 4] - data[i + 3];
+                        }else{
+                         temp = data[i + 4];   
+                         temp1 = 0;   
                         }
                     }
+                  
+//                    if(data[i + 4] < 0){
+//                      temp = 0;  
+//                    }else{
+//                        
+//                      temp = data[i + 3];  
+//                    }
+                    
+//                    var temp = 0;
+//                    var temp1 = 0;
+//                    if (data[i + 8] === 0) {
+//                        temp = 0;
+//                        temp1 = data[i + 3];
+//                    }
+//                    else {
+//                        if (data[i + 8] < data[i + 3]) {
+//                            temp = data[i + 8];
+//                            temp1 = data[i + 3] - data[i + 8];
+//                        } else {
+//                            if (data[i + 8] > data[i + 3]) {
+//                                temp = data[i + 3];
+//                                temp1 = 0;
+//                            }
+//                            else {
+//                                if (data[i + 8] === data[i + 3]) {
+//                                    temp = data[i + 3];
+//                                    temp1 = 0;
+//                                }
+//                                else {
+//                                    if (data[i + 3] === data[i + 8]) {
+//                                        temp = data[i + 3];
+//                                        temp1 = 0;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
 
-                    multi = (temp * data[i + 4]).toFixed(2);
-                    descuento = ((multi * parseFloat(data[i + 5])) / 100);
+                    multi = (temp * data[i + 5]).toFixed(2);
+                    descuento = ((multi * parseFloat(data[i + 6])) / 100);
                     total = (multi - descuento).toFixed(2);
-                    //var cal = (temp * data[i + 4]).toFixed(2);
 
                     var datarow = {
                         cod_producto: data[i], 
                         codigo: data[i + 1], 
                         detalle: data[i + 2], 
                         cantidad: temp, 
-                        precio_u: data[i + 4], 
-                        descuento: data[i + 5], 
+                        precio_u: data[i + 5], 
+                        descuento: data[i + 6], 
                         total: total, 
-                        iva: data[i + 7], 
+                        iva: data[i + 8], 
                         pendiente: temp1
                     };
                     var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
-                    var ivas = data[i + 7];
+                    var ivas = data[i + 8];
 
                     ////////////////calcular valores////////////
                     if (ivas === "Si") {
@@ -1063,9 +1273,9 @@ function guardar_factura() {
                                     $("#direccion_cliente").focus();
                                     alertify.alert("Dirección del cliente");
                                 }else{
-                                    if ($("#saldo").val() === "") {
-                                        $("#saldo").focus();
-                                        alertify.alert("Indique un saldo");
+                                    if ($("#telefono_cliente").val() === "") {
+                                        $("#telefono_cliente").focus();
+                                        alertify.alert("Telefóno del cliente");
                                     } else {
                                         if ($("#tipo_precio").val() === "") {
                                             $("#tipo_precio").focus();
@@ -1113,7 +1323,7 @@ function guardar_factura() {
                                                     $.ajax({
                                                         type: "POST",
                                                         url: "../procesos/guardar_factura_venta.php",
-                                                        data: "id_cliente=" + $("#id_cliente").val() + "&comprobante=" + $("#comprobante").val() + "&num_factura=" + seriee + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&proforma=" + $("#proforma").val() + "&cancelacion=" + $("#cancelacion").val() + "&tipo_precio=" + $("#tipo_precio").val() + "&formas=" + $("#formas").val() + "&adelanto=" + $("#adelanto").val() + "&meses=" + $("#meses").val() + "&autorizacion=" + $("#autorizacion").val()+ "&fecha_auto=" + $("#fecha_auto").val()+ "&fecha_caducidad=" + $("#fecha_caducidad").val() + "&tarifa0=" + $("#total_p").val() + "&tarifa12=" + $("#total_p2").val() + "&iva=" + $("#iva").val() + "&desc=" + $("#desc").val() + "&tot=" + $("#tot").val() + "&ruc_ci=" + $("#ruc_ci").val() + "&nombre_cliente=" + $("#nombre_cliente").val() + "&direccion_cliente=" + $("#direccion_cliente").val() + "&telefono_cliente=" + $("#telefono_cliente").val() + "&saldo=" + $("#saldo").val() + "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5+ "&campo6=" + string_v6,
+                                                        data: "id_cliente=" + $("#id_cliente").val() + "&comprobante=" + $("#comprobante").val() + "&num_factura=" + seriee + "&fecha_actual=" + $("#fecha_actual").val() + "&hora_actual=" + $("#hora_actual").val() + "&proforma=" + $("#proforma").val() + "&cancelacion=" + $("#cancelacion").val() + "&tipo_precio=" + $("#tipo_precio").val() + "&formas=" + $("#formas").val() + "&adelanto=" + $("#adelanto").val() + "&meses=" + $("#meses").val() + "&autorizacion=" + $("#autorizacion").val()+ "&fecha_auto=" + $("#fecha_auto").val()+ "&fecha_caducidad=" + $("#fecha_caducidad").val() + "&tarifa0=" + $("#total_p").val() + "&tarifa12=" + $("#total_p2").val() + "&iva=" + $("#iva").val() + "&desc=" + $("#desc").val() + "&tot=" + $("#tot").val() + "&ruc_ci=" + $("#ruc_ci").val() + "&nombre_cliente=" + $("#nombre_cliente").val() + "&direccion_cliente=" + $("#direccion_cliente").val() + "&telefono_cliente=" + $("#telefono_cliente").val() + "&correo=" + $("#correo").val() + "&campo1=" + string_v1 + "&campo2=" + string_v2 + "&campo3=" + string_v3 + "&campo4=" + string_v4 + "&campo5=" + string_v5+ "&campo6=" + string_v6,
                                                         success: function(data) {
                                                             var val = data;
                                                             if (val == 1) {
@@ -1154,7 +1364,14 @@ function flecha_atras(){
                 $("#num_factura").attr("disabled", "disabled");
                 $("#ruc_ci").attr("disabled", "disabled");
                 $("#nombre_cliente").attr("disabled", "disabled");
+                $("#direccion_cliente").attr("disabled", "disabled");
+                $("#telefono_cliente").attr("disabled", "disabled");
+                $("#correo").attr("disabled", "disabled");
                 $("#formas").attr("disabled", true);
+                $("#ruc_ci").val("");
+                $("#nombre_cliente").val("");
+                $("#telefono_cliente").val("");
+                $("#correo").val("");
                 $("#codigo").attr("disabled", "disabled");
                 $("#producto").attr("disabled", "disabled");
                 $("#cantidad").attr("disabled", "disabled");
@@ -1294,7 +1511,14 @@ function flecha_siguiente(){
                 $("#num_factura").attr("disabled", "disabled");
                 $("#ruc_ci").attr("disabled", "disabled");
                 $("#nombre_cliente").attr("disabled", "disabled");
+                $("#direccion_cliente").attr("disabled", "disabled");
+                $("#telefono_cliente").attr("disabled", "disabled");
+                $("#correo").attr("disabled", "disabled");
                 $("#formas").attr("disabled", true);
+                $("#ruc_ci").val("");
+                $("#nombre_cliente").val("");
+                $("#telefono_cliente").val("");
+                $("#correo").val("");
                 $("#codigo").attr("disabled", "disabled");
                 $("#producto").attr("disabled", "disabled");
                 $("#cantidad").attr("disabled", "disabled");
@@ -1306,6 +1530,7 @@ function flecha_siguiente(){
                 $("#adelanto").val("");
                 $("#meses").val("");
                 $('#cuotas').children().remove().end();
+                $("#cuotas").attr("disabled", true); 
                 $("#list").jqGrid("clearGridData", true);
                 $("#total_p").val("0.00");
                 $("#total_p2").val("0.00");
@@ -1425,20 +1650,7 @@ function limpiar_campo(){
         $("#saldo").val("");
         $("#direccion_cliente").attr("disabled", "disabled");
         $("#telefono_cliente").attr("disabled", "disabled");
-        $("#saldo").attr("disabled", "disabled");
-    }
-}
-
-function limpiar_campo2(){
-    if($("#nombre_cliente").val() === ""){
-        $("#id_cliente").val("");
-        $("#ruc_ci").val("");
-        $("#direccion_cliente").val("");
-        $("#telefono_cliente").val("");
-        $("#saldo").val("");
-        $("#direccion_cliente").attr("disabled", "disabled");
-        $("#telefono_cliente").attr("disabled", "disabled");
-        $("#saldo").attr("disabled", "disabled");
+        $("#correo").attr("disabled", "disabled");
     }
 }
 
@@ -1519,7 +1731,7 @@ function aceptar(){
             var val = data;
             if (val == 1) {
                 alertify.alert("Factura Anulada correctamente", function(){
-                    location.reload();
+                location.reload();
                 });
             }
         }
@@ -1553,9 +1765,9 @@ function inicio() {
     });
     
    //////////validacion ruc cedula/////////////
-      $("#ruc_ci").validarCedulaEC({
-      strict: false
-    });
+//      $("#ruc_ci").validarCedulaEC({
+//      strict: false
+//    });
    ///////////////////////////////// 
     ///////////////////////////////////
     //
@@ -1635,7 +1847,6 @@ function inicio() {
     $("#btnAdelante").on("click", flecha_siguiente);
     
     $("#ruc_ci").on("keyup", limpiar_campo);
-    $("#nombre_cliente").on("keyup", limpiar_campo2);
     $("#codigo").on("keyup", limpiar_campo3);
     $("#producto").on("keyup", limpiar_campo4);
     
@@ -1647,21 +1858,23 @@ function inicio() {
     $("#descuento").on("keypress", enter2);
     $("#num_factura").on("keypress", enter3);
     $("#ruc_ci").on("keypress", enter4);
+    $("#nombre_cliente").on("keypress", enter5);
+    $("#direccion_cliente").on("keypress", enter5);
+    $("#telefono_cliente").on("keypress", enter5);
     
     $("#proforma").on("keyup", agregar_proforma);
     /////////////////////////////////////////
 
     $("#direccion_cliente").attr("disabled", "disabled");
     $("#telefono_cliente").attr("disabled", "disabled");
+    $("#correo").attr("disabled", "disabled");
     $("#btnAnular").attr("disabled", true);
     $("#btnModificar").attr("disabled", true);
     
-    $("#saldo").attr("disabled", "disabled");
     $("#telefono_cliente").validCampoFranz("0123456789");
     $("#telefono_cliente").attr("maxlength", "10");
     $("#ruc_ci").attr("maxlength", "13");
-    $("#saldo").attr("maxlength", "9");
-    
+      
     $("#series").dialog(dialogo);
     $("#buscar_facturas_venta").dialog(dialogo2);
     $("#clave_permiso").dialog(dialogo3);
@@ -1891,7 +2104,7 @@ function inicio() {
         $("#nombre_cliente").val(ui.item.nombre_cliente);
         $("#direccion_cliente").val(ui.item.direccion_cliente);
         $("#telefono_cliente").val(ui.item.telefono_cliente);
-        $("#saldo").val(ui.item.saldo);
+        $("#correo").val(ui.item.correo);
         return false;
         },
         select: function(event, ui) {
@@ -1900,10 +2113,10 @@ function inicio() {
         $("#nombre_cliente").val(ui.item.nombre_cliente);
         $("#direccion_cliente").val(ui.item.direccion_cliente);
         $("#telefono_cliente").val(ui.item.telefono_cliente);
-        $("#saldo").val(ui.item.saldo);
+        $("#correo").val(ui.item.correo);
         $("#direccion_cliente").attr("disabled", "disabled");
         $("#telefono_cliente").attr("disabled", "disabled");
-        $("#saldo").attr("disabled", "disabled");
+        $("#correo").attr("disabled", "disabled");
         return false;
         }
 
@@ -1924,7 +2137,7 @@ function inicio() {
         $("#ruc_ci").val(ui.item.ruc_ci);
         $("#direccion_cliente").val(ui.item.direccion_cliente);
         $("#telefono_cliente").val(ui.item.telefono_cliente);
-        $("#saldo").val(ui.item.saldo);
+        $("#correo").val(ui.item.correo);
         return false;
         },
         select: function(event, ui) {
@@ -1933,10 +2146,10 @@ function inicio() {
         $("#ruc_ci").val(ui.item.ruc_ci);
         $("#direccion_cliente").val(ui.item.direccion_cliente);
         $("#telefono_cliente").val(ui.item.telefono_cliente);
-        $("#saldo").val(ui.item.saldo);
+        $("#correo").val(ui.item.correo);
         $("#direccion_cliente").attr("disabled", "disabled");
         $("#telefono_cliente").attr("disabled", "disabled");
-        $("#saldo").attr("disabled", "disabled");
+        $("#correo").attr("disabled", "disabled");
         return false;
         }
         }).data("ui-autocomplete")._renderItem = function(ul, item) {
@@ -2251,12 +2464,19 @@ function inicio() {
            var ret = jQuery("#list2").jqGrid('getRowData', id);
            var valor = ret.id_factura_venta;
          /////////////agregregar datos factura////////
-            $("#comprobante").val(ret.id_factura_venta);
             $("#btnGuardar").attr("disabled", true);
             $("#btnModificar").attr("disabled", true);
             $("#num_factura").attr("disabled", "disabled");
             $("#ruc_ci").attr("disabled", "disabled");
             $("#nombre_cliente").attr("disabled", "disabled");
+            $("#direccion_cliente").attr("disabled", "disabled");
+            $("#telefono_cliente").attr("disabled", "disabled");
+            $("#correo").attr("disabled", "disabled");
+            $("#formas").attr("disabled", true);
+            $("#ruc_ci").val("");
+            $("#nombre_cliente").val("");
+            $("#telefono_cliente").val("");
+            $("#correo").val("");
             $("#codigo").attr("disabled", "disabled");
             $("#producto").attr("disabled", "disabled");
             $("#cantidad").attr("disabled", "disabled");
@@ -2275,6 +2495,7 @@ function inicio() {
             $("#iva").val("0.00");
             $("#desc").val("0.00");
             $("#tot").val("0.00");
+            
             $.getJSON('../procesos/retornar_factura_venta.php?com=' + valor, function(data) {
                 var tama = data.length;
                 if (tama !== 0) {
@@ -2413,36 +2634,44 @@ function inicio() {
            var ret = jQuery("#list2").jqGrid('getRowData', id);
            var valor = ret.id_factura_venta;
          /////////////agregregar datos factura////////
-            $("#comprobante").val(ret.id_factura_venta);
-            $("#btnGuardar").attr("disabled", true);
-            $("#btnModificar").attr("disabled", true);
-            $("#num_factura").attr("disabled", "disabled");
-            $("#ruc_ci").attr("disabled", "disabled");
-            $("#nombre_cliente").attr("disabled", "disabled");
-            $("#codigo").attr("disabled", "disabled");
-            $("#producto").attr("disabled", "disabled");
-            $("#cantidad").attr("disabled", "disabled");
-            $("#p_venta").attr("disabled", "disabled");
-            $("#btncargar").attr("disabled", "disabled");
-            $("#autorizacion").attr("disabled", "disabled");
-            $("#estado h3").remove();
-            $("#formas").val("Contado");
-            $("#adelanto").val("");
-            $("#meses").val("");
-            $('#cuotas').children().remove().end();
-            $("#cuotas").attr("disabled", true); 
-            $("#list").jqGrid("clearGridData", true);
-            $("#total_p").val("0.00");
-            $("#total_p2").val("0.00");
-            $("#iva").val("0.00");
-            $("#desc").val("0.00");
-            $("#tot").val("0.00");
+        $("#btnGuardar").attr("disabled", true);
+        $("#btnModificar").attr("disabled", true);
+        $("#num_factura").attr("disabled", "disabled");
+        $("#ruc_ci").attr("disabled", "disabled");
+        $("#nombre_cliente").attr("disabled", "disabled");
+        $("#direccion_cliente").attr("disabled", "disabled");
+        $("#telefono_cliente").attr("disabled", "disabled");
+        $("#correo").attr("disabled", "disabled");
+        $("#formas").attr("disabled", true);
+        $("#ruc_ci").val("");
+        $("#nombre_cliente").val("");
+        $("#telefono_cliente").val("");
+        $("#correo").val("");
+        $("#codigo").attr("disabled", "disabled");
+        $("#producto").attr("disabled", "disabled");
+        $("#cantidad").attr("disabled", "disabled");
+        $("#p_venta").attr("disabled", "disabled");
+        $("#btncargar").attr("disabled", "disabled");
+        $("#autorizacion").attr("disabled", "disabled");
+        $("#estado h3").remove();
+        $("#formas").val("Contado");
+        $("#adelanto").val("");
+        $("#meses").val("");
+        $('#cuotas').children().remove().end();
+        $("#cuotas").attr("disabled", true); 
+        $("#list").jqGrid("clearGridData", true);
+        $("#total_p").val("0.00");
+        $("#total_p2").val("0.00");
+        $("#iva").val("0.00");
+        $("#desc").val("0.00");
+        $("#tot").val("0.00");
+                
             $.getJSON('../procesos/retornar_factura_venta.php?com=' + valor, function(data) {
                 var tama = data.length;
                 if (tama !== 0) {
                     for (var i = 0; i < tama; i = i + 22)
                     {
-                         $("#fecha_actual").val(data[i]);
+                    $("#fecha_actual").val(data[i]);
                     $("#hora_actual").val(data[i + 1 ]);
                     $("#digitador").val(data[i + 2 ] + " " + data[i + 3 ] );
                     var num = data[i + 4]; 
@@ -2502,7 +2731,6 @@ function inicio() {
                     var sal = data[i + 3] - calcu1;
                     var entero2 = sal.toFixed(2);
                     $("#cuotas").append('<option>'+entero2+'</option>'); 
-
                 }else{
                   $("#cuotas").attr("disabled", false); 
                   $("#cuotas").append('<option>'+data[i + 3]+'</option>');  
