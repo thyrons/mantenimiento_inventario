@@ -266,6 +266,27 @@ function nuevo(){
  location.reload();   
 }
 
+function limpiar_campo1(){
+    if($("#codigo").val() === ""){
+        $("#cod_producto").val("");
+        $("#producto").val("");
+        $("#cantidad").val("");
+        $("#precio").val("");
+        $("#stock").val("");
+    }
+}
+
+function limpiar_campo2(){
+    if($("#producto").val() === ""){
+        $("#cod_producto").val("");
+        $("#codigo").val("");
+        $("#cantidad").val("");
+        $("#precio").val("");
+        $("#stock").val("");
+    }
+}
+
+
 function reset () {
     $("#toggleCSS").attr("href", "../css/alertify.default.css");
     alertify.set({
@@ -307,6 +328,9 @@ function inicio() {
     //////////////////////
     
     //////inmput////////
+    $("#codigo").on("keyup", limpiar_campo1);
+    $("#producto").on("keyup", limpiar_campo2);
+    
     $("#codigo").on("keypress", enter );
     $("#producto").on("keypress", enter);
     $("#cantidad").on("keypress", enter);
@@ -399,7 +423,7 @@ jQuery("#list").jqGrid({
             {name: 'precio_compra', index: 'precio_compra', editable: false, search: false, hidden: false, editrules: {edithidden: false}, align: 'center', frozen: true, width: 110},
             {name: 'precio_venta', index: 'precio_venta', editable: false, search: false, hidden: false, editrules: {edithidden: false}, align: 'center', frozen: true, width: 110},
             {name: 'stock', index: 'stock', editable: false, search: false, hidden: false, editrules: {edithidden: false}, align: 'center', frozen: true, width: 100},
-            {name: 'existencia', index: 'existencia', editable: true, search: false, hidden: false, editrules: {edithidden: false}, align: 'center', frozen: true, width: 110},
+            {name: 'existencia', index: 'existencia', editable: false, search: false, hidden: false, editrules: {edithidden: false}, align: 'center', frozen: true, width: 110},
             {name: 'diferencia', index: 'diferencia', editable: false, search: false, hidden: false, editrules: {edithidden: false}, align: 'center', frozen: true, width: 110}
         ],
         rowNum: 30,
@@ -427,6 +451,18 @@ jQuery("#list").jqGrid({
                 return true;
             },
             processing: true
+        },
+        afterSaveCell : function(rowid,name,val,iRow,iCol) {          
+            var id = jQuery("#list").jqGrid('getGridParam', 'selrow');
+            jQuery('#list').jqGrid('restoreRow', id);
+            var ret = jQuery("#list").jqGrid('getRowData', id);
+            
+            if(name == 'cantidad') {
+               var precio = jQuery("#list").jqGrid('getCell',rowid,iCol+1);
+               var operacion = (parseFloat(val)* parseFloat(precio)).toFixed(2); 
+               jQuery("#list").jqGrid('setRowData',rowid,{total: operacion });
+            }
+
         }
     }).jqGrid('navGrid', '#pager',
             {
