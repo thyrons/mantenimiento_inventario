@@ -216,7 +216,7 @@ $cont1++;
 
                                                         <section class="columa_observacion">
                                                             <div class="control-group">											
-                                                                <label class="control-label" for="nombres_completos">Observaciones: <font color="red">*</font></label>
+                                                                <label class="control-label" for="nombres_completos">Observaciones: </label>
                                                                 <div class="controls">
                                                                     <textarea name="observaciones" id="observaciones" class="campo" ></textarea>
                                                                 </div>

@@ -12,7 +12,7 @@ while ($row = pg_fetch_row($consulta)) {
         'ruc_ci' => $row[2],
         'direccion_cliente' => $row[5],
         'telefono_cliente' => $row[6],
-        'saldo' => $row[11]
+        'correo' => $row[10]
     );
 }
 echo $data = json_encode($data);
