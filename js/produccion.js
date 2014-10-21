@@ -179,7 +179,9 @@ function entrar2() {
                                     detalle: $("#producto2").val(), 
                                     cantidad: $("#cantidad2").val(), 
                                     precio_u: $("#precio2").val(), 
-                                    total: total
+                                    total: total,
+                                    stock: $("#disponibles").val()
+                                   // oculto: $("#cantidad2").val() 
                                 };
                                 su = jQuery("#list").jqGrid('addRowData', $("#cod_producto2").val(), datarow);
                                 $("#cod_producto2").val("");
@@ -205,7 +207,9 @@ function entrar2() {
                                         detalle: $("#producto2").val(), 
                                         cantidad: $("#cantidad2").val(), 
                                         precio_u: $("#precio2").val(), 
-                                        total: total
+                                        total: total,
+                                        stock: $("#disponibles").val()
+                                        //oculto: $("#cantidad2").val() 
                                     };
                                     su = jQuery("#list").jqGrid('setRowData', $("#cod_producto2").val(), datarow);
                                     $("#cod_producto2").val("");
@@ -223,7 +227,9 @@ function entrar2() {
                                         detalle: $("#producto2").val(), 
                                         cantidad: $("#cantidad2").val(), 
                                         precio_u: $("#precio2").val(), 
-                                        total: total
+                                        total: total,
+                                        stock: $("#disponibles").val()
+                                        //oculto: $("#cantidad2").val() 
                                     };
                                     su = jQuery("#list").jqGrid('addRowData', $("#cod_producto2").val(), datarow);
                                     $("#cod_producto2").val("");
@@ -773,7 +779,7 @@ function inicio() {
 //////////////////////tabla productos/////////////////////////
     jQuery("#list").jqGrid({
         datatype: "local",
-        colNames: ['', 'ID', 'Código', 'Producto', 'Cantidad', 'Precio Costo', 'Total'],
+        colNames: ['', 'ID', 'Código', 'Producto', 'Cantidad', 'Precio Costo', 'Total', 'stock'],
         colModel: [
             {name: 'myac', width: 50, fixed: true, sortable: false, resize: false, formatter: 'actions',
                 formatoptions: {keys: false, delbutton: true, editbutton: false}
@@ -785,7 +791,8 @@ function inicio() {
             {name: 'detalle', index: 'detalle', editable: false, frozen: true, editrules: {required: true}, align: 'center', width: 290},
             {name: 'cantidad', index: 'cantidad', editable: false, frozen: true, editrules: {required: true}, align: 'center', width: 70},
             {name: 'precio_u', index: 'precio_u', editable: false, search: false, frozen: true, editrules: {required: true}, align: 'center', width: 110},
-            {name: 'total', index: 'total', editable: false, search: false, frozen: true, editrules: {required: true}, align: 'center', width: 110}
+            {name: 'total', index: 'total', editable: false, search: false, frozen: true, editrules: {required: true}, align: 'center', width: 110},
+            {name: 'stock', index: 'stock', editable: false, search: false, frozen: true, hidden: true, editrules: {required: true}, align: 'center', width: 110},
         ],
         rowNum: 30,
         width: 780,

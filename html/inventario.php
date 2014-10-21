@@ -172,7 +172,7 @@ $cont1++;
                                                             </tr>
                                                         </table>
 
-                                                        <div style="margin-left: 10px">
+                                                        <div style="margin-left: 10px" id="grid_container">
                                                             <table id="list"></table>
                                                             <div id="pager"></div>   
                                                         </div> 

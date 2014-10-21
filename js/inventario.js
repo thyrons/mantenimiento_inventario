@@ -452,17 +452,13 @@ jQuery("#list").jqGrid({
             },
             processing: true
         },
-        afterSaveCell : function(rowid,name,val,iRow,iCol) {          
-            var id = jQuery("#list").jqGrid('getGridParam', 'selrow');
-            jQuery('#list').jqGrid('restoreRow', id);
-            var ret = jQuery("#list").jqGrid('getRowData', id);
-            
-            if(name == 'cantidad') {
-               var precio = jQuery("#list").jqGrid('getCell',rowid,iCol+1);
-               var operacion = (parseFloat(val)* parseFloat(precio)).toFixed(2); 
-               jQuery("#list").jqGrid('setRowData',rowid,{total: operacion });
+        gridComplete: function () {
+            if (jQuery("div.ui-jqgrid-bdiv > DIV").height() < 249) {
+                jQuery("#list").parents('div.ui-jqgrid-bdiv').css("height", 250);
             }
-
+            else {
+                jQuery("#list").parents('div.ui-jqgrid-bdiv').css("height", "100%");
+            }
         }
     }).jqGrid('navGrid', '#pager',
             {
@@ -498,6 +494,9 @@ jQuery("#list").jqGrid({
     {
         closeOnEscape: true
     });
+    jQuery(window).bind('resize', function () {
+        jQuery("#list").setGridWidth(jQuery('#grid_container').width() - 20, true);
+    }).trigger('resize');
 
 //////////////////////////////////////
 }
