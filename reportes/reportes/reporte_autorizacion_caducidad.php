@@ -55,9 +55,9 @@ session_start();
                 $codigo.='<tr>
                 <td style="width:200px;text-align:center;">'.$row1[1].'</td>    
                 <td style="width:100px;text-align:center;">'.'Factura'.'</td>
-                <td style="width:150px;text-align:center;">'.$row1[2].'</td>
-                <td style="width:150px;text-align:center;">'.$row1[3].'</td>
-                <td style="width:150px;text-align:center;">'.$row1[4].'</td>
+                <td style="width:150px;text-align:center;">'.' '.$row1[2].'</td>
+                <td style="width:150px;text-align:center;">'.' '.$row1[3].'</td>
+                <td style="width:150px;text-align:center;">'.' '.$row1[4].'</td>
                 
                 
                 </tr>';

@@ -99,6 +99,7 @@ function inicio(){
     $("#buscar_serie").on("click",buscar_serie);
     $("#gastos_internos").on("click",gastos_internos);
     $("#diario_caja").on("click",diario_caja);
+    $("#ordenes_produccion_fechas").on("click",ordenes_produccion_fechas);
     
 }
 function Defecto(e){
@@ -1436,3 +1437,41 @@ function fn_diario_caja(e){
     }   
 }
 //////////////////////////
+function ordenes_produccion_fechas(e){ 
+    modal.open({content: "<input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br> <label>Fecha Inicio</label> <input type='text' id='inicio'><br> <label>Fecha Fin</label> <input type='text' id='fin' style='float: right;'><br><br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarOrdenProduccionFecha' onclick='return fn_ordenes_produccion_fechas(event)' href='#'>Generar Reporte</a>"});
+    $('.generarOrdenProduccionFecha').button();
+    $( "#inicio" ).datepicker({
+      changeMonth: true,
+      dateFormat: 'yy-mm-dd',
+       changeYear: true,   
+       showButtonPanel: true,
+       showOtherMonths: true,
+       selectOtherMonths: true,   
+      numberOfMonths: 2,
+      onClose: function( selectedDate ) {
+        $( "#fin" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#fin" ).datepicker({
+      changeMonth: true,
+      dateFormat: 'yy-mm-dd',
+       changeYear: true,   
+       showButtonPanel: true,
+       showOtherMonths: true,
+       selectOtherMonths: true,   
+      numberOfMonths: 2,
+      onClose: function( selectedDate ) {
+        $( "#inicio" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+    e.preventDefault();  
+}
+function fn_ordenes_produccion_fechas(e){
+    var hoja=$("#tam_hoja").val()    
+    if($('#excel').is(':checked')){     
+        window.open('../phpexcel/resumenFacturasCompras.php?inicio='+$('#inicio').val()+'&fin='+$('#fin').val(), '_blank');    
+    }
+    else{      
+        window.open('../reportes/reportes/ordenes_produccion_fechas.php?inicio='+$('#inicio').val()+'&fin='+$('#fin').val(), '_blank');      
+    }   
+}

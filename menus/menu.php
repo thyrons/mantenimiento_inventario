@@ -170,6 +170,7 @@ function menu_1() {
                       </ul>
                   </li> 
                   <li><a href="" id="orden_produccion">Ordenes de Producción</a></li>
+                  <li><a href="" id="ordenes_produccion_fechas">Ordenes de Producción Fechas</a></li>
                    <li><a href="#">Autorizaciones</a>
                       <ul>
                           <li><a href="" id="autorizaciones_cliente">Autorizaciones CLientes</a></li>
