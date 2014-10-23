@@ -1257,10 +1257,6 @@ function guardar_factura() {
                                     $("#direccion_cliente").focus();
                                     alertify.alert("Dirección del cliente");
                                 }else{
-                                    if ($("#telefono_cliente").val() === "") {
-                                        $("#telefono_cliente").focus();
-                                        alertify.alert("Telefóno del cliente");
-                                    } else {
                                         if ($("#tipo_precio").val() === "") {
                                             $("#tipo_precio").focus();
                                             alertify.alert("Seleccione un tipo de precio");
@@ -1321,7 +1317,6 @@ function guardar_factura() {
                                                 }
                                             }
                                         }
-                                    }
                                 }
                             }
                         } 

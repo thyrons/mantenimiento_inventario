@@ -160,7 +160,7 @@ $cont1++;
                                                             <tr>
                                                                 <td><label style="width: 100%">Dirección: <font color="red">*</font></label></td>  
                                                                 <td><input type="text" name="direccion_cliente" id="direccion_cliente" class="campo" style="width: 250px" /></td>
-                                                                <td><label style="width: 100%; margin-left: 10px">Teléfono: <font color="red">*</font></label></td>  
+                                                                <td><label style="width: 100%; margin-left: 10px">Teléfono: </label></td>  
                                                                 <td><input type="text" name="telefono_cliente" id="telefono_cliente" class="campo" style="width: 120px; margin-left: 5px" /></td>
                                                                 <td><label style="width: 100%; margin-left: 10px">Correo: </label></td>  
                                                                 <td><input type="text" name="correo" id="correo" class="campo" style="margin-left: 5px" /></td>
