@@ -1,4 +1,4 @@
-﻿$(document).on("ready", inicio);
+$(document).on("ready", inicio);
 
 $(function() {
     $('#main-menu').smartmenus({
@@ -14,19 +14,20 @@ function inicio() {
     jQuery("#list").jqGrid({
         url: '../xml/xmlUsuario.php',
         datatype: 'xml',
-        colNames: ['Cod. Usuario', 'CI Usuario', 'Nombres Usuario', 'Apellidos Usuario', 'Dirección Usuario', 'Teléfono Usuario', 'Celular Usuario', 'E-mail Usuario', 'User', 'Clave', 'Cargo'],
+        colNames: ['Cod. Usuario', 'CI Usuario', 'Nombres Usuario', 'Apellidos Usuario', 'Dirección Usuario', 'Teléfono Usuario', 'Celular Usuario', 'E-mail Usuario', 'User', 'Clave', 'Bodega','Cargo'],
         colModel: [
             {name: 'id_usuario', index: 'id_usuario', editable: true, align: 'center', width: '100', search: false, frozen: true, editoptions: {readonly: 'readonly'}},
-            {name: 'ci_usuario', index: 'ci_usuario', editable: true, align: 'center', width: '100', search: true, frozen: true, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
+            {name: 'ci_usuario', index: 'ci_usuario', editable: true, align: 'center', width: '100', size: '10', search: true, frozen: true, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
             {name: 'nombre_usuario', index: 'nombre_usuario', editable: true, align: 'center', width: '140', search: true, frozen: true, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
             {name: 'apellido_usuario', index: 'apellido_usuario', editable: true, align: 'center', width: '140', search: true, frozen: true, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
-            {name: 'direccion_usuario', index: 'direccion_usuario', editable: true, align: 'center', width: '140', search: true},
-            {name: 'telefono_usuario', index: 'telefono_usuario', editable: true, align: 'center', width: '140', search: true},
-            {name: 'celular_usuario', index: 'celular_usuario', editable: true, align: 'center', width: '140', search: true, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
-            {name: 'email_usuario', index: 'email_usuario', editable: true, align: 'center', width: '140', search: true, formatter: 'email'},
-            {name: 'user', index: 'user', editable: true, align: 'center', width: '140', search: true, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
+            {name: 'direccion_usuario', index: 'direccion_usuario', editable: true, align: 'center', width: '140', search: false},
+            {name: 'telefono_usuario', index: 'telefono_usuario', editable: true, align: 'center', width: '140', search: false},
+            {name: 'celular_usuario', index: 'celular_usuario', editable: true, align: 'center', width: '140', search: false, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
+            {name: 'email_usuario', index: 'email_usuario', editable: true, align: 'center', width: '140', search: false, formatter: 'email'},
+            {name: 'user', index: 'user', editable: true, align: 'center', width: '140', search: false, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
             {name: 'password_usuario', index: 'password_usuario', editable: true, align: 'center', width: '140', search: false, formoptions: {elmsuffix: " (*)"}, editrules: {edithidden: true, required: true}, edittype: 'password', hidden: true},
-            {name: 'cargo_usuario', index: 'cargo_usuario', width: 240, align: 'center', editable: true, edittype: "select", editoptions: {value: "1:Administrador;2:Secretaria"}}
+            {name: 'id_bodega', index:'id_bodega', width:'300',search: false, align: 'center', editable:true, edittype:"select", editoptions:{dataUrl:'../procesos/retornar_combo.php'}},
+            {name: 'cargo_usuario', index: 'cargo_usuario', width:'300',search: false, align: 'center', editable: true, edittype: "select", editoptions: {value: "1:Administrador;2:Secretaria;3:Técnico"}},
         ],
         rowNum: 10,
         rowList: [10, 20, 30],
