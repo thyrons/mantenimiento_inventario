@@ -1,4 +1,4 @@
-$(document).on("ready", inicio);
+﻿$(document).on("ready", inicio);
 
 $(function() {
     $('#main-menu').smartmenus({
@@ -26,7 +26,7 @@ function inicio() {
             {name: 'email_usuario', index: 'email_usuario', editable: true, align: 'center', width: '140', search: true, formatter: 'email'},
             {name: 'user', index: 'user', editable: true, align: 'center', width: '140', search: true, formoptions: {elmsuffix: " (*)"}, editrules: {required: true}},
             {name: 'password_usuario', index: 'password_usuario', editable: true, align: 'center', width: '140', search: false, formoptions: {elmsuffix: " (*)"}, editrules: {edithidden: true, required: true}, edittype: 'password', hidden: true},
-            {name: 'cargo_usuario', index: 'cargo_usuario', width: 240, align: 'center', editable: true, edittype: "select", editoptions: {value: "1:Administrador;2:Secretaria;3:Técnico"}}
+            {name: 'cargo_usuario', index: 'cargo_usuario', width: 240, align: 'center', editable: true, edittype: "select", editoptions: {value: "1:Administrador;2:Secretaria"}}
         ],
         rowNum: 10,
         rowList: [10, 20, 30],

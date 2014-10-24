@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require('../reportes/dompdf/dompdf_config.inc.php');
 session_start();
     $codigo='<html> 
@@ -13,7 +13,7 @@ session_start();
                 <h4 style="text-align:center;border:solid 0px;width:100%;">'.$_SESSION['slogan'].'</h4>
                 <h4 style="text-align:center;border:solid 0px;width:100%;">'.$_SESSION['propietario'].'</h4>
                 <h4 style="text-align:center;border:solid 0px;width:100%;">'.$_SESSION['direccion'].'</h4>
-                <h4 style="text-align:center;border:solid 0px;width:100%;">Telf: '.$_SESSION['telefono'].' Cel:  '.$_SESSION['celular'].' Ibarra - Ecuador</h4>
+                <h4 style="text-align:center;border:solid 0px;width:100%;">Telf: '.$_SESSION['telefono'].' Cel:  '.$_SESSION['celular'].' '.$_SESSION['pais_ciudad'].'</h4>
             </div>        
     </header>        
     <hr>
@@ -40,7 +40,7 @@ session_start();
         $sql=pg_query("select codigo,cod_barras,articulo,iva_minorista,iva_mayorista,stock,categoria,marca from productos ");
         while($row=pg_fetch_row($sql)){
             $codigo.='<tr>                
-            <td style="width:200px;text-align:center;">'.$row[1].'</td>    
+            <td style="width:200px;text-align:center;">'.$row[0].'</td>    
             <td style="width:200px;text-align:center;">'.$row[2].'</td>
             <td style="width:100px;text-align:center;">'.$row[3].'</td>
             <td style="width:100px;text-align:center;">'.$row[4].'</td>
@@ -63,7 +63,7 @@ session_start();
          $sql=pg_query("select codigo,cod_barras,articulo,iva_minorista,iva_mayorista,stock,categoria,marca from productos where categoria='$_GET[categoria]'");
          while($row=pg_fetch_row($sql)){
             $codigo.='<tr>                
-            <td style="width:200px;text-align:center;">'.$row[1].'</td>    
+            <td style="width:200px;text-align:center;">'.$row[0].'</td>    
             <td style="width:200px;text-align:center;">'.$row[2].'</td>
             <td style="width:100px;text-align:center;">'.$row[3].'</td>
             <td style="width:100px;text-align:center;">'.$row[4].'</td>

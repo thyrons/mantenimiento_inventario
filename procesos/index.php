@@ -15,13 +15,13 @@ while ($row = pg_fetch_row($consulta)) {
     $_SESSION['user'] = $row[10];
 }
 
-$_SESSION['empresa'] = "P&S Systems";
+$_SESSION['empresa'] = "Alizon Online ";
 $_SESSION['slogan'] = "SERVICIOS INTEGRALES";
-$_SESSION['propietario'] = "YEPEZ RIVERA PABLO SANTIAGO";
-$_SESSION['direccion'] = "Av. Eugenio Espejo 9-66 y Juan Fransico Bonilla";
-$_SESSION['telefono'] = "2603193";
-$_SESSION['celular'] = "0987805075";
-$_SESSION['pais_ciudad'] = "Ibarra - Ecuador";
+$_SESSION['propietario'] = "JUAN PABLO GUERRA";
+$_SESSION['direccion'] = "Av. Bolivar";
+$_SESSION['telefono'] = "";
+$_SESSION['celular'] = "0994793032";
+$_SESSION['pais_ciudad'] = "Cotacahi - Ecuador";
 
 if ($cont == 1) {
     $data = 1;

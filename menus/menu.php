@@ -28,7 +28,6 @@ function menu_1() {
                             <li><a href="" target="_parent">Ingreso Productos</a>
                             <ul>
                                   <li><a href="../html/productos.php" target="_blank">Bienes</a></li>
-                                  <li><a href="../html/servicios.php" target="_blank">Servicios</a></li>
                             </ul>
                            </li>
                         </ul>
@@ -180,15 +179,6 @@ function menu_1() {
                   </li> 
                 </ul>
             </li>
-            
-             <li><a href="" target="_parent">Mantenimiento</a>
-                <ul>
-                    <li><a href="../html/registroEquipo.php" target="_blank">Registro Equipo</a></li>
-                    <li><a href="../html/repacionEquipo.php" target="_blank">Reparación</a></li>
-                    <li><a href="../html/entregaEquipos.php" target="_blank">Entrega</a></li>
-                    <li><a href="../html/restablecer.php" target="_blank">Restablecer</a></li>
-                </ul>
-            </li> 
            
             <li><a href="" target="_parent">Bienvenido</a>
                 <ul>
@@ -213,7 +203,7 @@ function menu_1() {
 }
 
 function menu_2() {
-        print(' <ul id="main-menu" class="sm sm-blue">
+           print(' <ul id="main-menu" class="sm sm-blue">
             <li><a href="" target="_parent">Inicio</a></li>
             <li><a href="" target="_parent">Ingresos</a>
                 <ul>
@@ -231,7 +221,6 @@ function menu_2() {
                             <li><a href="" target="_parent">Ingreso Productos</a>
                             <ul>
                                   <li><a href="../html/productos.php" target="_blank">Bienes</a></li>
-                                  <li><a href="../html/servicios.php" target="_blank">Servicios</a></li>
                             </ul>
                            </li>
                         </ul>
@@ -373,6 +362,7 @@ function menu_2() {
                       </ul>
                   </li> 
                   <li><a href="" id="orden_produccion">Ordenes de Producción</a></li>
+                  <li><a href="" id="ordenes_produccion_fechas">Ordenes de Producción Fechas</a></li>
                    <li><a href="#">Autorizaciones</a>
                       <ul>
                           <li><a href="" id="autorizaciones_cliente">Autorizaciones CLientes</a></li>
@@ -382,15 +372,6 @@ function menu_2() {
                   </li> 
                 </ul>
             </li>
-            
-             <li><a href="" target="_parent">Mantenimiento</a>
-                <ul>
-                    <li><a href="../html/registroEquipo.php" target="_blank">Registro Equipo</a></li>
-                    <li><a href="../html/repacionEquipo.php" target="_blank">Reparación</a></li>
-                    <li><a href="../html/entregaEquipos.php" target="_blank">Entrega</a></li>
-                    <li><a href="../html/restablecer.php" target="_blank">Restablecer</a></li>
-                </ul>
-            </li> 
            
             <li><a href="" target="_parent">Bienvenido</a>
                 <ul>
@@ -414,64 +395,6 @@ function menu_2() {
         </ul>');
 }
 
-function menu_3() {
-    print(' <ul id="main-menu" class="sm sm-blue">
-            <li><a href="" target="_parent">Inicio</a></li>
-            <li><a href="" target="_parent">Ingresos</a>
-                <ul>
-                    <li><a href="../html/clientes.php" target="_blank">Clientes</a></li>
-                    <li><a href="../html/proveedores.php"target="_blank">Proveedores</a></li>
-                    <li><a href="">Productos</a>
-                        <ul>
-                            <li><a href="" target="_parent">Clasificacion</a>
-                            <ul>
-                                  <li><a href="../html/categorias.php" target="_blank">Categorias</a></li>
-                                  <li><a href="../html/marcas.php" target="_blank">Marcas</a></li>
-                                  <li><a href="../html/colores.php" target="_blank"">Colores</a></li>
-                            </ul>
-                            </li>
-                            <li><a href="" target="_parent">Ingreso Productos</a>
-                            <ul>
-                                  <li><a href="../html/productos.php" target="_blank">Bienes</a></li>
-                                  <li><a href="../html/servicios.php" target="_blank">Servicios</a></li>
-                            </ul>
-                           </li>
-                        </ul>
-                    </li>
-                   
-                </ul>
-            </li>
-            
-             <li><a href="" target="_parent">Mantenimiento</a>
-                <ul>
-                    <li><a href="../html/registroEquipo.php" target="_blank">Registro Equipo</a></li>
-                    <li><a href="../html/repacionEquipo.php" target="_blank">Reparación</a></li>
-                    <li><a href="../html/entregaEquipos.php" target="_blank">Entrega</a></li>
-                    <li><a href="../html/restablecer.php" target="_blank">Restablecer</a></li>
-                </ul>
-            </li> 
-           
-            <li><a href="" target="_parent">Bienvenido</a>
-                <ul>
-                    <li><a href="#" class="disabled">' . $_SESSION['nombres'] . '</a></li>
-                    <li><a href="#">Modificar</a></li>
-                    <li><a href="../html/index.php">Salir</a></li>
-                </ul>
-            </li>
-            <li><a href="" target="_parent">Ayuda</a>
-                <ul class="mega-menu">
-                    <li>
-                        <!-- The mega drop down contents -->
-                        <div style="width:400px;max-width:100%;">
-                            <div style="padding:1px 10px;">
-                              <li><a href="../procesos/backup.php" id="">Respaldo de la base de datos</a></li>     
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>');
-}
 ?>
 
 

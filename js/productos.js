@@ -1,4 +1,4 @@
-$(document).on("ready", inicio);
+﻿$(document).on("ready", inicio);
 function evento(e) {
     e.preventDefault();
 }
@@ -94,10 +94,6 @@ function guardar_producto() {
         $("#cod_prod").focus();
         alertify.alert("Indique un Código");
     } else {
-        if ($("#cod_barras").val() === "") {
-            $("#cod_barras").focus();
-            alertify.alert("Indique código de barras");
-        } else {
             if ($("#nombre_art").val() === "") {
                 $("#nombre_art").focus();
                 alertify.alert("Nombre del producto");
@@ -150,7 +146,6 @@ function guardar_producto() {
                                     }
                                 }
                             }
-                        }
                     }
                 }
             }
@@ -167,10 +162,6 @@ function modificar_producto() {
             $("#cod_prod").focus();
             alertify.alert("Indique un Código");
         } else {
-            if ($("#cod_barras").val() === "") {
-                $("#cod_barras").focus();
-                alertify.alert("Indique código de barras");
-            } else {
                 if ($("#nombre_art").val() === "") {
                     $("#nombre_art").focus();
                     alertify.alert("Nombre del producto");
@@ -229,7 +220,7 @@ function modificar_producto() {
             }
         }
     }
-}
+
 
 function eliminar_productos() {
     if ($("#cod_productos").val() === "") {

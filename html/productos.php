@@ -57,7 +57,7 @@ include '../menus/menu.php';
                     </a>
 
                     <a class="brand" href="">
-                        P&S System			
+                        <?php echo $_SESSION['empresa']; ?> 		
                     </a>			
                 </div> 
             </div> 
@@ -144,7 +144,7 @@ include '../menus/menu.php';
                                                                 <select id="categoria" name="categoria" class="campo" style="width: 165px">
                                                                     <option value="">........Seleccione........</option>
                                                                     <?php
-                                                                    $consulta = pg_query("select * from categoria where id_empresa = '$_SESSION[id_empresa]'");
+                                                                    $consulta = pg_query("select * from categoria ");
                                                                     while ($row = pg_fetch_row($consulta)) {
                                                                         echo "<option id=$row[0] value=$row[1]>$row[1]</option>";
                                                                     }
@@ -196,7 +196,7 @@ include '../menus/menu.php';
 
                                                 <section class="columna2">
                                                     <div class="control-group">											
-                                                        <label class="control-label" for="ruc_ci">Código Barras: <font color="red">*</font></label>
+                                                        <label class="control-label" for="ruc_ci">Código Barras:</label>
                                                         <div class="controls">
                                                             <input type="text" name="cod_barras" id="cod_barras" required placeholder="El código debe ser único" class="campo" />
                                                             <input type="hidden" name="cod_productos" id="cod_productos" readonly class="campo" />
@@ -246,7 +246,7 @@ include '../menus/menu.php';
                                                                 <select id="marca" name="marca" class="campo" style="width: 165px" >
                                                                     <option value="">........Seleccione........</option>
                                                                     <?php
-                                                                    $consulta2 = pg_query("select * from marcas where id_empresa = '$_SESSION[id_empresa]'");
+                                                                    $consulta2 = pg_query("select * from marcas ");
                                                                     while ($row = pg_fetch_row($consulta2)) {
                                                                         echo "<option id=$row[0] value=$row[1]>$row[1]</option>";
                                                                     }
