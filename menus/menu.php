@@ -36,6 +36,7 @@ function menu_1() {
             
             <li><a href="" target="_parent">Procesos</a>
                 <ul>
+                    <li><a href="../html/asignacion_bodegas.php" target="_blank">Movimientos Productos</a></li>
                     <li><a href="../html/inventario.php" target="_blank">Inventario</a></li>
                     <li><a href="../html/proformas.php" target="_blank">Proformas</a></li>
                     <li><a href="../html/produccion.php" target="_blank">Ordenes Producción</a></li>

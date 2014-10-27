@@ -126,14 +126,20 @@ include '../menus/menu.php';
                                                     <div class="control-group">
                                                         <label class="control-label" for="utilidad_minorista">Utilidad Minorista: <font color="red">*</font></label>
                                                         <div class="controls">
-                                                            <input type="text"  name="utilidad_minorista" id="utilidad_minorista"   placeholder="%" required class="campo" />
+                                                            <div class="input-prepend input-append">
+                                                                <span class="add-on">%</span>
+                                                                <input type="text"  name="utilidad_minorista" id="utilidad_minorista" required class="campo" style="width: 165px" />
+                                                            </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="control-group">
                                                         <label class="control-label" for="precio_minorista">PSP Minorista:</label>
                                                         <div class="controls">
-                                                            <input type="text"  name="precio_minorista" id="precio_minorista" valu="0" readonly placeholder="$0.00" class="campo" required />
+                                                            <div class="input-prepend input-append">
+                                                                <span class="add-on">$</span>
+                                                                <input type="text"  name="precio_minorista" id="precio_minorista" valu="0" readonly placeholder="$0.00" class="campo" required style="width: 165px"/>
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -150,7 +156,7 @@ include '../menus/menu.php';
                                                                     }
                                                                     ?>
                                                                 </select>
-                                                                <input type="button" class="btn btn-primary" id='btnCategoria' value="..." />
+                                                                <input type="button" class="btn btn-primary" id='btnCategoria' value="..." title="INGRESO CATEGORIAS"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -158,14 +164,14 @@ include '../menus/menu.php';
                                                     <div class="control-group">
                                                         <label class="control-label" for="descuento">Descuento:</label>
                                                         <div class="controls">
-                                                            <input type="text"  name="descuento" id="descuento"  value="0" required class="campo"/>
+                                                            <input type="text"  name="descuento" id="descuento"  value="0" required class="campo" style="width: 170px; height: 25px"/>
                                                         </div>
                                                     </div>
 
                                                     <div class="control-group">
                                                         <label class="control-label" for="minimo">Stock Mínimo:</label>
                                                         <div class="controls">
-                                                            <input name="minimo" id="minimo" type="text" value="1" required class="campo"/>
+                                                            <input name="minimo" id="minimo" type="text" value="1" required class="campo" style="width: 170px; height: 25px"/>
                                                         </div>
                                                     </div>
 
@@ -228,14 +234,20 @@ include '../menus/menu.php';
                                                     <div class="control-group">											
                                                         <label class="control-label" for="utilidad_mayorista">Utilidad Mayorista: <font color="red">*</font></label>
                                                         <div class="controls">
-                                                            <input type="text"  name="utilidad_mayorista" id="utilidad_mayorista"   placeholder="%" class="campo" required />
+                                                            <div class="input-prepend input-append">
+                                                                <span class="add-on">%</span>
+                                                                <input type="text"  name="utilidad_mayorista" id="utilidad_mayorista"   placeholder="%" class="campo" required style="width: 165px" />
+                                                            </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="control-group">											
                                                         <label class="control-label" for="precio_mayorista">PSP Mayorista:</label>
                                                         <div class="controls">
-                                                            <input type="text"  name="precio_mayorista" id="precio_mayorista" valu="0" readonly placeholder="$0.00" class="campo" required />
+                                                            <div class="input-prepend input-append">
+                                                                <span class="add-on">$</span>
+                                                                <input type="text"  name="precio_mayorista" id="precio_mayorista" valu="0" readonly placeholder="$0.00" class="campo" required style="width: 165px" />
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -252,7 +264,7 @@ include '../menus/menu.php';
                                                                     }
                                                                     ?>
                                                                 </select>
-                                                                <input type="button" class="btn btn-primary" id='btnMarca' value="..." />
+                                                                <input type="button" class="btn btn-primary" id='btnMarca' value="..." title="INGRESO MARCAS" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -260,14 +272,14 @@ include '../menus/menu.php';
                                                     <div class="control-group">	
                                                         <label class="control-label" for="stock">Stock:</label>
                                                         <div class="controls">
-                                                            <input type="text"  name="stock" id="stock"  value="0" required class="campo"/>
+                                                            <input type="text"  name="stock" id="stock"  value="0" required class="campo" style="width: 170px; height: 25px"/>    
                                                         </div>
                                                     </div>
 
                                                     <div class="control-group">	
                                                         <label class="control-label" for="maximo">Stock Máximo:</label>
                                                         <div class="controls">
-                                                            <input type="text" name="maximo" id="maximo"  value="1" required class="campo"/>
+                                                            <input type="text" name="maximo" id="maximo"  value="1" required class="campo" style="width: 170px; height: 25px"/>
                                                         </div>
                                                     </div>
 
@@ -338,7 +350,7 @@ include '../menus/menu.php';
                                         </div> 
 
                                         <div id="seguro">
-                                            <label>Esta seguro de eliminar al cliente</label>  
+                                            <label>Esta seguro de eliminar al producto</label>  
                                             <br />
                                             <button class="btn btn-primary" id='btnAceptar'><i class="icon-ok"></i> Aceptar</button>
                                             <button class="btn btn-primary" id='btnSalir'><i class="icon-remove-sign"></i> Cancelar</button>
